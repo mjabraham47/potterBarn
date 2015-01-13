@@ -6,8 +6,10 @@ var mongoose = require('mongoose'),
 var CartSchema = new Schema({
   name: String,
   info: String,
-  price: {type: Number, get: getPrice, set: setPrice }
-  active: Boolean
+  quantity: Number,
+  price: {type: Number, get: getPrice, set: setPrice },
+  active: Boolean,
+  photo: String
 });
 
 function getPrice(num){
@@ -15,7 +17,7 @@ function getPrice(num){
 }
 
 function setPrice(num){
-    return num*100;
+    return (num/100).toFixed(2);
 }
 
 module.exports = mongoose.model('Cart', CartSchema);
