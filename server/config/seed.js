@@ -12,27 +12,18 @@ var Category = require('../api/category/category.model');
 var Cart = require('../api/cart/cart.model');
 
 Category.find({}).remove(function() {
-  Category.create({
-    name : 'Wands'
-    },{
-    name : 'Broomsticks and Quidditch Equipment'
-    },  {
-    name : 'Books'
-    }, {
-    name: 'Mythical Creatures'
-    }, {
-    name: 'Robes'
-    }, {
-    name: 'Hats'
-    }, {
-    name: 'Quills'
-    }, {
-    name: 'Potions'
-    }, {
-    name: 'Cauldrons'
-    }, {
-    name: 'Potion Ingredients'
-  });
+  Category.create(
+    { name : 'Wands'},
+    { name : 'Broomsticks and Quidditch Equipment' },
+    { name : 'Books' },
+    { name: 'Mythical Creatures' },
+    { name: 'Robes' },
+    { name: 'Hats' },
+    { name: 'Quills' },
+    { name: 'Potions' },
+    { name: 'Cauldrons' },
+    { name: 'Potion Ingredients' }
+    );
 });
 
 //This is where the Cart should be
