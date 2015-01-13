@@ -4,20 +4,17 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var CartSchema = new Schema({
-  name: String,
-  info: String,
-  quantity: Number,
-  price: {type: Number, get: getPrice, set: setPrice },
-  active: Boolean,
-  photo: String
+
+  contents: [{
+      product: { type: Schema.Types.ObjectId, ref: 'Product'},
+      quantity_ordered: Number
+    }],
+
+  user_id: { type: Schema.Types.ObjectId, ref: 'User'},
+  date: { type: Date, default: Date.now },
+  is_order: { Boolean, default: false },
+  status: String
+
 });
-
-function getPrice(num){
-    return (num/100).toFixed(2);
-}
-
-function setPrice(num){
-    return (num/100).toFixed(2);
-}
 
 module.exports = mongoose.model('Cart', CartSchema);

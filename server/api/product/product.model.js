@@ -9,7 +9,13 @@ var ProductSchema = new Schema({
   categories: [String],
   photo: String,
   price: Number,
-  quantity: Number
+  quantity: Number,
+  reviews: [{
+    user: { type: Schema.Types.ObjectId, ref: 'User'},
+    rating: Number,
+    review: String,
+    date: Date
+  }]
 });
 
 ProductSchema.index({categories: 1});
@@ -17,8 +23,7 @@ ProductSchema.index({categories: 1});
 ProductSchema.methods.findProductByCategory = function(cb) {
   return this.model('Product').find({ categories: this.category }, cb);
 }
-
-function convertPrice(price) {
+ProductSchema.methods.convertPrice = function(price) {
   var sickles = 0;
   var galleons = 0;
   var galleon_string = " Galleons";
@@ -27,7 +32,7 @@ function convertPrice(price) {
     if ( price < 17 ) {
       sickles += price;
     }
-    else if (price >= 17) {
+    else if ( price >= 17 ) {
       price -= 17;
       galleons += 1;
       check_sickles();

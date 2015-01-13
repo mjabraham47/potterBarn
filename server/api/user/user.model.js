@@ -30,6 +30,7 @@ var UserSchema = new Schema({
       year: Number
     }
   },
+  history: [{type: Schema.Types.ObjectId, ref: 'Order'}],
   email: { type: String, lowercase: true },
   phone: Number,
   role: {
