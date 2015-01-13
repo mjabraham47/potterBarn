@@ -20,6 +20,15 @@ exports.show = function(req, res) {
   });
 };
 
+// Get a list of products by category
+//need a category in req.params
+exports.show_category = function(req, res) {
+  Product.findProductByCategory(req.params.category, function(err, products) {
+    if(err) {return handleError(res, err); }
+    return res.json(200, products);
+  })
+}
+
 // Creates a new product in the DB.
 exports.create = function(req, res) {
   Product.create(req.body, function(err, product) {
@@ -53,12 +62,6 @@ exports.destroy = function(req, res) {
     });
   });
 };
-
-// //Searches for products by category
-// exports.category_search = function(req, res) {
-//   var category = req.params.cat;
-//   Product.find({categories})
-// }
 
 function handleError(res, err) {
   return res.send(500, err);

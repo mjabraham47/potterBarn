@@ -11,27 +11,18 @@ var Product = require('../api/product/product.model');
 var Category = require('../api/category/category.model');
 
 Category.find({}).remove(function() {
-  Category.create({
-    name : 'Wands'
-    },{
-    name : 'Broomsticks and Quidditch Equipment'
-    },  {
-    name : 'Books'
-    }, {
-    name: 'Mythical Creatures'
-    }, {
-    name: 'Robes'
-    }, {
-    name: 'Hats'
-    }, {
-    name: 'Quills'
-    }, {
-    name: 'Potions'
-    }, {
-    name: 'Cauldrons'
-    }, {
-    name: 'Potion Ingredients'
-  });
+  Category.create(
+    { name : 'Wands'},
+    { name : 'Broomsticks and Quidditch Equipment' },
+    { name : 'Books' },
+    { name: 'Mythical Creatures' },
+    { name: 'Robes' },
+    { name: 'Hats' },
+    { name: 'Quills' },
+    { name: 'Potions' },
+    { name: 'Cauldrons' },
+    { name: 'Potion Ingredients' }
+    );
 });
 
 Thing.find({}).remove(function() {

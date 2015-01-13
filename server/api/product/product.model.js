@@ -14,4 +14,8 @@ var ProductSchema = new Schema({
 
 ProductSchema.index({categories: 1});
 
+ProductSchema.methods.findProductByCategory = function(cb) {
+  return this.model('Product').find({ categories: this.category }, cb);
+}
+
 module.exports = mongoose.model('Product', ProductSchema);
