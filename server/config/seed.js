@@ -9,6 +9,7 @@ var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Product = require('../api/product/product.model');
 var Category = require('../api/category/category.model');
+var Cart = require('../api/cart/cart.model');
 
 Category.find({}).remove(function() {
   Category.create(
@@ -25,8 +26,9 @@ Category.find({}).remove(function() {
     );
 });
 
-Thing.find({}).remove(function() {
-  Thing.create({
+//This is where the Cart should be
+Cart.find({}).remove(function() {
+  Cart.create({
     name : 'Development Tools',
     info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
   }, {

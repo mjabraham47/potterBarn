@@ -3,22 +3,22 @@
 angular.module('potterBarnApp')
   .controller('CartCtrl', function ($scope, $http, socket) {
     
-    $scope.awesomeThings = [];
+    $scope.awesomeCart = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
+    $http.get('/api/cart').success(function(awesomeCart) {
+      $scope.awesomeCart = awesomeCart;
+      socket.syncUpdates('cart', $scope.awesomeCart);
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addCart = function() {
+      if($scope.newCart === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $http.post('/api/cart', { name: $scope.newCart });
+      $scope.newCart = '';
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.deleteCart = function(cart) {
+      $http.delete('/api/cart/' + cart._id);
     };
   });
