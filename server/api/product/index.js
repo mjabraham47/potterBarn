@@ -11,6 +11,6 @@ router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
-router.get('/:category', controller.show_category);
+router.get('/category/:category', controller.show_category);
 
 module.exports = router;
