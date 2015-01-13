@@ -54,6 +54,18 @@ exports.destroy = function(req, res) {
   });
 };
 
+<<<<<<< HEAD
 function handleError(res, err) {
   return res.send(500, err);
 }
+=======
+// //Searches for products by category
+// exports.category_search = function(req, res) {
+//   var category = req.params.cat;
+//   Product.find({categories})
+// }
+
+function handleError(res, err) {
+  return res.send(500, err);
+}
+>>>>>>> 9fa7f1bb6694d4cd737d8b5ef9a1438c3448e982
