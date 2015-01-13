@@ -9,7 +9,7 @@ var ProductSchema = new Schema({
   categories: [String],
   photo: String,
   price: Number,
-  Quantity: Number
+  quantity: Number
 });
 
 ProductSchema.index({categories: 1});

@@ -1,82 +1,4 @@
-/**
- * Populate DB with sample data on server start
- * to disable, edit config/environment/index.js, and set `seedDB: false`
- */
-
-'use strict';
-
-var Thing = require('../api/thing/thing.model');
-var User = require('../api/user/user.model');
-var Product = require('../api/product/product.model');
-var Category = require('../api/category/category.model');
-
-Category.find({}).remove(function() {
-  Category.create({
-    name : 'Wands'
-    },{
-    name : 'Broomsticks and Quidditch Equipment'
-    },  {
-    name : 'Books'
-    }, {
-    name: 'Mythical Creatures'
-    }, {
-    name: 'Robes'
-    }, {
-    name: 'Hats'
-    }, {
-    name: 'Quills'
-    }, {
-    name: 'Potions'
-    }, {
-    name: 'Cauldrons'
-    }, {
-    name: 'Potion Ingredients'
-  });
-});
-
-Thing.find({}).remove(function() {
-  Thing.create({
-    name : 'Development Tools',
-    info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
-  }, {
-    name : 'Server and Client integration',
-    info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
-  }, {
-    name : 'Smart Build System',
-    info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-  },  {
-    name : 'Modular Structure',
-    info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-  },  {
-    name : 'Optimized Build',
-    info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
-    name : 'Deployment Ready',
-    info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-  });
-});
-
-User.find({}).remove(function() {
-  User.create({
-    provider: 'local',
-    name: 'Test User',
-    email: 'test@test.com',
-    password: 'test'
-  }, {
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
-  }, function() {
-      console.log('finished populating users');
-    }
-  );
-});
-
-Product.find({}).remove(function() {
-  Product.create(
-    {
+{
   name: 'Holly Wand',
   info: 'Handcrafted from Solid HOlly, with essence of Phoenix feather. Holly possesses protection qualities which far surpass any other wood and is on record for its overall strength. Holly is the chosen wood for use in performing and guiding dream magic.',
   categories: ['Wands'],
@@ -134,11 +56,9 @@ Product.find({}).remove(function() {
 },
 {
   name: 'Firebolt',
-  info: 'It is capable of going from nought to one hundred and fifty miles per hour in ten seconds. The Firebolt also boasts an unbreakable Braking Charm, superb balance and precision, and hovers at reasonable mounting height when let go. \
-  By 1994, the Firebolt was the fastest broomstick in the whole world. Even though the competitor Thunderbolt VII can attain speeds that rival that of the Firebolt series, many experts feel that it has sacrificed safety for speed — indeed, \
-  during the 2014 Quidditch World Cup, even though professional broomsticks are supposed to withstand all Bludger hits, the tail of Nigerian Seeker Samuel Equiano\'s Thunderbolt was smashed off by a Bludger shot hit by Japanese Beater Hongo. \
-  \rThe handle is made of polished ebony (once mistakenly listed as ash in a Quality Quidditch Supplies advertisement), and the twigs can be made of either birch or hazel depending on customer preference. Birch twigs offer more "oomph" when ascending, while hazel provides more precision in turning. The metal parts of the broom are goblin-made ironwork, a first for a broomstick, which increases stability and power in adverse conditions and prevents slippage on the foot grips. \
-  \rEvery Firebolt includes a golden registration number.',
+  info: 'It is capable of going from nought to one hundred and fifty miles per hour in ten seconds. The Firebolt also boasts an unbreakable Braking Charm, superb balance and precision, and hovers at reasonable mounting height when let go. By 1994, the Firebolt was the fastest broomstick in the whole world. Even though the competitor Thunderbolt VII can attain speeds that rival that of the Firebolt series, many experts feel that it has sacrificed safety for speed — indeed, during the 2014 Quidditch World Cup, even though professional broomsticks are supposed to withstand all Bludger hits, the tail of Nigerian Seeker Samuel Equiano\'s Thunderbolt was smashed off by a Bludger shot hit by Japanese Beater Hongo.
+  The handle is made of polished ebony (once mistakenly listed as ash in a Quality Quidditch Supplies advertisement), and the twigs can be made of either birch or hazel depending on customer preference. Birch twigs offer more "oomph" when ascending, while hazel provides more precision in turning. The metal parts of the broom are goblin-made ironwork, a first for a broomstick, which increases stability and power in adverse conditions and prevents slippage on the foot grips.
+  Every Firebolt includes a golden registration number.',
   categories: ['Broomsticks and Quidditch Equipment'],
   photo: './client/assets/images/brooms/firebolt.jpg',
   price: 5000,
@@ -159,5 +79,4 @@ Product.find({}).remove(function() {
   photo: './client/assets/images/brooms/nimbus2001.jpg',
   price: 6000,
   quantity: 5
-});
-});
+}
