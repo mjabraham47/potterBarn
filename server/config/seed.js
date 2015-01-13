@@ -76,7 +76,7 @@ Product.find({}).remove(function() {
   Product.create(
     {
   name: 'Holly Wand',
-  info: 'Handcrafted from Solid HOlly, with essence of Phoenix feather. Holly possesses protection qualities which far surpass any other wood and is on record for its overall strength. Holly is the chosen wood for use in performing and guiding dream magic.',
+  info: 'Handcrafted from Solid Holly, with essence of Phoenix feather. Holly possesses protection qualities which far surpass any other wood and is on record for its overall strength. Holly is the chosen wood for use in performing and guiding dream magic.',
   categories: ['Wands'],
   photo: './client/assets/images/wands/holly.jpg',
   price: 200,

@@ -17,8 +17,7 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 @font-face {
     font-family: HarryP;
-    /* src: url(assets/HARRYP_.TTF); */
-    font-stretch: expanded;
+   src: url(/assets/HARRYP_.TTF);
 }
 
 *{
@@ -33,5 +32,6 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'admin/admin.scss';
 @import 'cart/cart.scss';
 @import 'main/main.scss';
+@import 'product/product.scss';
 @import 'modal/modal.scss';
 // endinjector
