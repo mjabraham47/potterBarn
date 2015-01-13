@@ -28,8 +28,7 @@ var UserSchema = new Schema({
     expiration_date: {
       month: Number,
       year: Number
-    },
-    billing_address: [billing_address]
+    }
   },
   email: { type: String, lowercase: true },
   phone: Number,
