@@ -15,6 +15,18 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
+@font-face {
+    font-family: HarryP;
+    /* src: url(assets/HARRYP_.TTF); */
+    font-stretch: expanded;
+}
+
+*{
+	font-family: "HarryP";
+	
+}
+
+
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';
