@@ -5,6 +5,10 @@ angular.module('potterBarnApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },
+    {
+      'title': 'Cart',
+      'link': '/cart'
     }];
 
     $scope.isCollapsed = true;

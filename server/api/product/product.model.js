@@ -19,3 +19,4 @@ ProductSchema.methods.findProductByCategory = function(cb) {
 }
 
 module.exports = mongoose.model('Product', ProductSchema);
+
