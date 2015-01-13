@@ -28,10 +28,15 @@ Category.find({}).remove(function() {
 
 //This is where the Cart should be
 Cart.find({}).remove(function() {
+  var product = new Product({name: 'Cool Wand', info: "This is a really cool wand", categories: ['Wand'], photo: 'http://216.194.165.146/~supertal/wp-content/uploads/2013/01/img_logo_blue.jpg', price: 500, quantity: 34})
   Cart.create({
-    name : 'Development Tools',
-    info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
-  }, {
+    name : product.name,
+    info : product.info,
+    quantity: '3',
+    price: product.price,
+    active: true,
+    photo: product.photo
+  });/*, {
     name : 'Server and Client integration',
     info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
   }, {
@@ -46,7 +51,7 @@ Cart.find({}).remove(function() {
   },{
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-  });
+  });*/
 });
 
 User.find({}).remove(function() {

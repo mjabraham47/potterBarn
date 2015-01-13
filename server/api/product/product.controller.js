@@ -26,8 +26,8 @@ exports.show_category = function(req, res) {
   Product.findProductByCategory(req.params.category, function(err, products) {
     if(err) {return handleError(res, err); }
     return res.json(200, products);
-  })
-}
+  });
+};
 
 // Creates a new product in the DB.
 exports.create = function(req, res) {
