@@ -1,25 +1,18 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div ng-repeat="category in categories">
-    <div ng-click="stateChange(category.name)"> {{category.name}} </div>
-  </div>
-
-  
+<div class="banner">
+<center>
+<h1> Potter Barn </h1>
+<br>
+<h2> A veritable Diagon Alley of magical objects </h2>
+</center>
 </div>
 
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+<div class="categories">
+<ul>
+  <div class="col-md-6" ng-repeat="category in categories">
+    <li><div ng-click="stateChange(category.name)"> <h3> {{category.name}} </h3></div></li>
   </div>
-</footer>
+</ul>
+</div>
+
