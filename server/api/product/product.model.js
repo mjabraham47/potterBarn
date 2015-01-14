@@ -22,7 +22,8 @@ ProductSchema.index({categories: 1});
 
 ProductSchema.methods.findProductByCategory = function(cb) {
   return this.model('Product').find({ categories: this.category }, cb);
-}
+};
+
 ProductSchema.methods.convertPrice = function(price) {
   var sickles = 0;
   var galleons = 0;
@@ -50,7 +51,7 @@ ProductSchema.methods.convertPrice = function(price) {
   } else {
     return galleons.toString() + galleon_string + " and " + sickles.toString() + sickle_string;
   }
-}
+};
 
 module.exports = mongoose.model('Product', ProductSchema);
 
