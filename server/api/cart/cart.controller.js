@@ -13,11 +13,17 @@ exports.index = function(req, res) {
 
 // Get a single cart
 exports.show = function(req, res) {
-  Cart.findById(req.params.id, function (err, cart) {
+  Cart.find({user : req.params.id }, function (err, cart) {
     if(err) { return handleError(res, err); }
     if(!cart) { return res.send(404); }
+    console.log('yeaaahhhh', cart);
     return res.json(cart);
   });
+  // Cart.findById(req.params.id, function (err, cart) {
+  //   if(err) { return handleError(res, err); }
+  //   if(!cart) { return res.send(404); }
+  //   return res.json(cart);
+  // });
 };
 
 // Creates a new cart in the DB.
@@ -25,6 +31,17 @@ exports.create = function(req, res) {
   Cart.create(req.body, function(err, cart) {
     if(err) { return handleError(res, err); }
     return res.json(201, cart);
+  });
+};
+
+exports.create_new_user_cart = function(req, res) {
+  var new_cart = {
+    products: [],
+    user: req.params.id
+  };
+  Cart.create(new_cart, function(err, cart) {
+    if(err) { return handleError(res, err) };
+      return res.json(201, cart);
   });
 };
 

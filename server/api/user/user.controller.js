@@ -4,6 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var Cart = require('../cart/cart.model');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -25,13 +26,20 @@ exports.index = function(req, res) {
  */
 exports.create = function (req, res, next) {
   var newUser = new User(req.body);
-  newUser.provider = 'local';
-  newUser.role = 'user';
-  newUser.save(function(err, user) {
-    if (err) return validationError(res, err);
-    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
+  Cart.create({ user: newUser._id }, function(err, cart) {
+    newUser.provider = 'local';
+    newUser.role = 'user';
+    newUser.carts = [cart._id];
+    newUser.save(function(err, user) {
+      if (err) return validationError(res, err);
+          var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
+          res.json({ token: token });
+      console.log(user);
+      console.log(cart);
+    });
   });
+
+
 };
 
 /**

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $window, $http) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -15,12 +15,16 @@ angular.module('potterBarnApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          $http.get('/api/cart/new_cart/'+Auth.getCurrentUser()._id).success(function(user_cart) {
+            $scope.cart = user_cart;
+            console.log($scope.cart);
+          })
+          //$location.path('/');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
         });
-      }
+      } console.log($scope.user);
     };
 
     $scope.loginOauth = function(provider) {
