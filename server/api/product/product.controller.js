@@ -3,6 +3,11 @@
 var _ = require('lodash');
 var Product = require('./product.model');
 
+// this.model(Product).findProductByCategory = function(cb) {
+//   return this.model('Product').find({ categories: this.category }, cb);
+// };
+
+
 // Get list of products
 exports.index = function(req, res) {
   Product.find(function (err, products) {
@@ -23,9 +28,9 @@ exports.show = function(req, res) {
 // Get a list of products by category
 //need a category in req.params
 exports.show_category = function(req, res) {
-  Product.findProductByCategory(req.params.category, function(err, products) {
+  Product.find({ categories: req.params.category }).exec(function(err, products) {
     if(err) {return handleError(res, err); }
-    return res.json(200, products);
+      return res.json(200, products);
   });
 };
 

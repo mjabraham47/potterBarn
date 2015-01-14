@@ -12,7 +12,7 @@ var CartSchema = new Schema({
 
   user_id: { type: Schema.Types.ObjectId, ref: 'User'},
   date: { type: Date, default: Date.now },
-  is_order: { Boolean, default: false },
+  is_order: { type: Boolean, default: false },
   status: String
 
 });
