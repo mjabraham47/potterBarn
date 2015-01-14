@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('ProductCtrl', function ($scope, $http) {
+  .controller('ProductCtrl', function ($scope, $http, $stateParams, $state) {
+    console.log($stateParams.product);
+ $scope.currentProduct = $stateParams.product;
     
- $http.get('/api/product/:id').success(function(productPage) {
-      $scope.productPage = productPage;
-      console.log($scope.productPage)
-    })
+    $http.get('/api/products/'+$stateParams.product).success(function(product) {
+      $scope.product = product;
+      console.log($scope.product)
+    });
   });
