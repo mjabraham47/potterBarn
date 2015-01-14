@@ -10,7 +10,7 @@ var CartSchema = new Schema({
       quantity_ordered: Number
     }],
 
-  user_id: { type: Schema.Types.ObjectId, ref: 'User'},
+  user: { type: Schema.Types.ObjectId, ref: 'User'},
   date: { type: Date, default: Date.now },
   is_order: { type: Boolean, default: false },
   status: String

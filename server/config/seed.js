@@ -28,30 +28,14 @@ Category.find({}).remove(function() {
 
 //This is where the Cart should be
 Cart.find({}).remove(function() {
-  var product = new Product({name: 'Cool Wand', info: "This is a really cool wand", categories: ['Wand'], photo: 'http://216.194.165.146/~supertal/wp-content/uploads/2013/01/img_logo_blue.jpg', price: 500, quantity: 34})
+  //var product = new Product({name: 'Cool Wand', info: "This is a really cool wand", categories: ['Wand'], photo: 'http://216.194.165.146/~supertal/wp-content/uploads/2013/01/img_logo_blue.jpg', price: 500, quantity: 34})
   Cart.create({
-    name : product.name,
-    info : product.info,
-    quantity: '3',
-    price: product.price,
-    active: true,
-    photo: product.photo
-  });/*, {
-    name : 'Server and Client integration',
-    info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
-  }, {
-    name : 'Smart Build System',
-    info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-  },  {
-    name : 'Modular Structure',
-    info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-  },  {
-    name : 'Optimized Build',
-    info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
-    name : 'Deployment Ready',
-    info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-  });*/
+    contents : [{product:'54b6a84e59d71b1535d65e62',
+    quantity_ordered: 1 }],
+    user: '54b6aaa312e01d5b35339ac0',
+  }, function() {
+    console.log('finished populating cart');
+  });
 });
 
 User.find({}).remove(function() {
