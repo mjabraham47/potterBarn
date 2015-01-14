@@ -67,3 +67,11 @@ function handleError(res, err) {
   return res.send(500, err);
 }
 
+// exports.getProductsByCategory = function(req, res){
+//  var category = []; 
+//  category.push(req.query.category)  
+//  Products.find({'categories' : {$in: category}}).exec(function(err, products){
+//    res.json(products)
+//  })
+// }
+
