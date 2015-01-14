@@ -10,7 +10,8 @@
 
 <div class="container">
   <div ng-repeat="category in categories">
-    {{ category.name }}
+    <div ng-click="stateChange(category.name)"> {{category.name}} </div>
+       <!-- <a href="/category/{{category.name}}">{{category.name}}</a> -->
   </div>
 
   
