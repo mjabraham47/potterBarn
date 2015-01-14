@@ -1,7 +1,9 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-  <div ng-repeat="product in currentProducts"> 
+
+  <div ng-repeat="product in currentProducts">
   	<div ng-click="stateChange(product.name)">{{product.name}}</div>
+
   </div>
 </div>
