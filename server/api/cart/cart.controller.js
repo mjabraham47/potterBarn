@@ -34,6 +34,17 @@ exports.create = function(req, res) {
   });
 };
 
+exports.create_new_user_cart = function(req, res) {
+  var new_cart = {
+    products: [],
+    user: req.params.id
+  };
+  Cart.create(new_cart, function(err, cart) {
+    if(err) { return handleError(res, err) };
+      return res.json(201, cart);
+  });
+};
+
 // Updates an existing cart in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
