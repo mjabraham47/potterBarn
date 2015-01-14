@@ -13,14 +13,14 @@ angular.module('potterBarnApp')
           email: $scope.user.email,
           password: $scope.user.password
         })
-        // .then( function() {
-        //   // Logged in, redirect to home
-        //   $http.get('/api/cart/new_cart/'+Auth.getCurrentUser()._id).success(function(user_cart) {
-        //     $scope.cart = user_cart;
-        //     console.log($scope.cart);
-        //   })
-        //   //$location.path('/');
-        // })
+        .then( function() {
+          // Logged in, redirect to home
+          $http.get('/api/cart/new_cart/'+Auth.getCurrentUser()._id).success(function(user_cart) {
+            $scope.cart = user_cart;
+            console.log($scope.cart);
+          })
+          //$location.path('/');
+        })
         .catch( function(err) {
           $scope.errors.other = err.message;
         });
