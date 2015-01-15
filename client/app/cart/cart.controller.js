@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('CartCtrl', function ($scope, $http, socket, Auth) {
+  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart) {
 
+    $scope.cart = cart;
+    console.log($scope.cart.shoppingCart);
     $scope.awesomeCart = [];
     $scope.total = 0;
-    console.log(Auth.getCurrentUser()._id);
 
     $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(awesomeCart) {
       $scope.awesomeCart = awesomeCart;
