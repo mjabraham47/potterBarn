@@ -11,7 +11,7 @@ angular.module('potterBarnApp')
   });
 
   $scope.stateChange = function(product) {
-    $state.go("product");
+    $state.go("product", {'product': product});
   };
 
 });
