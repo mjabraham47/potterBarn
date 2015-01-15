@@ -16,7 +16,6 @@ exports.show = function(req, res) {
   Cart.find({user : req.params.id }, function (err, cart) {
     if(err) { return handleError(res, err); }
     if(!cart) { return res.send(404); }
-    console.log('yeaaahhhh', cart);
     return res.json(cart);
   });
   // Cart.findById(req.params.id, function (err, cart) {
@@ -25,6 +24,17 @@ exports.show = function(req, res) {
   //   return res.json(cart);
   // });
 };
+
+exports.add_product = function(req, res) {
+  Cart.findOneAndUpdate(
+    { user: req.params.id, is_order:false },
+    { $push: { contents: { product: req.params.product, quantity: 1 }}},
+    function(err, cart) {
+      if(err) { return handleError(res, error); }
+      if(!cart) { return alert('No cart for user!'); }
+      return res.json(201, cart);
+  })
+}
 
 // Creates a new cart in the DB.
 exports.create = function(req, res) {
