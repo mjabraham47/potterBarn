@@ -9,10 +9,10 @@ angular.module('potterBarnApp')
     $scope.awesomeCart = {};
     $scope.total = 0;
     $scope.cart_items = [];
-    console.log($scope.cart_items);
     
     $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
       $scope.cart = cartItems;
+      console.log($scope.smallerCart)
       socket.syncUpdates('cart', $scope.cart);
       var length = $scope.cart[0].contents.length;
       $scope.number_items = length;
