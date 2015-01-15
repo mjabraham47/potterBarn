@@ -3,6 +3,9 @@
 var should = require('should');
 var app = require('../../app');
 var request = require('supertest');
+var User = require('../user/user.model');
+var Order = require('../order/order.model');
+
 
 describe('GET /api/orders', function() {
 
@@ -18,3 +21,4 @@ describe('GET /api/orders', function() {
       });
   });
 });
+
