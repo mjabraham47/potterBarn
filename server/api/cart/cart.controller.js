@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Cart = require('./cart.model');
+var Product = require('../product/product.model')
 
 // Get list of carts
 exports.index = function(req, res) {
@@ -28,7 +29,7 @@ exports.show = function(req, res) {
 exports.add_product = function(req, res) {
   Cart.findOneAndUpdate(
     { user: req.params.id, is_order:false },
-    { $push: { contents: { product: req.params.product, quantity: 1 }}},
+    { $push: { contents: { product: req.params.product, quantity_ordered: 1 }}},
     function(err, cart) {
       if(err) { return handleError(res, error); }
       if(!cart) { return alert('No cart for user!'); }
