@@ -3,4 +3,82 @@
 
 
 {{product.name}}<button ng-click="addToCart(product._id)">Add Item to Cart</button>
+<div ng-repeat="review in reviewsArray">
+{{ review.review_content.rating_stars }}
+{{ review.review_content.review_text }}
+</div>
+
+
+
+<form name="reviewForm">
+	<!--  Live Preview -->
+	<blockquote>
+		<strong> Stars</strong>
+
+		<cite class="clearfix">—</cite>
+	</blockquote>
+
+	<!--  Review Form -->
+	<div ng-show="isLoggedIn">
+		<h4>Submit a Review</h4>
+		<fieldset class="form-group">
+			<label>Stars:</label>
+			<select id="review_stars" ng-model="newReview.review_content.rating_stars">
+				<option value="5">5 stars</option>
+				<option value="4">4 stars</option>
+				<option value="3">3 stars</option>
+				<option value="2">2 stars</option>
+				<option value="1">1 star</option>
+			</select>
+		</fieldset>
+		<fieldset class="form-group">
+			<textarea class="form-control" ng-model="newReview.review_content.review_text" placeholder="Write a short review of the product..." title="Review"></textarea>
+		</fieldset>
+		<fieldset class="form-group">
+			<input id="review_text" type="submit" class="btn btn-primary pull-right" ng-click="submitNewReview()" value="Submit Review" ng-submit="$setPristine();"/>
+		</fieldset>
+	</div>
+</form>
+
+
+
+
+   <!--  <div class="jumbotron question">
+        <form ng-submit="addQuestion()" name="newQuestionForm">
+          <h2>Insert Question Here</h2>
+          <input type="text" ng-model="nextQuestion.q" ui-validate=" '$value.length > 9' "></input>
+          <label for="difficulty">Difficulty 1-10</label>
+          <select id="difficulty"  ng-required="true" ng-model="nextQuestion.difficulty">
+            <option ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]" value="{{ n }}">{{ n }}</option>
+          </select>
+          <ul id='question-list' ng-repeat="option in nextQuestion.options">
+            <li><input type="radio" name="correct" ng-model="nextQuestion.answer" ng-value="option.value">
+              <input type="text" name="optionText" ng-model="option.value" ui-validate=" '$value.length > 9' "></input>
+              <button type="button" class="btn btn-danger" ng-click="removeOption($index)">Delete</button>
+            </ul>
+            <button type="submit" class="btn btn-primary" ng-disabled="newQuestionForm.$invalid">Add Question</button>
+            <button type="button" class="btn btn-default" ng-click="addOption()">Add Option</button>
+            <div ng-init="set_timer()">{{ timeLeft }}</div>
+          </form>
+        </div>
+
+
+
+        <div ng-repeat="question in quiz | orderBy: 'difficulty'">
+          <strong>{{ $index + 1 }} .{{ question.q }}</strong>
+          <div ng-repeat="option in question.options">
+            <button class="btn btn-default" ng-click="scorekeep(question, option.value)">{{ option.value }}</button>
+          </div>
+        </div>
+        <strong>{{ score }}</strong>
+ -->
+
+
+
+
+
+
+
+
+
 
