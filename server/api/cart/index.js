@@ -12,5 +12,6 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.get('/newcart/:id', controller.create_new_user_cart);
+router.get('/add/:id/:product', controller.add_product);
 
 module.exports = router;
