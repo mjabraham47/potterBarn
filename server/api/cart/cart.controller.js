@@ -32,7 +32,7 @@ exports.add_product = function(req, res) {
     { $push: { contents: { product: req.params.product, quantity_ordered: req.params.quantity}}},
     function(err, cart) {
       if(err) { return handleError(res, err); }
-      if(!cart) { return alert('No cart for user!'); }
+      if(!cart) { console.log('No cart for user!'); }
       return res.json(201, cart);
   })
 }

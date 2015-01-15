@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart) {
+  .controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart, sickles) {
 
     $scope.cart = cart;
     $scope.currentProduct = $stateParams.product;
+    //'sickles' converts price to galleons and sickles
+    $scope.sickles = sickles;
 
     $scope.addToCart = function(product, quantity) {
       if (!Auth.isLoggedIn()){
@@ -23,7 +25,7 @@ angular.module('potterBarnApp')
     });
 
     $scope.getNumber = function(num) {
-    return new Array(num);   
+    return new Array(num);
     }
   });
 
