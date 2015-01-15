@@ -1,0 +1,14 @@
+potter barn
+https://github.com/mjabraham47/potterBarn
+
+Kamilla Khabibrakhmanova
+Emmie Salama
+Michael Abraham
+Andrew Watt
+
+code reviewer: zeke
+
+- what's the difference between cart/order
+- products have category strings, but you also have category collection? are you making a collection for categories, or are you using strings?
+- Ids are sometimes being stored as strings
+- some dates are strings

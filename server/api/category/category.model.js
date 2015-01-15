@@ -3,6 +3,8 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+// is this in use?
+
 var CategorySchema = new Schema({
   name: String
 });
