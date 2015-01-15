@@ -26,12 +26,12 @@ angular.module('potterBarnApp')
     // create a cart for non logged in user
 
 
-    if (!Auth.isLoggedIn()) {
-      $cookieStore.put('cart', []);
-    }
+    // if (!Auth.isLoggedIn()) {
+    //   $cookieStore.put('cart', []);
+    // }
 
     $scope.cookieCart = $cookieStore.get('cart');
-    console.log($scope.cookieCart);
+
 
     // // User will put an item in thecart
     // $scope.userCart.push('my new item');
