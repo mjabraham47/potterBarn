@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart) {
+  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles) {
 
     //$scope.cart = cart;
     //console.log($scope.cart.shoppingCart);
@@ -9,10 +9,12 @@ angular.module('potterBarnApp')
     $scope.awesomeCart = {};
     $scope.total = 0;
     $scope.cart_items = [];
-    
+    //'sickles' converts price to galleons and sickles
+    $scope.sickles = sickles;
+
+    //getting user cart and adding products to scope
     $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
       $scope.cart = cartItems;
-      console.log($scope.smallerCart)
       socket.syncUpdates('cart', $scope.cart);
       var length = $scope.cart[0].contents.length;
       $scope.number_items = length;
@@ -26,6 +28,7 @@ angular.module('potterBarnApp')
 
       };
     });
+
 
     $scope.addCart = function() {
       if($scope.newCart === '') {
