@@ -2,5 +2,8 @@
 
 
 
-{{product.name}}<button ng-click="addToCart(product._id)">Add Item to Cart</button>
+{{product.name}}<button ng-click="addToCart(product._id, product.quantity_ordered)">Add Item to Cart</button>
+<select ng-model="product.quantity_ordered">
+<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} </option>
+</select>
 
