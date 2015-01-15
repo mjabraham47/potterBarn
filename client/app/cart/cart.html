@@ -6,10 +6,9 @@
             <h1 class="page-header">Shopping Cart</h1>
               <div ng-repeat='item in cart_items'>
                           <a href="#">{{item.name}}</a>
-                          <img src = '{{item.photo}}' />
-                          <p>{{item.info}}</p>
+                          <img ng-src='{{item.photo}}'/>
                           <p>Quantity: {{item.quantity_ordered}}</p>
-                          <br>
+                          <br>${{item.price}}
                       </div>
 
                 <li>
@@ -17,7 +16,7 @@
 
                     </div>
                     There are {{number_items}} things in your cauldron
-                    <div class="col-md-3">${{cart.contents[0].product.price}}</div>
+                    <div class="col-md-3"></div>
                     <button type="button" class="close" ng-click="deleteCart(cart)">&times;</button>
                 </li>
             </ul>

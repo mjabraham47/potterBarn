@@ -5,22 +5,21 @@ angular.module('potterBarnApp')
 
     //$scope.cart = cart;
     //console.log($scope.cart.shoppingCart);
+    $scope.local = cart;
     $scope.awesomeCart = {};
     $scope.total = 0;
     $scope.cart_items = [];
 
-    $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cart) {
-      $scope.cart = cart;
-
+    $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
+      $scope.cart = cartItems;
       socket.syncUpdates('cart', $scope.cart);
       var length = $scope.cart[0].contents.length;
-      $scope.number_items = length + 1;
+      $scope.number_items = length;
       for (var i = 0; i < length; i++) {
         var quantity = $scope.cart[0].contents[i].quantity_ordered;
         $http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
           product.quantity_ordered = quantity;
           $scope.cart_items.push(product);
-
         });
       };
       $scope.sumCart();

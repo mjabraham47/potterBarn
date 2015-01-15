@@ -31,7 +31,7 @@ exports.add_product = function(req, res) {
     { user: req.params.id, is_order:false },
     { $push: { contents: { product: req.params.product, quantity_ordered: 1 }}},
     function(err, cart) {
-      if(err) { return handleError(res, error); }
+      if(err) { return handleError(res, err); }
       if(!cart) { return alert('No cart for user!'); }
       return res.json(201, cart);
   })

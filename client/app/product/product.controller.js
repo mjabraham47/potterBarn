@@ -5,14 +5,16 @@ angular.module('potterBarnApp')
 
     $scope.cart = cart;
     $scope.currentProduct = $stateParams.product;
-    console.log('state params product', $stateParams.product);
 
     $scope.addToCart = function(product) {
-      $scope.cart.shoppingCart.push(product);
+      if (!Auth.isLoggedIn()){
+        $scope.cart.shoppingCart.push(product);
+      }
+      else {
       $http.get('api/cart/add/' + Auth.getCurrentUser()._id + '/' + $stateParams.product)
         .success(function(product) {
-
         });
+      }
     };
 
     $http.get('/api/products/'+ $stateParams.product).success(function(product) {
