@@ -7,3 +7,26 @@
 <option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} </option>
 </select>
 
+<form name="reviewForm">
+	<!--  Live Preview -->
+	<blockquote>
+		<strong> Stars</strong>
+
+		<cite class="clearfix">—</cite>
+	</blockquote>
+
+	<!--  Review Form -->
+	<h4 ng-show= "!Auth.isLoggedIn()">Submit a Review</h4>
+	<fieldset class="form-group">
+		<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
+			<option value="">Rate the Product</option>
+		</select>
+	</fieldset>
+	<fieldset class="form-group">
+		<textarea class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+	</fieldset>
+	<fieldset class="form-group">
+		<input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+	</fieldset>
+</form>
+
