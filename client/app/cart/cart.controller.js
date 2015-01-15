@@ -3,15 +3,25 @@
 angular.module('potterBarnApp')
   .controller('CartCtrl', function ($scope, $http, socket, Auth, cart) {
 
-    $scope.cart = cart;
-    console.log($scope.cart.shoppingCart);
-    $scope.awesomeCart = [];
+    //$scope.cart = cart;
+    //console.log($scope.cart.shoppingCart);
+    $scope.local = cart;
+    $scope.awesomeCart = {};
     $scope.total = 0;
+    $scope.cart_items = [];
 
-    $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(awesomeCart) {
-      $scope.awesomeCart = awesomeCart;
-      socket.syncUpdates('cart', $scope.awesomeCart);
-      console.log($scope.awesomeCart);
+    $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
+      $scope.cart = cartItems;
+      socket.syncUpdates('cart', $scope.cart);
+      var length = $scope.cart[0].contents.length;
+      $scope.number_items = length;
+      for (var i = 0; i < length; i++) {
+        var quantity = $scope.cart[0].contents[i].quantity_ordered;
+        $http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
+          product.quantity_ordered = quantity;
+          $scope.cart_items.push(product);
+        });
+      };
       $scope.sumCart();
     });
 
@@ -35,7 +45,7 @@ angular.module('potterBarnApp')
 
     $scope.sumCart = function(){
       var sum = 0;
-      console.log($scope.awesomeCart);
+      //console.log($scope.awesomeCart);
       for (var i=0; i<$scope.awesomeCart.length; i++) {
         sum += $scope.awesomeCart[i].price
       }
