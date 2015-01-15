@@ -3,6 +3,9 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+//no validations
+// no methods. we could have methods 
+
 var CartSchema = new Schema({
 
   contents: [{

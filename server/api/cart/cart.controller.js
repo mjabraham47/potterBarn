@@ -26,8 +26,11 @@ exports.show = function(req, res) {
   // });
 };
 
+
+
 exports.add_product = function(req, res) {
   Cart.findOneAndUpdate(
+    //what if there is more than one
     { user: req.params.id, is_order:false },
     { $push: { contents: { product: req.params.product, quantity_ordered: 1 }}},
     function(err, cart) {
