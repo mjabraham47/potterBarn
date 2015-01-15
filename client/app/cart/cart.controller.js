@@ -9,7 +9,8 @@ angular.module('potterBarnApp')
     $scope.awesomeCart = {};
     $scope.total = 0;
     $scope.cart_items = [];
-
+    console.log($scope.cart_items);
+    
     $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
       $scope.cart = cartItems;
       socket.syncUpdates('cart', $scope.cart);
@@ -20,9 +21,10 @@ angular.module('potterBarnApp')
         $http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
           product.quantity_ordered = quantity;
           $scope.cart_items.push(product);
+          $scope.total += product.price * product.quantity_ordered;
         });
+
       };
-      $scope.sumCart();
     });
 
     $scope.addCart = function() {
@@ -43,13 +45,6 @@ angular.module('potterBarnApp')
     });
     };
 
-    $scope.sumCart = function(){
-      var sum = 0;
-      //console.log($scope.awesomeCart);
-      for (var i=0; i<$scope.awesomeCart.length; i++) {
-        sum += $scope.awesomeCart[i].price
-      }
-      $scope.total = sum;
-    };
+
 
   });
