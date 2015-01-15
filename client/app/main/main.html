@@ -8,6 +8,22 @@
 </center>
 </div>
 
+<div ng-app="ui.bootstrap.demo">
+  <script type="text/ng-template" id="customTemplate.html">
+    <a>
+        <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
+        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+    </a>
+  </script>
+
+<form class="searchBar">
+  <div class='container-fluid'>
+      <input type="text" ng-model="asyncSelected" placeholder="Search for your desires" typeahead="product as product.name for product in products | filter:$viewValue" typeahead-min-length='1' typeahead-wait-ms="100" class="form-control">
+      <input type="submit" ng-click="getProduct(asyncSelected._id)">
+  </div>
+</form>
+</div>
+
 <div class="categories">
 <ul>
   <div class="col-md-6" ng-repeat="category in categories">
