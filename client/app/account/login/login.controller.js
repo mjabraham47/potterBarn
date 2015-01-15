@@ -19,7 +19,7 @@ angular.module('potterBarnApp')
             $scope.cart = user_cart;
             console.log($scope.cart);
           })
-          //$location.path('/');
+          $location.path('/');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

@@ -5,9 +5,10 @@ angular.module('potterBarnApp')
     // first time user. dont have a cart yet
     // get the cart from cookie, if it is undefined, then make cart
     $scope.cookieCart = $cookieStore.get('cart') || [];
-
-
     $scope.currentProduct = $stateParams.product;
+    $scope.currentUserId = Auth.getCurrentUser()._id;
+    $scope.currentUser = Auth.getCurrentUser();
+    $scope.isLoggedIn = Auth.isLoggedIn();
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
 
@@ -32,5 +33,39 @@ angular.module('potterBarnApp')
     $scope.getNumber = function(num) {
     return new Array(num);
     }
-  });
+
+    $scope.newReview = {
+      user_id: $scope.currentUserId,
+      product_id: $scope.currentProduct,
+      date: new Date()
+    }
+    $scope.reviewsArray = [];
+
+
+    $scope.submitNewReview = function(){
+      $http.post('api/reviews/', $scope.newReview).success(function(newSubmittedReview){
+        $scope.reviewsArray.push(newSubmittedReview);
+        console.log('returned review:', newSubmittedReview)
+      });
+    };
+
+
+    $http.get('api/reviews?product_id=' + $stateParams.product ).success(function(allReviews){
+      $scope.reviewsArray = allReviews;
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

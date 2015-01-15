@@ -1,7 +1,5 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-
-
 {{product.name}}
 <br>
 {{sickles(product.price)}}
@@ -10,6 +8,10 @@
 <select ng-model="product.quantity_ordered">
 <option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} </option>
 </select>
+<div ng-repeat="review in reviewsArray">
+{{ review.review_content.rating_stars }}
+{{ review.review_content.review_text }}
+</div>
 
 <form name="reviewForm">
 	<!--  Live Preview -->
@@ -20,17 +22,24 @@
 	</blockquote>
 
 	<!--  Review Form -->
-	<h4 ng-show= "!Auth.isLoggedIn()">Submit a Review</h4>
-	<fieldset class="form-group">
-		<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
-			<option value="">Rate the Product</option>
-		</select>
-	</fieldset>
-	<fieldset class="form-group">
-		<textarea class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
-	</fieldset>
-	<fieldset class="form-group">
-		<input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
-	</fieldset>
+	<div ng-show="isLoggedIn">
+		<h4>Submit a Review</h4>
+		<fieldset class="form-group">
+			<label>Stars:</label>
+			<select id="review_stars" ng-model="newReview.review_content.rating_stars">
+				<option value="5">5 stars</option>
+				<option value="4">4 stars</option>
+				<option value="3">3 stars</option>
+				<option value="2">2 stars</option>
+				<option value="1">1 star</option>
+			</select>
+		</fieldset>
+		<fieldset class="form-group">
+			<textarea class="form-control" ng-model="newReview.review_content.review_text" placeholder="Write a short review of the product..." title="Review"></textarea>
+		</fieldset>
+		<fieldset class="form-group">
+			<input id="review_text" type="submit" class="btn btn-primary pull-right" ng-click="submitNewReview()" value="Submit Review" ng-submit="$setPristine();"/>
+		</fieldset>
+	</div>
 </form>
 
