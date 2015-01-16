@@ -31,7 +31,7 @@ angular.module('potterBarnApp')
     });
 
     $scope.getNumber = function(num) {
-    return new Array(num);
+      return new Array(num);
     }
 
     $scope.newReview = {
@@ -44,9 +44,14 @@ angular.module('potterBarnApp')
 
     $scope.submitNewReview = function(){
       $http.post('api/reviews/', $scope.newReview).success(function(newSubmittedReview){
-        $scope.reviewsArray.push(newSubmittedReview);
+        $http.get('api/users/' + $scope.currentUserId).success(function(user){
+          console.log(user);
+          $scope.reviewsArray.push({review: newSubmittedReview, name: user.name});
+          console.log($scope.reviewsArray);
+        });
         console.log('returned review:', newSubmittedReview)
       });
+      console.log($scope.reviewsArray);
     };
 
 
