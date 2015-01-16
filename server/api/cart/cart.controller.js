@@ -45,6 +45,7 @@ exports.create = function(req, res) {
   });
 };
 
+//creates a new cart for a new user
 exports.create_new_user_cart = function(req, res) {
   var new_cart = {
     products: [],
@@ -53,6 +54,19 @@ exports.create_new_user_cart = function(req, res) {
   Cart.create(new_cart, function(err, cart) {
     if(err) { return handleError(res, err) };
       return res.json(201, cart);
+  });
+};
+
+//looks up a user's cart
+exports.lookup_user_cart = function(req, res) {
+  Cart.find( {
+    user: req.params.id,
+    status: 'cart'
+  }, function (err, cart) {
+    if(err) { return handleError(res, err); }
+    if(!cart) { res.send([]) };
+    console.log('cart is getting looked up');
+    return res.json(cart);
   });
 };
 
