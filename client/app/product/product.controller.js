@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart, sickles, $cookieStore) {
+.controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart, sickles, $cookieStore) {
     // first time user. dont have a cart yet
     // get the cart from cookie, if it is undefined, then make cart
     $scope.cookieCart = $cookieStore.get('cart') || [];
@@ -11,7 +11,11 @@ angular.module('potterBarnApp')
     $scope.isLoggedIn = Auth.isLoggedIn();
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
+    $scope.reviewsArray = [];
+    $scope.completeReviews = [];
 
+
+//ADDING TO CART
     $scope.addToCart = function(product, quantity) {
       if (!Auth.isLoggedIn()){
         $scope.cookieCart.push({'product': product, 'quantity_ordered': quantity});
@@ -19,11 +23,13 @@ angular.module('potterBarnApp')
         console.log($scope.cookieCart)
       }
       else {
-      $http.get('api/cart/add/' + Auth.getCurrentUser()._id + '/' + $stateParams.product+ '/' + $scope.product.quantity_ordered)
-        .success(function(product) { console.log('Yaaaay')
+        $http.get('api/cart/add/' + Auth.getCurrentUser()._id + '/' + $stateParams.product+ '/' + $scope.product.quantity_ordered)
+        .success(function(product) {
         });
       }
     };
+
+
 
     $http.get('/api/products/'+ $stateParams.product).success(function(product) {
       $scope.product = product;
@@ -34,36 +40,31 @@ angular.module('potterBarnApp')
       return new Array(num);
     }
 
+
+//REVIEWS
     $scope.newReview = {
-      user_id: $scope.currentUserId,
-      product_id: $scope.currentProduct,
+      _user: $scope.currentUserId,
+      _product: $scope.currentProduct,
       date: new Date()
     }
-    $scope.reviewsArray = [];
-
 
     $scope.submitNewReview = function(){
       $http.post('api/reviews/', $scope.newReview).success(function(newSubmittedReview){
-        $http.get('api/users/' + $scope.currentUserId).success(function(user){
-          console.log(user);
-          $scope.reviewsArray.push({review: newSubmittedReview, name: user.name});
-          console.log($scope.reviewsArray);
-        });
-        console.log('returned review:', newSubmittedReview)
-        $scope.reset();
-      });
-      console.log($scope.reviewsArray);
-    };
+      $scope.reviewsArray.push(newSubmittedReview);
+      $scope.reset();
+    });
+  };
 
-
-    $http.get('api/reviews?product_id=' + $stateParams.product ).success(function(allReviews){
+//Getting the reviews
+    $http.get('api/reviews/product/' + $stateParams.product ).success(function(allReviews){
       $scope.reviewsArray = allReviews;
     });
-
+//Resetting Form
     $scope.reset = function() {
       $scope.newReview.review_content.review_text ='';
       $scope.newReview.review_content.rating_stars =''; 
     }
+
 });
 
 
