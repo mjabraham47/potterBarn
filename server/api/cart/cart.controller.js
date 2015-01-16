@@ -82,6 +82,15 @@ exports.destroy = function(req, res) {
   });
 };
 
+exports.destroyProduct = function(req, res) {
+  console.log("it hits");
+  Cart.update({_id: req.params.id}, { $pull: { contents : {product: req.params.item }}}, 
+  function (err, item) {
+    if(err) { return handleError(res, err); }
+      return res.send(204);
+  });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }

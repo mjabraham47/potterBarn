@@ -9,6 +9,7 @@ angular.module('potterBarnApp')
     $scope.awesomeCart = {};
     $scope.total = 0;
     $scope.cart_items = [];
+    $scope.cart;
 
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
@@ -46,21 +47,14 @@ angular.module('potterBarnApp')
     };
 
 
-    $scope.addCart = function() {
-      if($scope.newCart === '') {
-        return;
-      }
-      $http.post('/api/cart', { name: $scope.newCart });
-      $scope.newCart = '';
-      $scope.sumCart();
-    };
-
-    $scope.deleteCart = function(cart) {
-      $http.delete('/api/cart/' + cart._id);
-      $http.get('/api/cart').success(function(awesomeCart) {
-      $scope.awesomeCart = awesomeCart;
-      socket.syncUpdates('cart', $scope.awesomeCart);
-      $scope.sumCart();
+    $scope.deleteItem = function(item) {
+      console.log(item)
+      console.log($scope.cart[0]._id)
+      $http.delete('/api/cart/' + $scope.cart[0]._id +'/' + item);
+      $http.get('/api/cart').success(function(newCart) {
+      $scope.newCart = newCart;
+      socket.syncUpdates('cart', $scope.newCart);
+      console.log("it made it")
     });
     };
 
