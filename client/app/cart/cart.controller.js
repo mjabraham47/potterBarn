@@ -55,6 +55,7 @@ angular.module('potterBarnApp')
     };
 
 
+
     $scope.getNumber = function(num) {
     return new Array(num);
     }

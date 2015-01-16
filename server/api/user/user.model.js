@@ -6,10 +6,7 @@ var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
-  name: {
-    first: String,
-    last: String
-  },
+  name: String,
   billing_address: {
     street: String,
     city: String,
@@ -31,7 +28,7 @@ var UserSchema = new Schema({
     }
   },
   carts: [{type: Schema.Types.ObjectId, ref: 'Cart'}],
-  email: { type: String, lowercase: true },
+  email: { type: String, lowercase: true, required: true },
   phone: Number,
   role: {
     type: String,
