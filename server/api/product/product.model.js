@@ -10,18 +10,12 @@ var ProductSchema = new Schema({
   photo: String,
   price: Number,
   quantity: Number,
-  reviews: [{
-    user: { type: Schema.Types.ObjectId, ref: 'User'},
-    rating: Number,
-    review: String,
-    date: Date
-  }]
 });
 
 ProductSchema.index({categories: 1});
 
-ProductSchema.methods.findProductByCategory = function(cb) {
-  return this.model('Product').find({ categories: this.category }, cb);
+ProductSchema.statics.findProductsByCategory = function(category, cb) {
+  return this.find({ categories: category }, cb);
 };
 
 

@@ -56,7 +56,7 @@ angular.module('potterBarnApp')
       socket.syncUpdates('cart', $scope.newCart);
       console.log("it made it")
     });
-    };
+  };
 
 
 

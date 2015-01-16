@@ -25,8 +25,12 @@ exports.show = function(req, res) {
 
 //Get reviews for single product
 exports.productReviews = function(req, res){
-  console.log('This is the body: ', req.body);
-}
+  Review.reviewsByProduct(req.params, function(err, reviews){
+    if(err) { return handleError(res, err); }
+    if(!reviews) { return res.send(404); }
+    return res.json(reviews);
+  });
+};
 
 // Creates a new review in the DB.
 exports.create = function(req, res) {

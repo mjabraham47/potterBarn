@@ -10,9 +10,9 @@
 </select>
 <h2>Reviews</h2>
 <div ng-repeat="review in reviewsArray">
-  <p>{{review.name}}</p>
-  <p>{{ review.review.review_content.rating_stars }} Stars </p>
-  <p>{{ review.review.review_content.review_text }}</p>
+  <p>{{review._user.name}}</p>
+  <p>{{ review.review_content.rating_stars }} Stars </p>
+  <p>{{ review.review_content.review_text }}</p>
 </div>
 
 <form name="reviewForm">
