@@ -12,7 +12,9 @@ var CartSchema = new Schema({
 
   user: { type: Schema.Types.ObjectId, ref: 'User'},
   date: { type: Date, default: Date.now },
-  status: { String, default: 'cart' }
+  status: { type: String,
+    enum:['cart', 'ordered', 'shipped', 'canceled', 'returned'],
+    default: 'cart' }
 
 });
 
