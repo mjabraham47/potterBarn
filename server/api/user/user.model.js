@@ -28,7 +28,7 @@ var UserSchema = new Schema({
     }
   },
   carts: [{type: Schema.Types.ObjectId, ref: 'Cart'}],
-  email: { type: String, lowercase: true },
+  email: { type: String, lowercase: true, required: true },
   phone: Number,
   role: {
     type: String,
