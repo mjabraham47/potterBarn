@@ -46,6 +46,7 @@ angular.module('potterBarnApp')
       $http.post('api/reviews/', $scope.newReview).success(function(newSubmittedReview){
         $scope.reviewsArray.push(newSubmittedReview);
         console.log('returned review:', newSubmittedReview)
+        $scope.reset();
       });
     };
 
@@ -53,6 +54,11 @@ angular.module('potterBarnApp')
     $http.get('api/reviews?product_id=' + $stateParams.product ).success(function(allReviews){
       $scope.reviewsArray = allReviews;
     });
+
+    $scope.reset = function() {
+      $scope.newReview.review_content.review_text ='';
+      $scope.newReview.review_content.rating_stars =''; 
+    }
 });
 
 
