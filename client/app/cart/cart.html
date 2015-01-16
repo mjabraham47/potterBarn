@@ -9,6 +9,7 @@
                           <img ng-src='{{item.photo}}'/>
                           <p>Quantity: {{item.quantity_ordered}}</p>
                           <br>{{sickles(item.price)}}
+                          <button type="button" class="close" ng-click="deleteItem(item._id)">&times;</button>
                       </div>
 
                 <li>
@@ -17,7 +18,6 @@
                     </div>
                     There are {{number_items}} things in your cauldron
                     <div class="col-md-3"></div>
-                    <button type="button" class="close" ng-click="deleteCart(cart)">&times;</button>
                 </li>
             </ul>
             <div>
