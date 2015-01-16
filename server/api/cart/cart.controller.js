@@ -85,9 +85,10 @@ exports.destroy = function(req, res) {
 exports.destroyProduct = function(req, res) {
   console.log("it hits");
   Cart.update({_id: req.params.id}, { $pull: { contents : {product: req.params.item }}}, 
-  function (err, item) {
+  function (err, cart) {
     if(err) { return handleError(res, err); }
-      return res.send(204);
+      console.log(cart);
+      return res.send(200, cart);
   });
 };
 

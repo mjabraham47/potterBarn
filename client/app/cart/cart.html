@@ -9,7 +9,7 @@
                           <img ng-src='{{item.photo}}'/>
                           <p>Quantity: {{item.quantity_ordered}}</p>
                           <br>{{sickles(item.price)}}
-                          <button type="button" class="close" ng-click="deleteItem(item._id)">&times;</button>
+                          <button type="button" class="close" ng-click="deleteItem(item._id, $index)">&times;</button>
                       </div>
 
                 <li>

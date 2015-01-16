@@ -47,17 +47,9 @@ angular.module('potterBarnApp')
     };
 
 
-    $scope.deleteItem = function(item) {
-      console.log(item)
-      console.log($scope.cart[0]._id)
+    $scope.deleteItem = function(item, index) {
       $http.delete('/api/cart/' + $scope.cart[0]._id +'/' + item);
-      $http.get('/api/cart').success(function(newCart) {
-      $scope.newCart = newCart;
-      socket.syncUpdates('cart', $scope.newCart);
-      console.log("it made it")
-    });
+      $scope.cart_items.splice(index, 1);
     };
-
-
 
   });
