@@ -52,4 +52,8 @@ angular.module('potterBarnApp')
       $scope.cart_items.splice(index, 1);
     };
 
+
+    // $scope.getNumber = function(num) {
+    // return new Array(num);
+    // }
   });

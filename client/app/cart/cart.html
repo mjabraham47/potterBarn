@@ -9,6 +9,9 @@
                           <img ng-src='{{item.photo}}'/>
                           <p>Quantity: {{item.quantity_ordered}}</p>
                           <br>{{sickles(item.price)}}
+                          <select ng-model="item.quantity_ordered">
+                            <option ng-repeat="i in getNumber(item.quantity_ordered) track by $index">{{$index+1}} </option>
+                          </select>
                           <button type="button" class="close" ng-click="deleteItem(item._id, $index)">&times;</button>
                       </div>
 
