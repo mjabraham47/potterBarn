@@ -19,11 +19,12 @@ angular.module('potterBarnApp')
       var length = $scope.cookieCart.length;
       for (var i = 0; i < length; i++) {
         var quantity = $scope.cookieCart[i].quantity_ordered;
-        $http.get('/api/products/' + $scope.cookieCart[i].product).success(function(product) {
+        // IIFE to close over a variable in a loop
+        (function(quantity){$http.get('/api/products/' + $scope.cookieCart[i].product).success(function(product) {
           product.quantity_ordered = quantity;
           $scope.cart_items.push(product);
           $scope.total += product.price * product.quantity_ordered;
-        });
+        });})(quantity);
       };
     };
 
@@ -37,11 +38,12 @@ angular.module('potterBarnApp')
         $scope.number_items = length;
         for (var i = 0; i < length; i++) {
           var quantity = $scope.cart[0].contents[i].quantity_ordered;
-          $http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
+          // IIFE to close over a variable in a loop
+          (function(quantity){$http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
             product.quantity_ordered = quantity;
             $scope.cart_items.push(product);
             $scope.total += product.price * product.quantity_ordered;
-          });
+          });})(quantity);
         };
       });
     };
@@ -53,7 +55,7 @@ angular.module('potterBarnApp')
     };
 
 
-    // $scope.getNumber = function(num) {
-    // return new Array(num);
-    // }
+    $scope.getNumber = function(num) {
+    return new Array(num);
+    }
   });
