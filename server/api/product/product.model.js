@@ -9,7 +9,7 @@ var ProductSchema = new Schema({
   categories: [String],
   photo: { type: String, required: true },
   price: {type: Number, required: true },
-  quantity: { Number, default: 0 },
+  quantity: { type: Number, default: 0 },
   reviews: [{
     user: { type: Schema.Types.ObjectId, ref: 'User'},
     rating: Number,
