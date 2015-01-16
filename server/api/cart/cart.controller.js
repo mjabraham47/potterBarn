@@ -28,7 +28,7 @@ exports.show = function(req, res) {
 
 exports.add_product = function(req, res) {
   Cart.findOneAndUpdate(
-    { user: req.params.id, is_order:false },
+    { user: req.params.id, status:'cart' },
     { $push: { contents: { product: req.params.product, quantity_ordered: req.params.quantity}}},
     function(err, cart) {
       if(err) { return handleError(res, err); }
@@ -84,7 +84,7 @@ exports.destroy = function(req, res) {
 
 exports.destroyProduct = function(req, res) {
   console.log("it hits");
-  Cart.update({_id: req.params.id}, { $pull: { contents : {product: req.params.item }}}, 
+  Cart.update({_id: req.params.id}, { $pull: { contents : {product: req.params.item }}},
   function (err, item) {
     if(err) { return handleError(res, err); }
       return res.send(204);
