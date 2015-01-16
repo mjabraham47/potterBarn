@@ -8,19 +8,14 @@
 <select ng-model="product.quantity_ordered">
 <option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} </option>
 </select>
+<h2>Reviews</h2>
 <div ng-repeat="review in reviewsArray">
-{{ review.review_content.rating_stars }}
-{{ review.review_content.review_text }}
+  <p>{{review.name}}</p>
+  <p>{{ review.review.review_content.rating_stars }} Stars </p>
+  <p>{{ review.review.review_content.review_text }}</p>
 </div>
 
 <form name="reviewForm">
-	<!--  Live Preview -->
-	<blockquote>
-		<strong> Stars</strong>
-
-		<cite class="clearfix">—</cite>
-	</blockquote>
-
 	<!--  Review Form -->
 	<div ng-show="isLoggedIn">
 		<h4>Submit a Review</h4>
