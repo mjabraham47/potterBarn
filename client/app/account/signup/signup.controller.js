@@ -1,21 +1,23 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window, $cookieStore, $http) {
+  .controller('SignupCtrl', function ($scope, Auth, $location, $window, $cookieStore, $http, $q) {
     $scope.cookieCart = $cookieStore.get('cart') || [];
     $scope.user = {};
     $scope.errors = {};
 
     $scope.register = function(form) {
       $scope.submitted = true;
-
+      var user;
       if(form.$valid) {
+        var deferred = $q.defer();
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
           password: $scope.user.password
         })
-        .then( function() {
+        .then( function(user) {
+          console.log(user);
            $http.get('/api/cart/new_cart/' + user._id).success(function(user_cart){
             console.log($scope.cookieCart.length);
             if ( $scope.cookieCart.length > 0 ) {
