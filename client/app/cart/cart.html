@@ -7,10 +7,9 @@
               <div ng-repeat='item in cart_items'>
                           <a href="#">{{item.name}}</a>
                           <img ng-src='{{item.photo}}'/>
-                          <select ng-model="item.quantity_ordered">
+                          <select ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
                             <option ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
                           </select>
-                          <button ng-click="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">Change Quantity</button>
                           <br>{{sickles(item.price)}}
                           <button type="button" class="close" ng-click="deleteItem(item._id, $index)">&times;</button>
                       </div>
@@ -18,7 +17,6 @@
                     <div class="col-md-3">
 
                     </div>
-                    There are {{number_items}} things in your cauldron
                     <div class="col-md-3"></div>
                 </li>
             </ul>
