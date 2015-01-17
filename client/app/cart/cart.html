@@ -7,14 +7,13 @@
               <div ng-repeat='item in cart_items'>
                           <a href="#">{{item.name}}</a>
                           <img ng-src='{{item.photo}}'/>
-                          <p>Quantity: {{item.quantity_ordered}}</p>
-                          <br>{{sickles(item.price)}}
-                          <select ng-model="item.quantity_ordered" ng-click="changeQuantity(item.quantity_ordered)">
-                            <option ng-repeat="i in getNumber(item.quantity_ordered) track by $index">{{$index+1}} </option>
+                          <select ng-model="item.quantity_ordered">
+                            <option ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
                           </select>
+                          <button ng-click="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">Change Quantity</button>
+                          <br>{{sickles(item.price)}}
                           <button type="button" class="close" ng-click="deleteItem(item._id, $index)">&times;</button>
                       </div>
-
                 <li>
                     <div class="col-md-3">
 
