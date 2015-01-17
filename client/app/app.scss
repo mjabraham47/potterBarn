@@ -20,6 +20,11 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
    	src: url(../assets/HARRYP__.TTF);
 
 }
+.navbar-brand .navbar-left{
+	margin-top: 0;
+	padding-top:0;
+	top: 0;
+}
 
 *{
 	font-family: "HarryP";

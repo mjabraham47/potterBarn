@@ -22,8 +22,31 @@ li {
 }
 
 .categories {
-    background-image: url();
-    height: 600px;
-    width: 1000px;
+    color: #000;
+    visibility: hidden;
+    font-style: bold;
+    text-shadow: 3px 3px 0px 0px #fff;
 }
 
+.categories li :hover {
+}
+
+.page-scroll .btn-circle {
+        width: 80px;
+        height: 80px;
+        margin-top: 10px;
+        padding: 7px 0;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        font-size: 50px;
+        color: #fff;
+    }
+
+li.catItem:hover {
+    color: #fff;
+}
+
+.container .searchBar{
+    width: 1200px;
+    height: 600px;
+}
