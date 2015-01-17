@@ -65,9 +65,7 @@ exports.updateQuantity = function(req, res) {
 };
 
 exports.getQuantity = function(req, res) {
-  console.log("logggggggerlogerlog")
   Cart.find({_id : req.params.id}, function (err, product) {
-    console.log(product);
     if(err) { return handleError(res, err); }
     if(!product) { return res.send(404); }
     return res.json(200, product);
