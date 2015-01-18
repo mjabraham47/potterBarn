@@ -21,7 +21,7 @@ li {
     height: 150px;
 }
 
-.categories {
+li.catItem {
     color: #fff;
     text-shadow: 0px 1px #fff;
     visibility: hidden;
@@ -37,14 +37,119 @@ li {
         height: 80px;
         margin-top: 10px;
         padding: 7px 0;
-        border: 2px solid #ffd700;
         border-radius: 50%;
         font-size: 50px;
-        color: #ffd700;
+        color: #fff;
         visibility:visible;
+        opacity: .6;
     }
 
+.btn-circle:hover,
+.btn-circle:focus {
+    outline: 0;
+    opacity: 1;
+    background: rgba(255,255,255,.1);
+}    
+.page-scroll .btn-circle:hover {
+    color: #ffd700;
+    border: 2px solid #ffd700;
+}
 li.catItem:hover {
     color: #ffd700;
-    opacity: normal;
+    opacity: 1;
+}
+
+.searchBar {
+    opacity: .6;
+    visibility: hidden;
+}
+.searchBar input:focus {
+    border-color: #ffd700;
+}
+.dropdown-menu .active a {
+    background-color: #ffd700;
+}
+.dropdown-menu .active a:hover {
+    background-color: #ffd700;
+}
+
+@media (max-width:480px) {
+    li.catItem {
+        color: #000;
+        text-shadow: 0px 1px #fff;
+        visibility: hidden;
+        opacity: .6;
+
+    }
+
+    .categories li :hover {
+    }
+
+    .page-scroll .btn-circle {
+            width: 80px;
+            height: 80px;
+            margin-top: 10px;
+            padding: 7px 0;
+            border-radius: 50%;
+            font-size: 50px;
+            color: #000;
+            visibility:visible;
+            opacity: 1;
+        }
+
+    .btn-circle:hover,
+    .btn-circle:focus {
+        outline: 0;
+        opacity: 1;
+        background: rgba(255,255,255,.1);
+    }    
+    .page-scroll .btn-circle:hover {
+        color: #ffd700;
+        border: 2px solid #ffd700;
+    }
+    li.catItem:hover {
+        color: #ffd700;
+        opacity: 1;
+    }
+}
+
+@media (max-width:768px) {
+    li.catItem {
+        color: #000;
+        text-shadow: 0px 1px #fff;
+        visibility: hidden;
+        opacity: .6;
+
+    }
+
+    .categories li :hover {
+    }
+
+    .page-scroll .btn-circle {
+            width: 80px;
+            height: 80px;
+            margin-top: 10px;
+            padding: 7px 0;
+            border-radius: 50%;
+            font-size: 50px;
+            color: #000;
+            visibility:visible;
+            opacity: 1;
+        }
+
+    .btn-circle:hover,
+    .btn-circle:focus {
+        outline: 0;
+        opacity: 1;
+        background: rgba(255,255,255,.1);
+    }    
+    .page-scroll .btn-circle:hover {
+        color: #ffd700;
+        border: 2px solid #ffd700;
+    }
+    li.catItem:hover {
+        color: #ffd700;
+        opacity: 1;
+    }
+
 }
