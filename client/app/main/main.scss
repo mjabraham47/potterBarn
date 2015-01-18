@@ -49,7 +49,7 @@ li.catItem {
     outline: 0;
     opacity: 1;
     background: rgba(255,255,255,.1);
-}    
+}
 .page-scroll .btn-circle:hover {
     color: #ffd700;
     border: 2px solid #ffd700;
@@ -103,7 +103,7 @@ li.catItem:hover {
         outline: 0;
         opacity: 1;
         background: rgba(255,255,255,.1);
-    }    
+    }
     .page-scroll .btn-circle:hover {
         color: #ffd700;
         border: 2px solid #ffd700;
@@ -143,7 +143,7 @@ li.catItem:hover {
         outline: 0;
         opacity: 1;
         background: rgba(255,255,255,.1);
-    }    
+    }
     .page-scroll .btn-circle:hover {
         color: #ffd700;
         border: 2px solid #ffd700;
@@ -153,4 +153,11 @@ li.catItem:hover {
         opacity: 1;
     }
 
+}
+
+.navbar {
+    padding-top:0;
+    overflow:auto;
+    padding-top: 25px;
+    margin-bottom: 10px;
 }
