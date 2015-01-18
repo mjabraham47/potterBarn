@@ -8,9 +8,45 @@
         background-repeat: no-repeat;
         color: #000;
         text-shadow: 0px 1px #ffd700;
+        overflow: auto;
 }
 
+.products h1 {
+        font-size: 85px;
+        color:  #ffd700;
+
+}
 .item {
 	margin-bottom: 25px;
 	margin-top: 15px;
+        margin-right: 20px;
+        border: 3px solid #ffd700;
+        padding-top: 5px;
+        border-radius: 5px;
+        cursor: url(../assets/images/wand.png) 2 2, auto;
+}
+
+.item p-1 {
+        font-weight: bold;
+        font-size: 24px;
+}
+
+.item p-1:hover {
+        color: red;
+}
+.item p-2 {
+        font-size: 20px;
+}
+
+
+.category-header {
+        width: 100%;
+        height: 100px;
+        background-color: #000E2B;
+        opacity: .5;
+        font-size: 85px;
+}
+.category-name {
+        float: right;
+        margin-right: 40px;
 }

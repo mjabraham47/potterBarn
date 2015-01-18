@@ -1,19 +1,36 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
-{{product.name}}
+	
+	<div class="category-header">
+		<div class="category-name">
+		<span> <h1>{{product.name}}</h1> </span>
+		</div>
+	</div>
+<div class="col-md-3 product">
+<img src="{{product.photo}}"/>
 <br>
-{{sickles(product.price)}}
-
-<button ng-click="addToCart(product._id, product.quantity_ordered)">Add Item to Cart</button>
-<select ng-model="product.quantity_ordered">
-<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} </option>
-</select>
-<h2>Reviews</h2>
-<div ng-repeat="review in reviewsArray">
-  <p>{{review._user.name}}</p>
-  <p>{{ review.review_content.rating_stars }} Stars </p>
-  <p>{{ review.review_content.review_text }}</p>
+<p-1>{{product.name}}</p-1>
 </div>
+<div class="col-md-2 product">
+<br>
+<p-1>{{product.name}}</p-1><br><br>
+<p-2>{{product.info}}</p-2>
+</div>
+<div class="col-md-3">
+	<h2>Reviews</h2>
+	<div ng-repeat="review in reviewsArray">
+	  <p>{{review._user.name}}</p>
+	  <p>{{ review.review_content.rating_stars }} Stars </p>
+	  <p>{{ review.review_content.review_text }}</p>
+	</div>
+</div>
+<div class="col-md-4">
+{{sickles(product.price)}}
+<br>
+<select ng-model="product.quantity_ordered">
+	<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} </option>
+</select>
+<button ng-click="addToCart(product._id, product.quantity_ordered)">Add Item to Cart</button>
+
 
 <form name="reviewForm">
 	<!--  Review Form -->
