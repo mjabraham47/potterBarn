@@ -804,3 +804,16 @@ Parallax
     padding-top: 25px;
     margin-bottom: 10px;
 }
+
+.category_link {
+  color: black;
+}
+
+.category_link:hover {
+  color: #666666
+}
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}

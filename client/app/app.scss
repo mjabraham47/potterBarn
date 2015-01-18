@@ -50,6 +50,16 @@ a:hover {
 
 }
 
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
+#categories {
+  margin-top: 100px;
+  font-color: black;
+
+}
 
 // Component styles are injected through grunt
 // injector

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('MainCtrl', function ($cookieStore, $scope, $http, socket, $state, $stateParams, Auth) {
+  .controller('MainCtrl', function ($cookieStore, $scope, $http, socket, $state, $stateParams, Auth, $location, $anchorScroll) {
     $scope.categories = [];
     $scope.products = [];
 
@@ -20,6 +20,14 @@ angular.module('potterBarnApp')
     };
     $scope.getProduct = function(product) {
       $state.go("product", {'product': product})
+    };
+
+    $scope.scrollDown = function() {
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $location.hash('categories');
+      // call $anchorScroll()
+      $anchorScroll();
     };
 
 
