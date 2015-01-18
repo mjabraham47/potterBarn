@@ -1,34 +1,34 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <section id="intro" class="intro">
-    <div class="slogan">
-      <br>
+        <div class="page-scroll" ng-click="visibleCategory={'visibility':'visible'}">
+          <div class="btn btn-circle">
+            <i class="fa fa-flash animated"></i>
+          </div>
+        </div>
+
+  <div class="container">
+      <div class="categories" ng-style="visibleCategory">
+        <ul>
+            <div class="col-md-6" ng-repeat="category in categories">
+              <li class="catItem"><div ng-click="stateChange(category.name)"> <h3> {{category.name}} </h3></div></li>
+            </div>
+          </ul>
+      </div>  
     </div>
-  <div ng-app="ui.bootstrap.demo">
+
+
+
+</section>
+<!--   <div ng-app="ui.bootstrap.demo">
       <script type="text/ng-template" id="customTemplate.html"></script>             
        <div class='container'>
           <form class="searchBar">
             <input type="text" ng-model="asyncSelected" placeholder="Search for your desires" typeahead="product as product.name for product in products | filter:$viewValue" typeahead-min-length='1' typeahead-wait-ms="100" class="form-control">
             <input type="submit" ng-click="getProduct(asyncSelected._id)" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
           </form>
-        <div class="page-scroll">
-          <div class="btn btn-circle">
-            <i class="fa fa-angle-double-down animated"></i>
-          </div>
         </div>
   </div>
-            <div class="container">
-    <div class="categories">
-      <ul>
-          <div class="col-md-6" ng-repeat="category in categories">
-            <li class="catItem"><div ng-click="stateChange(category.name)"> <h3> {{category.name}} </h3></div></li>
-          </div>
-        </ul>
-    </div>  
-  </div>
-</section>
-
 <section id="categories">
 
-
-</section>
+</section> -->

@@ -733,12 +733,15 @@ Parallax
     }
 	
     .intro {
+        min-height: 400px; 
+        width: auto;
+        top: 50px;
         height: 100%;
         padding: 0;
         background-image: url(../assets/images/DiagonAlley2.jpg);
-        background-size: cover;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
     }
-
     .brand-heading {
         font-size: 100px;
     }

@@ -22,31 +22,28 @@ li {
 }
 
 .categories {
-    color: #000;
+    color: #ffd700;
+    text-shadow: 3px 3px 0px 0px #ffd700;
     visibility: hidden;
-    font-style: bold;
-    text-shadow: 3px 3px 0px 0px #fff;
 }
 
 .categories li :hover {
 }
 
+.page-scroll .btn .btn-circle{
+    bottom: 50px;
+}
 .page-scroll .btn-circle {
         width: 80px;
         height: 80px;
         margin-top: 10px;
         padding: 7px 0;
-        border: 2px solid #fff;
+        border: 2px solid #ffd700;
         border-radius: 50%;
         font-size: 50px;
-        color: #fff;
+        color: #ffd700;
     }
 
 li.catItem:hover {
     color: #fff;
-}
-
-.container .searchBar{
-    width: 1200px;
-    height: 600px;
 }
