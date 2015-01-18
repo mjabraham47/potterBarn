@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-.controller('CategoryCtrl', function ($scope, $state, $stateParams, $http, productFilter) {
+.controller('CategoryCtrl', function ($scope, $state, $stateParams, $http, productFilter, sickles) {
 
   $scope.currentCategory = $stateParams.category;
 
@@ -14,5 +14,6 @@ angular.module('potterBarnApp')
     $state.go("product", {'product': product});
   };
 
+   $scope.sickles = sickles;
 });
 
