@@ -4,8 +4,10 @@
 
 <br>
 <br>
-
-  <div class="container">
+<div class = "col-md-12">
+<div class = "col-md-4">
+</div>
+  <div class = "col-md-4">
       <div class="categories" ng-style="visibleCategory">
         <ul>
             <div class="col-md-6" ng-repeat="category in categories">
@@ -13,13 +15,12 @@
             </div>
           </ul>
       </div>  
-    </div>
-
         <div class="page-scroll" ng-click="visibleCategory={'visibility':'visible'}; ghostLightning={'visibility':'hidden'}" ng-style:"ghostLightning" >
           <div class="btn btn-circle">
             <i class="fa fa-flash animated"></i>
           </div>
         </div>
+    </div>
 
 </section>
 <!--   <div ng-app="ui.bootstrap.demo">
