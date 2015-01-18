@@ -9,13 +9,13 @@
       <div class="categories" ng-style="visibleCategory">
         <ul>
             <div class="col-md-6" ng-repeat="category in categories">
-              <li class="catItem"><div ng-click="stateChange(category.name)"> <h3> {{category.name}} </h3></div></li>
+              <li class="catItem"><i class="fa animated"><div ng-click="stateChange(category.name)"> <h3> {{category.name}} </h3></div></i></li>
             </div>
           </ul>
       </div>  
     </div>
 
-        <div class="page-scroll" ng-click="visibleCategory={'visibility':'visible'}">
+        <div class="page-scroll" ng-click="visibleCategory={'visibility':'visible'}; ghostLightning={'visibility':'hidden'}" ng-style:"ghostLightning" >
           <div class="btn btn-circle">
             <i class="fa fa-flash animated"></i>
           </div>

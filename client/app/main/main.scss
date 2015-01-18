@@ -22,17 +22,16 @@ li {
 }
 
 .categories {
-    color: #ffd700;
+    color: #fff;
     text-shadow: 0px 1px #fff;
     visibility: hidden;
+        opacity: .6;
+
 }
 
 .categories li :hover {
 }
 
-.page-scroll .btn .btn-circle{
-    bottom: 50px;
-}
 .page-scroll .btn-circle {
         width: 80px;
         height: 80px;
@@ -42,8 +41,10 @@ li {
         border-radius: 50%;
         font-size: 50px;
         color: #ffd700;
+        visibility:visible;
     }
 
 li.catItem:hover {
-    color: #fff;
+    color: #ffd700;
+    opacity: .8;
 }
