@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('AdminCtrl', function ($scope, $http, Auth, User) {
+.controller('AdminCtrl', function ($scope, $http, Auth, User, $modal, $log) {
 
     // Use the User $resource to fetch all users
     $scope.users = User.query();
@@ -14,4 +14,81 @@ angular.module('potterBarnApp')
         }
       });
     };
+  })
+.controller('ModalCtrl', function ($scope, $modal, $log) {
+
+  $scope.openCategory = function (size) {
+    var categoryModal = $modal.open({
+      templateUrl: 'myCategoryContent.html',
+      controller: 'CategoryInstanceCtrl',
+      size: size
+    });
+
+    categoryModal.result.then(function() {
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+})
+.controller('CategoryInstanceCtrl', function ($scope, $modalInstance, $http) {
+
+  $scope.newCategory = "";
+
+  $scope.save = function(newCategory){
+    $scope.newCategory = {name: newCategory};
+    $http.post('api/categorys/', $scope.newCategory).success(function(newCategory){
+    });
+  }
+  
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+  
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+})
+.controller('ProductModalCtrl', function ($scope, $modal, $log) {
+
+  $scope.openProduct = function (size) {
+    var ProductModal = $modal.open({
+      templateUrl: 'myProductContent.html',
+      controller: 'ProductInstanceCtrl',
+      size: size
+    });
+
+    ProductModal.result.then(function() {
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+})
+.controller('ProductInstanceCtrl', function ($scope, $modalInstance, $http) {
+
+  $scope.newProduct = {};
+  $scope.listCategories = [];
+
+  $http.get('/api/categorys').success(function(categories) {
+    $scope.listCategories = categories;
   });
+
+  $scope.save = function(newProduct){
+    $scope.newProduct = newProduct;
+  }
+  
+  $scope.upload = function(){
+    filepicker.setKey("A9CGVY9DSRweXsyrr67AEz");
+
+    filepicker.pick( function(Photo){
+      $scope.newProduct.photo= Photo.url;
+    }
+    );
+  }
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+  
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});

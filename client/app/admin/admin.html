@@ -1,12 +1,94 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="user in users">
-        <strong>{{user.name}}</strong><br>
-        <span class="text-muted">{{user.email}}</span>
-        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-    </li>
-  </ul>
-</div>
+    <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="user in users">
+            <strong>{{user.name}}</strong>
+            <br>
+            <span class="text-muted">{{user.email}}</span>
+            <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+        </li>
+    </ul>
+
+<!-- CATEGORY MODAL -->
+<!--  -->
+<!--  -->
+    <div ng-controller="ModalCtrl">
+        <!-- Inside Modal -->
+        <script type="text/ng-template" id="myCategoryContent.html">
+            <div class="modal-header" ng-controller="ModalCtrl">
+                <h3 class="modal-title">Categories!</h3>
+            </div>
+            <div class="modal-body">
+                <span class="help-block">Enter a new Category</span>
+                <input type="text" ng-model="newCategory" ng-value="" placeholder="Type something…">
+                </label>
+                <button type="submit" ng-click="save(newCategory)" class="btn">Submit</button>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+        </script>
+        <!-- On Page -->
+    <button class="list-group-item" ng-click="openCategory('')">Create Categories</button>
+        </div>
+<!-- PRODUCT MODAL -->
+<!--  -->
+<!--  -->
+
+        <div ng-controller="ProductModalCtrl">
+            <!-- Inside Modal -->
+            <script type="text/ng-template" id="myProductContent.html">
+                <div class="modal-header" ng-controller="ProductModalCtrl">
+                    <h3 class="modal-title">Products!</h3>
+                </div>
+                <div class="modal-body">
+                    <form name="productForm" ng-submit="save(newProduct)">
+
+                        <div class="form-group">
+                            <input name = "name" class="form-control" ng-model="newProduct.name" placeholder="Name" required>
+                            <div class="alert alert-danger" ng-show="productForm.name.$error.required"> Please enter your name!</div>
+                        </div>
+
+                        <div class="form-group">
+                                <textarea name = "description" class="form-control" ng-model="newProduct.info" placeholder="Description" required></textarea>
+                            </div>
+                        </div>
+                        Choose the categories:
+                        <div ng-repeat= "category in listCategories">
+                          <label><input type="checkbox" checklist-model = "newProduct.categories" checklist-value= "category.name">{{category.name}}</label>
+                        </div>
+                        Photo:
+                        <button type="button" ng-click= "upload()" class="btn btn-default">
+                            Upload Photo
+                        </button>
+                        <div class="form-group">
+                            <input class="form-control" ng-model="newProduct.price" placeholder="Price in sickles" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" ng-model="newProduct.quantity" placeholder="Quantity in Stock" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-default">
+                            Save
+                        </button>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+            <!-- On Page -->
+            <button class="list-group-item" ng-click="openProduct('lg')">Create Products</button>
+        </div>
+        <!-- On page -->
+
+            
+            <button class="list-group-item" ng-click="open('lg')">See Orders</button>
+        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+    </div>
+<!-- FilePicker -->
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>

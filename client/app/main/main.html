@@ -17,7 +17,7 @@
   </script>
 
 <form class="searchBar">
-  <div class='container-fluid'>
+  <div class='container'>
       <input type="text" ng-model="asyncSelected" placeholder="Search for your desires" typeahead="product as product.name for product in products | filter:$viewValue" typeahead-min-length='1' typeahead-wait-ms="100" class="form-control">
       <input type="submit" ng-click="getProduct(asyncSelected._id)">
   </div>
