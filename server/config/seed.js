@@ -13,12 +13,12 @@ var Cart = require('../api/cart/cart.model');
 
 Category.find({}).remove(function() {
   Category.create(
-    { name : 'Wands'},
-    { name : 'Broomsticks and Quidditch Equipment' },
-    { name : 'Books' },
-    { name: 'Mythical Creatures' },
-    { name: 'Hats and Robes' },
-    { name: 'Potions and Ingredients' }
+    { name : 'Wands', info: 'Every wizards first and last defense.'},
+    { name : 'Broomsticks and Quidditch Equipment', info: 'Wizards are born to fly, and sometimes fall.' },
+    { name : 'Books', info: 'Wizarding is often the same as reading.' },
+    { name: 'Mythical Creatures', info: 'They will be your best friend.' },
+    { name: 'Hats and Robes', info: 'We all need something to wear.' },
+    { name: 'Potions and Ingredients', info: 'Drink one and you will either have a great day or just die.' }
     );
 });
 
