@@ -22,6 +22,7 @@ angular.module('potterBarnApp')
       $state.go("product", {'product': product})
     };
 
+
     // THIS IS FOR NON LOGGED IN USER
     // create a cart for non logged in user
 

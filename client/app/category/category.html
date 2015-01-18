@@ -1,9 +1,14 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+<br>
+<br>
+<section class="products">
 <div class="container">
 
   <div ng-repeat="product in currentProducts">
-  	<div ng-click="stateChange(product._id)">{{product.name}}</div>
-
+  <div class="col-md-4 item">
+  	<div ng-click="stateChange(product._id)"><h3>{{product.name}}</h3><br><h4>{{sickles(product.price)}}</h4><img style="width:150px; height: 150px" ng-src='{{product.photo}}'/></div>
+  </div>
   </div>
 </div>
+</section>
