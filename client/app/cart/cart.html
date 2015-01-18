@@ -1,28 +1,46 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container-fluid">
+<div class="container-fluid text-center">
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Shopping Cart</h1>
-              <div ng-repeat='item in cart_items'>
-                          <a href="#">{{item.name}}</a>
-                          <img ng-src='{{item.photo}}'/>
-                          <select ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
-                            <option ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
-                          </select>
-                          <br>{{sickles(item.price)}}
-                          <button type="button" class="close" ng-click="deleteItem(item._id, $index)">&times;</button>
-                      </div>
-                <li>
-                    <div class="col-md-3">
-
-                    </div>
-                    <div class="col-md-3"></div>
+        <div class="col-md-4 col-sm-12">
+            <h1 class="page-header">Your Shopping Cauldron</h1>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <ul>
+                <li class="row list-inline columnCaptions">
+                    <span class="col-sm-4">QTY</span>
+                    <span class="col-sm-4">ITEM</span>
+                    <span class="col-sm-4">Price</span>
                 </li>
+                <div ng-repeat='item in cart_items'>
+                  <li class='row cart_row'>
+                    <div class="col-sm-4">
+                      <select class='quantity' ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
+                          <option class='quantity' ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="#" class="itemName">{{item.name}}</a>
+                    </div>
+
+                          <!--<img ng-src='{{item.photo}}' /> -->
+
+                    <div class="col-sm-4">
+                      <button type="button" class="close" ng-click="deleteItem(item._id, $index)"><span class="glyphicon glyphicon-remove delete">
+                      </button>
+                      <span class='price'>{{sickles(item.price * item.quantity_ordered)}}</span>
+                    </div>
+                  </li>
+                </div>
+                <li class="row totals">
+                  <div class="col-sm-4"></div>
+                  <span class='col-sm-4 itemName'>Total:</span>
+                  <span class='col-sm-4 price'>{{sickles(total)}}</span>
+                  <span class='order'><a>ORDER</a></span>
+                </li>
+
             </ul>
-            <div>
-                Total: {{sickles(total)}}
-            </div>
         </div>
     </div>
+</div>
 </div>
