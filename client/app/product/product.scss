@@ -5,11 +5,23 @@
         opacity: .5;
         font-size: 85px;
        border-top: 1px 1px solid #000;
-
 }
 
-.product {
-
+.checkout {
+background-color: #f08573;
+color: #fbfffa;
+font-weight: bold;
+border-radius: 2px;
+padding: 20px 30px;
+cursor: url(../assets/images/wand.png) 2 2, auto;
+}
+.addtocart {
+background-color: #f08573;
+color: #fbfffa;
+font-weight: bold;
+border-radius: 2px;
+padding: 10px 15px;
+cursor: url(../assets/images/wand.png) 2 2, auto;
 }
 
 .product p-1 {

@@ -64,6 +64,10 @@ li.catItem:hover {
     opacity: .6;
     visibility: hidden;
 }
+
+.searchBar input{
+    color: blue;
+}
 .searchBar input:focus {
     border-color: #ffd700;
 }
