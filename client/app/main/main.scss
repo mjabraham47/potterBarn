@@ -35,7 +35,7 @@ li.catItem {
 .page-scroll .btn-circle {
         width: 80px;
         height: 80px;
-        margin-top: 10px;
+        margin-top: 125px;
         padding: 7px 0;
         border-radius: 50%;
         font-size: 50px;
@@ -136,6 +136,7 @@ li.catItem:hover {
             color: #000;
             visibility:visible;
             opacity: 1;
+            outline: 0;
         }
 
     .btn-circle:hover,

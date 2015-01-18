@@ -578,10 +578,10 @@ Parallax
 }
 
 
-.btn-circle {
+.btn .btn-circle {
     width: 70px;
     height: 70px;
-    margin-top: 15px;
+    margin-top: 275px;
     padding: 7px 16px;
     border: 2px solid #fff;
     border-radius: 50%;
