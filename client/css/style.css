@@ -796,3 +796,8 @@ Parallax
 
 
 }
+
+.navbar {
+    padding-top:0;
+    overflow:auto;
+}

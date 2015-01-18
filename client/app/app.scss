@@ -20,11 +20,31 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
    	src: url(../assets/HARRYP__.TTF);
 
 }
-.navbar-brand .navbar-left{
+.navbar-brand {
 	margin-top: 0;
 	padding-top:0;
 	top: 0;
 }
+.navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    line-height: 20px;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+a:hover {
+    cursor: url(../assets/images/wand.png) 2 2, auto;
+}
+
+.navbar-default .navbar-nav li a{
+    color: #000;
+}
+
+.navbar-default .navbar-nav li a:hover {
+    color: #ffd700;
+}
+
 
 *{
 	font-family: "HarryP";
