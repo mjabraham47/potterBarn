@@ -3,12 +3,25 @@
 <br>
 <br>
 <section class="products">
-<div class="container">
+		
+	<div class="category-header">
+		<div class="category-name">
 
-  <div ng-repeat="product in currentProducts">
-  <div class="col-md-4 item">
-  	<div ng-click="stateChange(product._id)"><h3>{{product.name}}</h3><br><h4>{{sickles(product.price)}}</h4><img style="width:150px; height: 150px" ng-src='{{product.photo}}'/></div>
-  </div>
-  </div>
-</div>
+		</div>
+	</div>
+	<div class="container">
+    <div class="col-md-3">
+    <br>
+    <span> <h2>{{currentCategory}}</h2> </span>
+    </div>
+  		<div ng-repeat="product in currentProducts">
+  			<div class="col-md-3 item">
+  				<div ng-click="stateChange(product._id)">
+  					<p-1>{{product.name}}</p-1><br>
+  					<p-2>{{sickles(product.price)}}</p-2>
+  					<img style="width:150px; height: 150px" ng-src='{{product.photo}}'/>
+  				</div>
+  			</div>
+  		</div>
+	</div>
 </section>

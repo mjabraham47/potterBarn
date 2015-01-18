@@ -1,0 +1,37 @@
+.product-header {
+        width: 100%;
+        height: 100px;
+        background-color: #000E2B;
+        font-size: 85px;
+       border-top: 1px 1px solid #000;
+}
+
+.checkout {
+background-color: #000E2B;
+color: #fbfffa;
+font-weight: bold;
+border-radius: 2px;
+padding: 20px 30px;
+cursor: url(../assets/images/wand.png) 2 2, auto;
+}
+.addtocart {
+background-color: #000E2B;
+color: #fbfffa;
+font-weight: bold;
+border-radius: 2px;
+padding: 10px 15px;
+cursor: url(../assets/images/wand.png) 2 2, auto;
+}
+.review {
+background-color: #000E2B;
+color: #fbfffa;
+font-weight: bold;
+border-radius: 2px;
+padding: 6px 9px;
+cursor: url(../assets/images/wand.png) 2 2, auto;
+}
+
+.product p-1 {
+        font-weight: bold;
+        font-size: 24px;
+}

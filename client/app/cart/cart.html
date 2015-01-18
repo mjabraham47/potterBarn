@@ -1,9 +1,11 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
+<div class="cart-header">
+</div>
 <div class="container-fluid text-center">
-    <div class="row">
         <div class="col-md-4 col-sm-12">
-            <h1 class="page-header">Your Shopping Cauldron</h1>
+        <br>
+            <h1>Your Shopping Cauldron</h1>
+            <img src="../assets/images/cauldron.jpg"/>
         </div>
         <div class="col-md-8 col-sm-12">
             <ul>
@@ -15,7 +17,7 @@
                 <div ng-repeat='item in cart_items'>
                   <li class='row cart_row'>
                     <div class="col-sm-4">
-                      <select class='quantity' ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
+                      <select class='quantity form-control' ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
                           <option class='quantity' ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
                       </select>
                     </div>
