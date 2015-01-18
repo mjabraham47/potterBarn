@@ -1,0 +1,86 @@
+.columnCaptions {
+color: #7e93a7;
+font-size: 12px;
+text-transform: uppercase;
+padding: 0;
+box-shadow: 0 0 0;
+background-color: #f2f6f9;
+padding: 15px 0;
+font-size: 14px;
+
+}
+
+.text-center {
+  padding: 0 32px;
+}
+
+.cart_row {
+box-shadow: 0 1px 0 #e1e5e8;
+padding-bottom: 0;
+padding-left: 15px;
+background-color: #ffffff;
+margin-bottom: 11px;
+margin-top: 10px;
+}
+
+
+.quantity {
+font-size: 16px;
+font-weight: bold;
+float: left;
+width: 42px;
+padding-left: 7px;
+margin-top: 18px;
+}
+
+.itemName {
+color: #727578;
+font-size: 18px;
+font-weight: bold;
+float: left;
+padding-left: 25px;
+padding-top:20px;
+}
+
+.price {
+color: #f06953;
+font-size: 14px;
+font-weight: bold;
+float: right;
+}
+
+.delete {
+background-color: #e6edf3;
+margin-left: 25px;
+height: 26px;
+width: 40px;
+padding: 4px 0 0 1px !important;
+float: right;
+cursor: pointer;
+margin-top: 15px;
+}
+
+.totals .order {
+float: right;
+padding: 0;
+margin-top: 40px;
+padding-left: 5px;
+cursor: pointer;
+}
+
+.order a {
+background-color: #f08573;
+color: #fbfffa;
+font-weight: bold;
+border-radius: 2px;
+padding: 20px 30px;
+}
+
+.row span{
+  padding: 20px 0 6px 0;
+}
+
+.columnCaptions span {
+  text-align: left;
+  padding-left: 40px;
+}
