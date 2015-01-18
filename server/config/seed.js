@@ -17,8 +17,8 @@ Category.find({}).remove(function() {
     { name : 'Broomsticks and Quidditch Equipment' },
     { name : 'Books' },
     { name: 'Mythical Creatures' },
-    { name: 'Hats' },
-    { name: 'Potions' }
+    { name: 'Hats and Robes' },
+    { name: 'Potions and Ingredients' }
     );
 });
 
