@@ -13,12 +13,12 @@
 
  Category.find({}).remove(function() {
   Category.create(
-    { name : 'Wands'},
-    { name : 'Broomsticks and Quidditch Equipment' },
-    { name : 'Books' },
-    { name: 'Mythical Creatures' },
-    { name: 'Hats and Robes' },
-    { name: 'Potions and Ingredients' }
+    { name : 'Wands', info: 'Every wizards first and last defense. It\'s the first thing in a young wizards hand and the last thing to fall from it when afflicted with Cruciatus.'},
+    { name : 'Broomsticks and Quidditch Equipment', info: 'Wizards are born to fly, and sometimes fall. A good broomstick can help you best your competitors, on and off the Quidditch field.' },
+    { name : 'Books', info: 'Wizarding is often the same as reading.  Books have spells, and more often than not are enchanted themselves.' },
+    { name: 'Mythical Creatures', info: 'They will be your best friend, or maybe just eat you. Either way, it\'s an experience.' },
+    { name: 'Hats and Robes', info: 'We all need something to wear.  It is not exactly Muggle fashion, but it will do.' },
+    { name: 'Potions and Ingredients', info: 'Drink one and you will either have a great day or just die the painful death of the toad that you will suddenly become.' }
     );
 });
 
@@ -56,89 +56,95 @@ User.find({}).remove(function() {
 
 Product.find({}).remove(function() {
   Product.create(
-  {
-    name: 'Holly Wand',
-    info: 'Handcrafted from Solid Holly, with essence of Phoenix feather. Holly possesses protection qualities which far surpass any other wood and is on record for its overall strength. Holly is the chosen wood for use in performing and guiding dream magic.',
-    categories: ['Wands'],
-    photo: '/assets/images/wands/holly.jpg',
-    price: 200,
-    quantity: 5
-  },
-  {
-    name: 'Wenge Wand',
-    info: 'Made of Wenge wood with essence of Dragon Scale. Wenge possesses a very relaxed energy, encouraging slow, even thought. A perfect tool for meditation, this wood in not for the impatient, it they hope to utilize it for quick power.',
-    categories: ['Wands'],
-    photo: '/assets/images/wands/wenge.jpg',
-    price: 300,
-    quantity: 5
-  },
-  {
-    name: 'Elder Wand',
-    info: 'Made of Elder Wood, with Essence of Thestral Tail Hair. Elder is written to be among the most powerful of all wand woods. It symbolizes regeneration and it is believed to be a cure all within magical circles...it is also beneficial in times of transformation and change.',
-    categories: ['Wands'],
-    photo: '/assets/images/wands/elder.jpg',
-    price: 200,
-    quantity: 5
-  },
-  {
-    name: 'Apprentice Wand',
-    info: 'Attention aspiring Wizards...gather round to see your first choice in magic...The Apprentice Wand. \n The Apprentice Wand is handcrafted of beautiful Indian Rosewood (Sheesham) and it is just right for a young wizards spell casting. Also perfect for both love charms and healing this wand has wonderful overall presence.',
-    categories: ['Wands'],
-    photo: '/assets/images/wands/apprentice.jpg',
-    price: 150,
-    quantity: 5
-  },
-  {
-    name: 'Redwood Wand',
-    info: 'Made of Redwood with essence of Unicorn mane hair. Redwood is known to be extremely useful for protection spells as well as to help obtain focus and discipline. The user of this wand will find complete serentity in the most chaotic of situations.',
-    categories: ['Wands'],
-    photo: '/assets/images/wands/redwood.jpg',
-    price: 250,
-    quantity: 5
-  },
-  {
-    name: 'The Professor Wand',
-    info: 'Handcrafted from Solid Maple & Black Walnut with essence of Thestral tail hair. Maple is known to be great for charm work and levitation. Maple is also known for being the wood of longevity. Black Walnut is known for its protective nature which makes it perfect for security against the dark arts.',
-    categories: ['Wands'],
-    photo: '/assets/images/wands/professor.jpg',
-    price: 500,
-    quantity: 2
-  },
-  {
-    name: 'Ash Wand',
-    info: 'Made of Ash wood with essence of hair from a male Unicorn. Ash is known to give its owner focus and is the perfect choice for charm work. Also famous for its protective qualities it is especially suited for security against even the most powerful storms. ',
-    categories: ['Wands'],
-    photo: '/assets/images/wands/ash.jpg',
-    price: 250,
-    quantity: 7
-  },
-  {
-    name: 'Firebolt',
-    info: 'It is capable of going from nought to one hundred and fifty miles per hour in ten seconds. The Firebolt also boasts an unbreakable Braking Charm, superb balance and precision, and hovers at reasonable mounting height when let go. \
-    By 1994, the Firebolt was the fastest broomstick in the whole world. Even though the competitor Thunderbolt VII can attain speeds that rival that of the Firebolt series, many experts feel that it has sacrificed safety for speed — indeed, \
-    during the 2014 Quidditch World Cup, even though professional broomsticks are supposed to withstand all Bludger hits, the tail of Nigerian Seeker Samuel Equiano\'s Thunderbolt was smashed off by a Bludger shot hit by Japanese Beater Hongo. \
-    \rThe handle is made of polished ebony (once mistakenly listed as ash in a Quality Quidditch Supplies advertisement), and the twigs can be made of either birch or hazel depending on customer preference. Birch twigs offer more "oomph" when ascending, while hazel provides more precision in turning. The metal parts of the broom are goblin-made ironwork, a first for a broomstick, which increases stability and power in adverse conditions and prevents slippage on the foot grips. \rEvery Firebolt includes a golden registration number.',
-    categories: ['Broomsticks and Quidditch Equipment'],
-    photo: '/assets/images/brooms/firebolt.jpg',
-    price: 5000,
-    quantity: 5
-  },
-  {
-    name: 'Nimbus 2000',
-    info: 'One of the Nimbus Racing Broom Company\'s most successful models. Highly reliable with good speed and exceptional handling — not for beginners!',
-    categories: ['Broomsticks and Quidditch Equipment'],
-    photo: '/assets/images/brooms/nimbus2000.jpg',
-    price: 5000,
-    quantity: 5
-  },
-  {
-    name: 'Nimbus 2001',
-    info: 'The top of the Nimbus Racing Broom Company\'s range. Capable of previously unseen speed and control. A world-class broom.',
-    categories: ['Broomsticks and Quidditch Equipment'],
-    photo: '/assets/images/brooms/nimbus2001.jpg',
-    price: 6000,
-    quantity: 5
-  },
+    {
+  name: 'Holly Wand',
+  info: 'Handcrafted from Solid Holly, with essence of Phoenix feather. Holly possesses protection qualities which far surpass any other wood and is on record for its overall strength. Holly is the chosen wood for use in performing and guiding dream magic.',
+  categories: ['Wands'],
+  photo: '/assets/images/wands/holly.jpg',
+  price: 200,
+  quantity: 5
+},
+{
+  name: 'Wenge Wand',
+  info: 'Made of Wenge wood with essence of Dragon Scale. Wenge possesses a very relaxed energy, encouraging slow, even thought. A perfect tool for meditation, this wood in not for the impatient, it they hope to utilize it for quick power.',
+  categories: ['Wands'],
+  photo: '/assets/images/wands/wenge.jpg',
+  price: 300,
+  quantity: 5
+},
+{
+  name: 'Elder Wand',
+  info: 'Made of Elder Wood, with Essence of Thestral Tail Hair. Elder is written to be among the most powerful of all wand woods. It symbolizes regeneration and it is believed to be a cure all within magical circles...it is also beneficial in times of transformation and change.',
+  categories: ['Wands'],
+  photo: '/assets/images/wands/elder.jpg',
+  price: 200,
+  quantity: 5
+},
+{
+  name: 'Apprentice Wand',
+  info: 'Attention aspiring Wizards...gather round to see your first choice in magic...The Apprentice Wand. \n The Apprentice Wand is handcrafted of beautiful Indian Rosewood (Sheesham) and it is just right for a young wizards spell casting. Also perfect for both love charms and healing this wand has wonderful overall presence.',
+  categories: ['Wands'],
+  photo: '/assets/images/wands/apprentice.jpg',
+  price: 150,
+  quantity: 5
+},
+{
+  name: 'Redwood Wand',
+  info: 'Made of Redwood with essence of Unicorn mane hair. Redwood is known to be extremely useful for protection spells as well as to help obtain focus and discipline. The user of this wand will find complete serentity in the most chaotic of situations.',
+  categories: ['Wands'],
+  photo: '/assets/images/wands/redwood.jpg',
+  price: 250,
+  quantity: 5
+},
+{
+  name: 'The Professor Wand',
+  info: 'Handcrafted from Solid Maple & Black Walnut with essence of Thestral tail hair. Maple is known to be great for charm work and levitation. Maple is also known for being the wood of longevity. Black Walnut is known for its protective nature which makes it perfect for security against the dark arts.',
+  categories: ['Wands'],
+  photo: '/assets/images/wands/professor.jpg',
+  price: 500,
+  quantity: 2
+},
+{
+  name: 'Ash Wand',
+  info: 'Made of Ash wood with essence of hair from a male Unicorn. Ash is known to give its owner focus and is the perfect choice for charm work. Also famous for its protective qualities it is especially suited for security against even the most powerful storms. ',
+  categories: ['Wands'],
+  photo: '/assets/images/wands/ash.jpg',
+  price: 250,
+  quantity: 7
+},
+{
+  name: 'Firebolt',
+  info: 'It is capable of going from nought to one hundred and fifty miles per hour in ten seconds. The Firebolt also boasts an unbreakable Braking Charm, superb balance and precision, and hovers at reasonable mounting height when let go. Every Firebolt includes a golden registration number.',
+  categories: ['Broomsticks and Quidditch Equipment'],
+  photo: '/assets/images/brooms/firebolt.jpg',
+  price: 5000,
+  quantity: 5
+},
+{
+  name: 'Nimbus 2000',
+  info: 'One of the Nimbus Racing Broom Company\'s most successful models. Highly reliable with good speed and exceptional handling — not for beginners!',
+  categories: ['Broomsticks and Quidditch Equipment'],
+  photo: '/assets/images/brooms/nimbus2000.jpg',
+  price: 5000,
+  quantity: 5
+},
+{
+  name: 'Harry Potter\'s Firebolt',
+  info: 'In 1993, Harry Potter received a Firebolt racing broom as a Christmas present from an anonymous benefactor following the destruction of his Nimbus 2000.',
+  categories: ['Broomsticks and Quidditch Equipment'],
+  photo: '/assets/images/brooms/hpfirebolt.jpg',
+  price: 10000,
+  quantity: 1
+},
+{
+  name: 'Nimbus 2001',
+  info: 'The top of the Nimbus Racing Broom Company\'s range. Capable of previously unseen speed and control. A world-class broom.',
+  categories: ['Broomsticks and Quidditch Equipment'],
+  photo: '/assets/images/brooms/nimbus2001.jpg',
+  price: 6000,
+  quantity: 5
+},
+
   {
     name: 'Dragonology',
     info: 'Dragonology: The Complete Book of Dragons (Ologies) Hardcover – October 13, 2003 by Dr. Ernest Drake (Author), Dugald A. Steer (Editor), Various (Illustrator). For true believers only, a lavishly illustrated reproduction of a legendary volume by the world’s most distinguished dragonologist. Don’t let it fall into the wrong hands! Do you believe in dragons? Now, for the first time, the long-lost research of renowned nineteenth century dragonologist Dr. Ernest Drake is presented in all its eccentric glory, happily bridging the gap between dragon legend and fact. The meticulous Dr. Drake assigns Latin names to various dragon species, ruminates on why dragons are able to speak, speculates on how they could fly, and explains the true purpose of their notorious hoarding habits. Here are just a few of DRAGONOLOGYS fascinating features: — Novelty item on every spread, including tactile samples of dragon wings, dragon scales, and dragon skin — Booklet of dragon riddles (indispensable to the burgeoning dragonologist) — Sealed envelope containing a powerful dragon-calling spell — Embossed faux leather cover with silver foil, encrusted with three dragon gems In his afterword, Dr. Drake reveals that one of the crucial goals of dragonologists is to preserve the magnificent creatures of their study wherever possible - a goal this tongue-in-cheek volume most affectionately achieves. An incomparable gift for secret dragonologists everywhere!',
@@ -193,7 +199,7 @@ Product.find({}).remove(function() {
     categories: ['Books'],
     photo: '/assets/images/books/wizardology.jpg',
     price: 940,
-    quantity: 5    
+    quantity: 5
   },
   {
     name: 'Acromantula',
@@ -201,7 +207,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/acromantula.jpg',
     price: 2100,
-    quantity: 11    
+    quantity: 11
   },
   {
     name: 'Basilisk',
@@ -209,7 +215,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/basilisk.jpg',
     price: 2900,
-    quantity: 7    
+    quantity: 7
   },
   {
     name: 'Centaur',
@@ -217,7 +223,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/centaur.jpg',
     price: 4500,
-    quantity: 3    
+    quantity: 3
   },
   {
     name: 'Grindylow',
@@ -225,7 +231,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/grindylow.jpg',
     price: 1800,
-    quantity: 8    
+    quantity: 8
   },
   {
     name: 'Gryphon',
@@ -233,7 +239,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/gryphon.jpg',
     price: 6000,
-    quantity: 4    
+    quantity: 4
   },
   {
     name: 'House Elf',
@@ -241,7 +247,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/house_elf.jpg',
     price: 8400,
-    quantity: 9    
+    quantity: 9
   },
   {
     name: 'Horntail',
@@ -249,7 +255,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/horntail.jpg',
     price: 10000,
-    quantity: 2    
+    quantity: 2
   },
   {
     name: 'Kelpie',
@@ -257,7 +263,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/kelpie.jpg',
     price: 3000,
-    quantity: 6    
+    quantity: 6
   },
   {
     name: 'Manticore',
@@ -265,7 +271,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/manticore.jpg',
     price: 7500,
-    quantity: 7    
+    quantity: 7
   },
   {
     name: 'Owl',
@@ -273,7 +279,7 @@ Product.find({}).remove(function() {
     categories: ['Mythical Creatures'],
     photo: '/assets/images/mythical_creatures/owl.jpg',
     price: 2000,
-    quantity: 11    
+    quantity: 11
   },
   {
     name: 'Golden Snitch',
@@ -281,7 +287,7 @@ Product.find({}).remove(function() {
     categories: ['Broomsticks and Quidditch Equipment'],
     photo: '/assets/images/broomsticks_and_quidditch_equipment/golden_snitch.png',
     price: 4000,
-    quantity: 5    
+    quantity: 5
   },
   {
     name: 'Knit Beanie',
@@ -289,7 +295,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/beaniehats.jpg',
     price: 800,
-    quantity: 9   
+    quantity: 9
   },
   {
     name: 'Team Sweater - Black/Gold',
@@ -297,7 +303,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/sweater_black.jpg',
     price: 1500,
-    quantity: 9    
+    quantity: 9
   },
   {
     name: 'Team Sweater - Green/Grey',
@@ -305,7 +311,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/sweater_green.jpg',
     price: 1500,
-    quantity: 9    
+    quantity: 9
   },
   {
     name: 'Team Sweater - Red/Gold',
@@ -313,7 +319,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/sweater_red.jpg',
     price: 1500,
-    quantity: 9   
+    quantity: 9
   },
   {
     name: 'Majestic School Robe',
@@ -321,7 +327,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/robe.jpg',
     price: 2500,
-    quantity: 9    
+    quantity: 9
   },
   {
     name: 'House Scarf - Black/Yellow',
@@ -329,7 +335,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/scarf_black.jpg',
     price: 1000,
-    quantity: 9   
+    quantity: 9
   },
   {
     name: 'House Scarf - Red/Gold',
@@ -337,7 +343,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/scarf_red.jpg',
     price: 1000,
-    quantity: 9    
+    quantity: 9
   },
   {
     name: 'House Tie',
@@ -345,7 +351,7 @@ Product.find({}).remove(function() {
     categories: ['Hats and Robes'],
     photo: '/assets/images/hats_and_robes/ties.jpg',
     price: 750,
-    quantity: 9    
+    quantity: 9
   });
 });
 

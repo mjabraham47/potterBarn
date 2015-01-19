@@ -5,14 +5,14 @@
 <section class="products">
 		
 	<div class="category-header">
-		<div class="category-name">
-
-		</div>
 	</div>
 	<div class="container">
     <div class="col-md-3">
     <br>
-    <span> <h2>{{currentCategory}}</h2> </span>
+      <div class="category-name">
+        <span> <h2>{{currentCategory}}</h2> </span>
+        {{categoryInfo}}
+      </div>
     </div>
   		<div ng-repeat="product in currentProducts">
   			<div class="col-md-3 item">

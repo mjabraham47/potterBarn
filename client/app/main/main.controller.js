@@ -15,8 +15,8 @@ angular.module('potterBarnApp')
     });
 
     //Keeps category that is pressed
-    $scope.stateChange = function(category) {
-    	$state.go("category", {'category': category})
+    $scope.stateChange = function(category, info) {
+    	$state.go("category", {'category': category,'info': info})
     };
     $scope.getProduct = function(product) {
       $state.go("product", {'product': product})
