@@ -4,7 +4,7 @@ var k = 2;
 var machine = new generator.kNear(k);
 
 var products = [
-    {id:1, name:'wand', category:['wands'], quantity: generate_random_quantity()},
+    {id:1, name:'wand', category:['wands'], quantity: 1},
     {id:2, name: 'unicorn', category:['animal'], quantity: generate_random_quantity()},
     {id:3, name: 'lion', category:['animal'], quantity: generate_random_quantity()},
     {id:4, name: 'harry wand', category:['wand'], quantity: generate_random_quantity()},
@@ -28,7 +28,7 @@ function generate_random_product() {
 }
 
 function generate_random_quantity() {
-  return Math.floor(Math.random() * 10) + 1;
+  return Math.floor(Math.random() * 15) + 1;
 }
 //var reviews = import Reviews Array
 //var carts = import Carts Array
@@ -82,7 +82,7 @@ var carts = [
 // var ProductHash = function(product, array) {
 //   this.product = product;
 //   this.array = {array: 0};
-//   return {this.product: this.array }
+//   return {this.product: this.ar  ray }
 // }
 
 // var product = new ProductHash(28, 5);
@@ -95,9 +95,16 @@ products.forEach(function(product) {
             machine.learn( [ product.id, products[i].id ], 'good' );
         } else {
           machine.learn( [ product.id, products[i].id ], 'bad' );
-        } if ( product.quantity < 2 ) {
-          machine.learn( [ product.id, products[i].id ], 'bad' );
         }
+    }
+    if ( product.quantity < 2 ) {
+      products.forEach(function(lookup) {
+        machine.learn( [ product.id, lookup.id ], 'bad' );
+      })
+    } else if ( product.quantity > 10) {
+      products.forEach(function(lookup) {
+        machine.learn( [ product.id, lookup.id ], 'good' );
+      })
     }
 })
 
@@ -107,17 +114,14 @@ carts.forEach(function(cart) {
 
         if (machine.classify( [cart.contents[i].product, cart.contents[j].product]) === 'good') {
           machine.learn( [cart.contents[i].product, cart.contents[j].product], 'badass');
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'badass');
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'badass');
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'badass');
-        } else if (machine.classify( [cart.contents[i].product, cart.contents[j].product]) === 'great') {
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
-        } else if (machine.classify( [cart.contents[i].product, cart.contents[j].product]) === 'good') {
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'great');
-          machine.learn( [cart.contents[i].product, cart.contents[j].product], 'great');
+        // } else if (machine.classify( [cart.contents[i].product, cart.contents[j].product]) === 'great') {
+        //   machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
+        //   machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
+        //   machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
+        //   machine.learn( [cart.contents[i].product, cart.contents[j].product], 'awesome');
+        // } else if (machine.classify( [cart.contents[i].product, cart.contents[j].product]) === 'good') {
+        //   machine.learn( [cart.contents[i].product, cart.contents[j].product], 'great');
+        //   machine.learn( [cart.contents[i].product, cart.contents[j].product], 'great');
         } else {
           machine.learn( [cart.contents[i].product, cart.contents[j].product], 'good');
         }
