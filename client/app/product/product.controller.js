@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-.controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart, sickles, $cookieStore) {
+.controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart, sickles, $cookieStore, $location) {
     // first time user. dont have a cart yet
     // get the cart from cookie, if it is undefined, then make cart
     $scope.cookieCart = $cookieStore.get('cart') || [];
@@ -28,7 +28,9 @@ angular.module('potterBarnApp')
         });
       }
     };
-
+    $scope.goCart = function() {
+        $location.url('/cart');
+    };
 
 
     $http.get('/api/products/'+ $stateParams.product).success(function(product) {
