@@ -13,12 +13,12 @@ var Cart = require('../api/cart/cart.model');
 
 Category.find({}).remove(function() {
   Category.create(
-    { name : 'Wands', info: 'Every wizards first and last defense.'},
-    { name : 'Broomsticks and Quidditch Equipment', info: 'Wizards are born to fly, and sometimes fall.' },
-    { name : 'Books', info: 'Wizarding is often the same as reading.' },
-    { name: 'Mythical Creatures', info: 'They will be your best friend.' },
-    { name: 'Hats and Robes', info: 'We all need something to wear.' },
-    { name: 'Potions and Ingredients', info: 'Drink one and you will either have a great day or just die.' }
+    { name : 'Wands', info: 'Every wizards first and last defense. It\'s the first thing in a young wizards hand and the last thing to fall from it when afflicted with Cruciatus.'},
+    { name : 'Broomsticks and Quidditch Equipment', info: 'Wizards are born to fly, and sometimes fall. A good broomstick can help you best your competitors, on and off the Quidditch field.' },
+    { name : 'Books', info: 'Wizarding is often the same as reading.  Books have spells, and more often than not are enchanted themselves.' },
+    { name: 'Mythical Creatures', info: 'They will be your best friend, or maybe just eat you. Either way, it\'s an experience.' },
+    { name: 'Hats and Robes', info: 'We all need something to wear.  It is not exactly Muggle fashion, but it will do.' },
+    { name: 'Potions and Ingredients', info: 'Drink one and you will either have a great day or just die the painful death of the toad that you will suddenly become.' }
     );
 });
 
