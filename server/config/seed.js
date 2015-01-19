@@ -114,11 +114,7 @@ Product.find({}).remove(function() {
 },
 {
   name: 'Firebolt',
-  info: 'It is capable of going from nought to one hundred and fifty miles per hour in ten seconds. The Firebolt also boasts an unbreakable Braking Charm, superb balance and precision, and hovers at reasonable mounting height when let go. \
-  By 1994, the Firebolt was the fastest broomstick in the whole world. Even though the competitor Thunderbolt VII can attain speeds that rival that of the Firebolt series, many experts feel that it has sacrificed safety for speed — indeed, \
-  during the 2014 Quidditch World Cup, even though professional broomsticks are supposed to withstand all Bludger hits, the tail of Nigerian Seeker Samuel Equiano\'s Thunderbolt was smashed off by a Bludger shot hit by Japanese Beater Hongo. \
-  \rThe handle is made of polished ebony (once mistakenly listed as ash in a Quality Quidditch Supplies advertisement), and the twigs can be made of either birch or hazel depending on customer preference. Birch twigs offer more "oomph" when ascending, while hazel provides more precision in turning. The metal parts of the broom are goblin-made ironwork, a first for a broomstick, which increases stability and power in adverse conditions and prevents slippage on the foot grips. \
-  \rEvery Firebolt includes a golden registration number.',
+  info: 'It is capable of going from nought to one hundred and fifty miles per hour in ten seconds. The Firebolt also boasts an unbreakable Braking Charm, superb balance and precision, and hovers at reasonable mounting height when let go. Every Firebolt includes a golden registration number.',
   categories: ['Broomsticks and Quidditch Equipment'],
   photo: '/assets/images/brooms/firebolt.jpg',
   price: 5000,
@@ -131,6 +127,14 @@ Product.find({}).remove(function() {
   photo: '/assets/images/brooms/nimbus2000.jpg',
   price: 5000,
   quantity: 5
+},
+{
+  name: 'Harry Potter\'s Firebolt',
+  info: 'In 1993, Harry Potter received a Firebolt racing broom as a Christmas present from an anonymous benefactor following the destruction of his Nimbus 2000.',
+  categories: ['Broomsticks and Quidditch Equipment'],
+  photo: '/assets/images/brooms/hpfirebolt.jpg',
+  price: 10000,
+  quantity: 1
 },
 {
   name: 'Nimbus 2001',
