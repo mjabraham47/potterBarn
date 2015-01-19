@@ -29,7 +29,13 @@ Cart.find({}).remove(function() {
     contents : [{product:'54b6a84e59d71b1535d65e62',
     quantity_ordered: 1 }],
     user: '54b6aaa312e01d5b35339ac0',
-  }, function() {
+  },
+  {
+    contents : [{product:'54b6a84e59d71b1535d65e62',
+    quantity_ordered: 1 }],
+    user: '54b6aaa312e01d5b35339ac0',
+  },
+  function() {
     console.log('finished populating cart');
   });
 });
