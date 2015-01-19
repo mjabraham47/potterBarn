@@ -2,20 +2,74 @@
 var generator = require('knear');
 var k = 2;
 var machine = new generator.kNear(k);
+var request = require('request');
+var _ = require('underscore');
 
-var products = [
-    {id:1, name:'wand', category:['wands'], quantity: 1},
-    {id:2, name: 'unicorn', category:['animal'], quantity: generate_random_quantity()},
-    {id:3, name: 'lion', category:['animal'], quantity: generate_random_quantity()},
-    {id:4, name: 'harry wand', category:['wand'], quantity: generate_random_quantity()},
-    {id:5, name: 'centaur', category:['animal'], quantity: generate_random_quantity()},
-    {id:6, name: 'hermione', category:['wand'], quantity: generate_random_quantity()},
-    {id:7, name: 'ron', category:['wand'], quantity: generate_random_quantity()},
-    {id:8, name: 'owl', category:['animal'], quantity: generate_random_quantity()},
-    {id:9, name: 'house elf', category:['animal'], quantity: generate_random_quantity()},
-    {id:10, name: 'dumbledore', category:['wand'], quantity: generate_random_quantity()},
-    {id:11, name: 'luna', category:['wand'], quantity: generate_random_quantity()}
-];
+var products = [];
+
+request.get('http://localhost:9000/api/products', function(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    var info = JSON.parse(body);
+
+    //num = product iterated over
+    _.each(info, function(num) {
+      products.push({
+          id: num._id,
+          name: num.name,
+          category: num.categories[0],
+          quantity: num.quantity
+      });
+
+      if (products.length === info.length) {
+
+        _.each(products, function(product) {
+          console.log(product.quantity);
+          for (var i = 0; i < info.length; i++) {
+
+              if (product.category === info[i].categories[0]) {
+                  machine.learn([product.id, info[i]._id], 'good');
+                  //console.log('good');
+              } else {
+                  machine.learn([product.id, info[i]._id], 'bad');
+                  //console.log('bad');
+              }
+          }
+          if (product.quantity <= 2) {
+              products.forEach(function(lookup) {
+                  machine.learn([product.id, lookup.id], 'bad');
+              })
+          } else if (product.quantity > 10) {
+              products.forEach(function(lookup) {
+                  machine.learn([product.id, lookup.id], 'good');
+              })
+          }
+        });
+      };
+    });
+  };
+});
+
+
+products.forEach(function(product) {
+
+})
+
+
+
+//products array for initial testing
+// var products = [
+//     {id:1, name:'wand', category:['wands'], quantity: 1},
+//     {id:2, name: 'unicorn', category:['animal'], quantity: generate_random_quantity()},
+//     {id:3, name: 'lion', category:['animal'], quantity: generate_random_quantity()},
+//     {id:4, name: 'harry wand', category:['wand'], quantity: generate_random_quantity()},
+//     {id:5, name: 'centaur', category:['animal'], quantity: generate_random_quantity()},
+//     {id:6, name: 'hermione', category:['wand'], quantity: generate_random_quantity()},
+//     {id:7, name: 'ron', category:['wand'], quantity: generate_random_quantity()},
+//     {id:8, name: 'owl', category:['animal'], quantity: generate_random_quantity()},
+//     {id:9, name: 'house elf', category:['animal'], quantity: generate_random_quantity()},
+//     {id:10, name: 'dumbledore', category:['wand'], quantity: generate_random_quantity()},
+//     {id:11, name: 'luna', category:['wand'], quantity: generate_random_quantity()}
+// ];
 
 var product_array = [];
 
@@ -89,24 +143,7 @@ var carts = [
 
 // console.log(product);
 
-products.forEach(function(product) {
-    for ( var i = 0; i < products.length; i++ ) {
-        if ( product.category[0] !== products[i].category[0] ) {
-            machine.learn( [ product.id, products[i].id ], 'good' );
-        } else {
-          machine.learn( [ product.id, products[i].id ], 'bad' );
-        }
-    }
-    if ( product.quantity < 2 ) {
-      products.forEach(function(lookup) {
-        machine.learn( [ product.id, lookup.id ], 'bad' );
-      })
-    } else if ( product.quantity > 10) {
-      products.forEach(function(lookup) {
-        machine.learn( [ product.id, lookup.id ], 'good' );
-      })
-    }
-})
+
 
 carts.forEach(function(cart) {
   for (var j = 0; j < cart.contents.length; j++) {
@@ -131,30 +168,30 @@ carts.forEach(function(cart) {
 });
 
 
-console.log(machine.classify([1,1]));
-console.log(machine.classify([1,2]));
-console.log(machine.classify([1,3]));
-console.log(machine.classify([1,4]));
-console.log(machine.classify([1,5]));
-console.log(machine.classify([1,6]));
-console.log(machine.classify([1,7]));
-console.log(machine.classify([1,8]));
-console.log(machine.classify([1,9]));
-console.log(machine.classify([1,10]));
-console.log(machine.classify([1,11]));
-console.log(" ");
-console.log(machine.classify([5,1]));
-console.log(machine.classify([5,2]));
-console.log(machine.classify([5,3]));
-console.log(machine.classify([5,4]));
-console.log(machine.classify([5,5]));
-console.log(machine.classify([5,6]));
-console.log(machine.classify([5,7]));
-console.log(machine.classify([5,8]));
-console.log(machine.classify([5,9]));
-console.log(machine.classify([5,10]));
-console.log(machine.classify([5,11]));
-console.log(machine.classify([4,10]));
+// console.log(machine.classify([1,1]));
+// console.log(machine.classify([1,2]));
+// console.log(machine.classify([1,3]));
+// console.log(machine.classify([1,4]));
+// console.log(machine.classify([1,5]));
+// console.log(machine.classify([1,6]));
+// console.log(machine.classify([1,7]));
+// console.log(machine.classify([1,8]));
+// console.log(machine.classify([1,9]));
+// console.log(machine.classify([1,10]));
+// console.log(machine.classify([1,11]));
+// console.log(" ");
+// console.log(machine.classify([5,1]));
+// console.log(machine.classify([5,2]));
+// console.log(machine.classify([5,3]));
+// console.log(machine.classify([5,4]));
+// console.log(machine.classify([5,5]));
+// console.log(machine.classify([5,6]));
+// console.log(machine.classify([5,7]));
+// console.log(machine.classify([5,8]));
+// console.log(machine.classify([5,9]));
+// console.log(machine.classify([5,10]));
+// console.log(machine.classify([5,11]));
+// console.log(machine.classify([4,10]));
 
 
 
