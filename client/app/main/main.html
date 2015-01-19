@@ -21,7 +21,7 @@
             <div class="categories">
                 <ul>
                     <div class="col-md-6" ng-repeat="category in categories">
-                        <li class="catItem" ng-style="visibleCategory"><i class="fa animated"><div ng-click="stateChange(category.name)"> <h3> {{category.name}} </h3></div></i>
+                        <li class="catItem" ng-style="visibleCategory"><i class="fa animated"><div ng-click="stateChange(category.name, category.info)"> <h3> {{category.name}} </h3></div></i>
                         </li>
                     </div>
                 </ul>
