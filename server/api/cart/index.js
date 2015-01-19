@@ -14,5 +14,6 @@ router.delete('/:id', controller.destroy);
 router.delete('/:id/:item', controller.destroyProduct)
 router.get('/newcart/:id', controller.create_new_user_cart);
 router.get('/add/:id/:product/:quantity', controller.add_product);
+router.get('/orders', controller.orders);
 
 module.exports = router;

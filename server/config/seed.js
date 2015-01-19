@@ -26,18 +26,6 @@ Category.find({}).remove(function() {
     );
 });
 
-//This is where the Cart should be
-Cart.find({}).remove(function() {
-  //var product = new Product({name: 'Cool Wand', info: "This is a really cool wand", categories: ['Wand'], photo: 'http://216.194.165.146/~supertal/wp-content/uploads/2013/01/img_logo_blue.jpg', price: 500, quantity: 34})
-  Cart.create({
-    contents : [{product:'54b6a84e59d71b1535d65e62',
-    quantity_ordered: 1 }],
-    user: '54b6aaa312e01d5b35339ac0',
-  }, function() {
-    console.log('finished populating cart');
-  });
-});
-
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
@@ -144,4 +132,42 @@ Product.find({}).remove(function() {
   price: 6000,
   quantity: 5
 });
+});
+
+//This is where the Cart should be
+Cart.find({}).remove(function() {
+  //var product = new Product({name: 'Cool Wand', info: "This is a really cool wand", categories: ['Wand'], photo: 'http://216.194.165.146/~supertal/wp-content/uploads/2013/01/img_logo_blue.jpg', price: 500, quantity: 34})
+  Cart.create({
+    contents : [{product: "Holly Wand",
+    quantity_ordered: 1 }],
+    user: '54b6aaa312e01d5b35339ac0',
+    status: 'ordered'
+  }),  
+  Cart.create({
+    contents : [{product: "Holly Wand",
+    quantity_ordered: 1 }],
+    user: '54b6aaa312e01d5b35339ac0',
+    status: 'shipped'
+  }),  
+  Cart.create({
+    contents : [{product: "Holly Wand",
+    quantity_ordered: 1 }],
+    user: '54b6aaa312e01d5b35339ac0',
+    status: 'canceled'
+  }), 
+  Cart.create({
+    contents : [{product: "Holly Wand",
+    quantity_ordered: 1 }],
+    user: '54b6aaa312e01d5b35339ac0',
+    status: 'returned'
+  }), 
+  Cart.create({
+    contents : [{product: "Holly Wand",
+    quantity_ordered: 1 }],
+    user: '54b6aaa312e01d5b35339ac0',
+    status: 'ordered'
+  }), 
+  function() {
+    console.log('finished populating cart');
+  };
 });
