@@ -107,6 +107,8 @@ exports.merge_cart = function(req, res) {
         return res.json(200, cart);
       });
     }
+  });
+}
 
 //updates an item's quantity
 exports.updateQuantity = function(req, res) {
