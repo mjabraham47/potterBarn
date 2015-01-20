@@ -61,6 +61,7 @@ exports.create = function(req, res) {
   });
 };
 
+//creates a new user cart
 exports.create_new_user_cart = function(req, res) {
   var new_cart = {
     products: [],
@@ -72,15 +73,21 @@ exports.create_new_user_cart = function(req, res) {
   });
 };
 
+//updates an item's quantity
 exports.updateQuantity = function(req, res) {
-
-  Cart.update({_id: req.params.id}, { $set: { contents : {product: req.params.item, quantity_ordered: req.params.quantity}}},
-  function (err, cart) {
-    if(err) { return handleError(res, err); }
-    return res.send(200);
+  Cart.findById(req.params.id, function(err, cart) {
+    if (err) { return handleError(res, err); }
+    if (!cart) { return res.send(404); }
+    var updated = _.merge( cart, {contents: {product: req.params.item, quantity_ordered: req.params.quantity}});
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      console.log(cart);
+      return res.json(200, cart);
+    });
   });
 };
 
+//converts cart status from 'cart' to 'ordered'
 exports.cart_to_order = function(req, res) {
   Cart.findById(req.params.id, function (err, cart) {
     if (err) { return handleError(res, err); }
@@ -92,6 +99,7 @@ exports.cart_to_order = function(req, res) {
     });
   });
 };
+
 
 exports.getQuantity = function(req, res) {
   Cart.find({_id : req.params.id}, function (err, product) {
