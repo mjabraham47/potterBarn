@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $window, $http) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $window, $http, $cookieStore) {
+    $scope.cookieCart = $cookieStore.get('cart') || [];
     $scope.user = {};
     $scope.errors = {};
 
@@ -14,11 +15,13 @@ angular.module('potterBarnApp')
           password: $scope.user.password
         })
         .then( function() {
+          console.log(Auth.getCurrentUser());
+          // merge cookie cart with user's cart, or create a new cart if they don't have one
+          $http.put('/api/cart/merge/' + Auth.getCurrentUser()._id, $scope.cookieCart).success(function(user_cart){
+            console.log(user_cart);
+
+          });
           // Logged in, redirect to home
-          $http.get('/api/cart/new_cart/'+Auth.getCurrentUser()._id).success(function(user_cart) {
-            $scope.cart = user_cart;
-            console.log($scope.cart);
-          })
           $location.path('/');
         })
         .catch( function(err) {
