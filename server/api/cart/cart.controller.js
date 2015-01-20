@@ -73,10 +73,23 @@ exports.create_new_user_cart = function(req, res) {
 };
 
 exports.updateQuantity = function(req, res) {
+
   Cart.update({_id: req.params.id}, { $set: { contents : {product: req.params.item, quantity_ordered: req.params.quantity}}},
   function (err, cart) {
     if(err) { return handleError(res, err); }
-      return res.send(200);
+    return res.send(200);
+  });
+};
+
+exports.cart_to_order = function(req, res) {
+  Cart.findById(req.params.id, function (err, cart) {
+    if (err) { return handleError(res, err); }
+    if(!cart) { return res.send(404); }
+    var updated = _.merge(cart, {status: 'ordered'});
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, cart);
+    });
   });
 };
 
