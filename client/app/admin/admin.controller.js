@@ -17,13 +17,13 @@ angular.module('potterBarnApp')
             });
         };
 
-        $scope.openAdmin = function( _user) {
+        $scope.openAdmin = function() {
             var AdminModal = $modal.open({
                 templateUrl: 'myAdminContent.html',
                 controller: 'AdminInstanceCtrl',
                 resolve:{
-                    user: function(){
-                        return _user;
+                    users: function(){
+                        return $scope.users;
                     }
                 }
             });
@@ -33,9 +33,9 @@ angular.module('potterBarnApp')
             });
         };
     })
-.controller('AdminInstanceCtrl', function($scope, $modalInstance, $http, user) {
+.controller('AdminInstanceCtrl', function($scope, $modalInstance, $http, users) {
 
-    $scope.user = user;
+    $scope.users = users;
 
     $scope.ok = function() {
         $modalInstance.close();
@@ -44,6 +44,13 @@ angular.module('potterBarnApp')
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
+
+    $scope.promoteAdmin = function(userId) {
+        var promotion = {role: 'admin'} 
+        $http.put('/api/users/' + userId, promotion).success(function(user){
+            console.log(user)
+      });
+    }
 })
 .controller('CategoryModalCtrl', function($scope, $modal, $log) {
 

@@ -6,26 +6,27 @@
     <!--  -->
     <div ng-controller="AdminCtrl">
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="user in users">
                 <!-- Inside Modal -->
                 <script type="text/ng-template" id="myAdminContent.html">
                     <div class="modal-header">
-                        <h3 class="modal-title">{{user.name}}!</h3>
+                        <h3 class="modal-title">Manage Users!</h3>
                     </div>
                     <div class="modal-body">
+                    <h4>Choose a User to Mange!</h4>
+                        <input type="text" ng-model="selected" typeahead="user as user.name for user in users  | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="userSelected=!userSelected">
+                            <div ng-show= "userSelected" ng-hide="!userSelected">
+                                <div>{{selected.name}}</div>
+                                <button class="btn" ng-click="delete(selected._id)">Delete {{selected.name}}</button>
+                                <button class="btn" ng-click="promoteAdmin(selected._id)">Make Admin</button>
 
+                            </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" ng-click="ok()">OK</button>
                             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                         </div>
                 </script>
                 <!-- On Page -->
-                    <button class="list-group-item" ng-click="openAdmin(user)">
-                    <strong>{{user.name}}</strong>
-                    <br>
-                    <span class="text-muted">{{user.email}}</span>
-                    <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                </button>
+                    <button class="list-group-item col-md-2" ng-click="openAdmin()">Manage Users</button>
             </li>
         </ul>
     </div>
@@ -36,7 +37,7 @@
         <div ng-controller="CategoryModalCtrl">
             <!-- Inside Modal -->
             <script type="text/ng-template" id="myCategoryContent.html">
-                <div class="modal-header" ng-controller="ModalCtrl">
+                <div class="modal-header">
                     <h3 class="modal-title">Categories!</h3>
                 </div>
                 <div class="modal-body">
@@ -50,7 +51,7 @@
                     </div>
             </script>
             <!-- On Page -->
-            <button class="list-group-item" ng-click="openCategory('')">Create Categories</button>
+            <button class="list-group-item col-md-2" ng-click="openCategory('')">Create Categories</button>
             </div>
             <!-- PRODUCT MODAL -->
             <!--  -->
@@ -105,7 +106,7 @@
             </div>
             </script>
             <!-- On Page -->
-            <button class="list-group-item" ng-click="openProduct('lg')">Create Products</button>
+            <button class="list-group-item col-md-2" ng-click="openProduct('lg')">Create Products</button>
         </div>
         <!--  -->
         <!--  -->
@@ -125,7 +126,7 @@
                     </div>
             </script>
             <!-- On page -->
-            <button class="list-group-item" ng-click="openOrder('lg')">See Orders</button>
+            <button class="list-group-item col-md-2" ng-click="openOrder('lg')">See Orders</button>
             </div>
         </div>
         <!-- FilePicker -->
