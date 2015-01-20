@@ -9,12 +9,13 @@
 	<br>
 	<img style="width:250px; height:250px;" src="{{product.photo}}"/>
 	<br>
-	<h2>{{product.name}}</h2>
+	<h2 editable-text="product.name" e-form="textBtnForm" onaftersave="edit()">{{product.name}}</h2>
 	</div>
 	<div class="col-md-2 product">
 	<br>
 	<p-1>{{product.name}}</p-1><br><br>
-	<p-2>{{product.info}}</p-2>
+	<div editable-textarea="product.info" e-form="textBtnForm" onaftersave="edit()">{{product.info|| 'empty'}}</div>
+	<button class="btn btn-lg-default" ng-show="isAdmin()" ng-click="textBtnForm.$show()">Edit</button>
 	</div>
 	<div class="col-md-3 product" >
 		<br>
