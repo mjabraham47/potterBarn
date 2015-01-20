@@ -39,7 +39,9 @@ angular.module('potterBarnApp')
             $scope.newCategory = {
                 name: newCategory
             };
-            $http.post('api/categorys/', $scope.newCategory).success(function(newCategory) {});
+            $http.post('api/categorys/', $scope.newCategory).success(function(newCategory) {
+                console.log(newCategory)
+            });
         }
 
         $scope.ok = function() {
