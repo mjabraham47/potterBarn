@@ -355,8 +355,6 @@ Product.find({}).remove(function() {
     quantity: 9
   });
 });
-<<<<<<< HEAD
-});
 
 //This is where the Cart should be
 Cart.find({}).remove(function() {
@@ -393,5 +391,5 @@ Cart.find({}).remove(function() {
   }),
   function() {
     console.log('finished populating cart');
-  };
+  });
 });
