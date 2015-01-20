@@ -15,26 +15,13 @@ angular.module('potterBarnApp')
           password: $scope.user.password
         })
         .then( function() {
-          // Logged in, redirect to home
-          $http.get('/api/cart/find/' + Auth.getCurrentUser()._id).success(function(user_cart){
-            if ( $scope.cookieCart === [] && user_cart === []) {
-              $http.get('/api/cart/new_cart' + Auth.getCurrentUser())._id.success(function(user_cart){
-                $scope.cart = user_cart;
-              });
-            } else if ( $scope.cookedCart.length > 0 && user_cart === [] ) {
-              $http.get('/api/cart/new_cart' + Auth.getCurrentUser())._id.success(function(user_cart){
-                $scope.cart = user_cart;
-                for ( var i = 0; i < $scope.cookieCart.length; i++ ) {
-                  $scope.cart.products.push($scope.cookieCart[i]);
-                }
-              });
-            } else if ( user_cart.contents.length > 0 ) {
-              $scope.cart = user_cart;
-              for ( var i = 0; i < $scope.cookieCart.length; i++ ) {
-                $scope.cart.products.push($scope.cookieCart[i]);
-              }
-            }
+          console.log(Auth.getCurrentUser());
+          // merge cookie cart with user's cart, or create a new cart if they don't have one
+          $http.put('/api/cart/merge/' + Auth.getCurrentUser()._id, $scope.cookieCart).success(function(user_cart){
+            console.log(user_cart);
+
           });
+          // Logged in, redirect to home
           $location.path('/');
         })
         .catch( function(err) {
