@@ -21,6 +21,7 @@ angular.module('potterBarnApp')
         var quantity = $scope.cookieCart[i].quantity_ordered;
         // IIFE to close over a variable in a loop
         (function(quantity){$http.get('/api/products/' + $scope.cookieCart[i].product).success(function(product) {
+          console.log($scope.cookieCart[i]);
           product.quantity_ordered = quantity;
           $scope.cart_items.push(product);
           $scope.total += product.price * product.quantity_ordered;

@@ -26,6 +26,22 @@ exports.show = function(req, res) {
   // });
 };
 
+exports.findOrders = function(req, res){
+  console.log('We amde it');
+  Cart.find({$where: "this.status = 'ordered' || this.status = 'shipped' || this.status = 'canceled' || this.status = 'returned'"}, function(err, order){
+    if(err) { return handleError(res, err); }
+    return res.json(200, orders);
+  });
+}
+
+exports.orders = function(req, res){
+  console.log('We made it');
+  Cart.orderByStatus(function (err, orders) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, orders);
+  });
+}
+
 exports.add_product = function(req, res) {
   Cart.findOneAndUpdate(
     { user: req.params.id, status:'cart' },
