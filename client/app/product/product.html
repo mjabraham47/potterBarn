@@ -1,40 +1,79 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-{{product.name}}
-<br>
-{{sickles(product.price)}}
-
-<button ng-click="addToCart(product._id, product.quantity_ordered)">Add Item to Cart</button>
-<select ng-model="product.quantity_ordered">
-<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} </option>
-</select>
-<h2>Reviews</h2>
-<div ng-repeat="review in reviewsArray">
-  <p>{{review._user.name}}</p>
-  <p>{{ review.review_content.rating_stars }} Stars </p>
-  <p>{{ review.review_content.review_text }}</p>
+	<div class="category-header">
+		<div class="category-name">
+		</div>
+	</div>
+<div class="container">
+	<div class="col-md-3 product">
+	<br>
+	<img style="width:250px; height:250px;" src="{{product.photo}}"/>
+	<br>
+	<h2>{{product.name}}</h2>
+	</div>
+	<div class="col-md-2 product">
+	<br>
+	<p-1>{{product.name}}</p-1><br><br>
+	<p-2>{{product.info}}</p-2>
+	</div>
+	<div class="col-md-3 product" >
+		<br>
+		<p-1>Reviews</p-1>
+		<div ng-repeat="review in reviewsArray">
+		  <p>{{review._user.name}}</p>
+		  <p><strong>{{ review.review_content.rating_stars }} Stars</strong></p>
+		  <p>{{ review.review_content.review_text }}</p>
+		</div>
+		<form name="reviewForm">
+		<!--  Review Form -->
+			<div ng-show="isLoggedIn">
+				<strong>Submit a Review</strong>
+				<fieldset class="form-group">
+					<select class="form-control" id="review_stars" ng-model="newReview.review_content.rating_stars">
+						<option value="" disabled selected>Rate with Stars</option>
+						<option value="5">5 stars</option>
+						<option value="4">4 stars</option>
+						<option value="3">3 stars</option>
+						<option value="2">2 stars</option>
+						<option value="1">1 star</option>
+					</select>
+				</fieldset>
+				<fieldset class="form-group">
+					<textarea class="form-control" ng-model="newReview.review_content.review_text" placeholder="Write a short review of the product..." title="Review"></textarea>
+				</fieldset>
+				<fieldset class="form-group">
+					<span id="review_text" class="review" ng-click="submitNewReview()" label="Submit Review">Submit Review</span>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-4 product">
+	<br>
+	<p-1>Order Here</p-1><br>
+	{{sickles(product.price)}}
+	<br><br>
+	<select class="form-control" style="width: 125px;"ng-model="product.quantity_ordered">
+		<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}}</option>
+	</select>
+	<br>
+	<span class='addtocart' ng-click="addToCart(product._id, product.quantity_ordered)">Add Item to Cart</span>
+	<br><br><br><br>
+	<span class='checkout'  ng-click="goCart()">Checkout</span>
+	</div>
 </div>
 
-<form name="reviewForm">
-	<!--  Review Form -->
-	<div ng-show="isLoggedIn">
-		<h4>Submit a Review</h4>
-		<fieldset class="form-group">
-			<label>Stars:</label>
-			<select id="review_stars" ng-model="newReview.review_content.rating_stars">
-				<option value="5">5 stars</option>
-				<option value="4">4 stars</option>
-				<option value="3">3 stars</option>
-				<option value="2">2 stars</option>
-				<option value="1">1 star</option>
-			</select>
-		</fieldset>
-		<fieldset class="form-group">
-			<textarea class="form-control" ng-model="newReview.review_content.review_text" placeholder="Write a short review of the product..." title="Review"></textarea>
-		</fieldset>
-		<fieldset class="form-group">
-			<button id="review_text" type="submit" class="btn btn-primary pull-right" ng-click="submitNewReview()" label="Submit Review"/>Button</button>
-		</fieldset>
-	</div>
-</form>
+<div class="col-md-4 product">
+<br>
+<p-1>Order Here</p-1><br>
+{{sickles(product.price)}}
+<br><br>
+<div class="product-order" ng-hide="hideOrder">
+	<select class="form-control" style="width: 125px;"ng-model="product.quantity_ordered">
+		<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} of {{product.name}}</option>
+	</select>
+	<br>
+	<span class='addtocart' ng-click="addToCart(product._id, product.quantity_ordered); hideOrder=true">Add Item to Cart</span>
+</div>
+<br><br><br><br>
+<span class='checkout'  ng-click="goCart()">Checkout</span>
 

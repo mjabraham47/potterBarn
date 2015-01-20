@@ -21,6 +21,7 @@ angular.module('potterBarnApp')
         var quantity = $scope.cookieCart[i].quantity_ordered;
         // IIFE to close over a variable in a loop
         (function(quantity){$http.get('/api/products/' + $scope.cookieCart[i].product).success(function(product) {
+          console.log($scope.cookieCart[i]);
           product.quantity_ordered = quantity;
           $scope.cart_items.push(product);
           $scope.total += product.price * product.quantity_ordered;
@@ -33,16 +34,16 @@ angular.module('potterBarnApp')
     if (Auth.isLoggedIn()){
       $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
         $scope.cart = cartItems;
-        socket.syncUpdates('cart', $scope.cart);
         var length = $scope.cart[0].contents.length;
         $scope.number_items = length;
         for (var i = 0; i < length; i++) {
           var quantity = $scope.cart[0].contents[i].quantity_ordered;
           // IIFE to close over a variable in a loop
           (function(quantity){$http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
-            product.quantity_ordered = quantity;
+            product.quantity_ordered = quantity * 1;
             $scope.cart_items.push(product);
             $scope.total += product.price * product.quantity_ordered;
+            $scope.item_quantity = product.quantity
           });})(quantity);
         };
       });
@@ -55,8 +56,24 @@ angular.module('potterBarnApp')
     };
 
 
-
     $scope.getNumber = function(num) {
-    return new Array(num);
+      return new Array(num);
     }
-  });
+
+    $scope.getTotal = function (){
+
+    }
+    $scope.changeQuantity = function (quantity, item, price, index) {
+      var price = price;
+      if (quantity == 0 ) {
+        $scope.deleteItem(item, index);
+      };
+      $http.get('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity).success(function(obj){
+        var oldQuantity = obj[0].contents[index].quantity_ordered;
+        $scope.total = $scope.total - (price * oldQuantity);
+        $http.post('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity);
+        $scope.total = $scope.total + (price * quantity);
+      });
+    };
+});
+

@@ -72,6 +72,22 @@ exports.create_new_user_cart = function(req, res) {
   });
 };
 
+exports.updateQuantity = function(req, res) {
+  Cart.update({_id: req.params.id}, { $set: { contents : {product: req.params.item, quantity_ordered: req.params.quantity}}},
+  function (err, cart) {
+    if(err) { return handleError(res, err); }
+      return res.send(200);
+  });
+};
+
+exports.getQuantity = function(req, res) {
+  Cart.find({_id : req.params.id}, function (err, product) {
+    if(err) { return handleError(res, err); }
+    if(!product) { return res.send(404); }
+    return res.json(200, product);
+  });
+};
+
 // Updates an existing cart in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }

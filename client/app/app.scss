@@ -15,17 +15,48 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
-@font-face {
+@font-face{
     font-family: HarryP;
-   	src: url(../assets/HARRYP__.TTF);
+    src: url(../assets/HARRYP__.TTF);
+}
+.navbar-brand {
+	margin-top: 0;
+	padding-top:0;
+	top: 0;
+}
+.navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    line-height: 20px;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+a:hover {
+    cursor: url(../assets/images/wand.png) 2 2, auto;
+}
+
+.navbar-default .navbar-nav li a{
+    color: #000;
+    font-family: 'Rochester', cursive;
+}
+
+.navbar-default .navbar-nav li a:hover {
+    color: #ffd700;
 
 }
 
 *{
-	font-family: "HarryP";
+    font-family: 'Lato', sans-serif;
+}
+h1, h2, h3, h4 {
+    font-family: 'HarryP';
 
 }
-
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #fff;
+    color: #000;
+}
 
 // Component styles are injected through grunt
 // injector

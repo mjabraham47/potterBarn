@@ -49,5 +49,5 @@ describe('Cart Model', function() {
 
     it('is_order starts as false', function(){
       should(cart.is_order).equal(false)
-    });  
+    });
 });
