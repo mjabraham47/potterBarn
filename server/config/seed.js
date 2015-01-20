@@ -636,3 +636,8 @@ Product.find({}).remove(function() {
   });
 });
 
+
+//This is where the Cart should be
+Cart.find({}).remove(function() {
+
+});

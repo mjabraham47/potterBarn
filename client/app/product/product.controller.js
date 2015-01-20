@@ -13,7 +13,7 @@ angular.module('potterBarnApp')
     $scope.sickles = sickles;
     $scope.reviewsArray = [];
     $scope.completeReviews = [];
-
+    $scope.isAdmin = Auth.isAdmin;
 
 //ADDING TO CART
     $scope.addToCart = function(product, quantity) {
@@ -44,6 +44,12 @@ angular.module('potterBarnApp')
       return new Array(num);
     }
 
+    $scope.edit = function() {
+      $http.put('/api/products/' + $scope.product._id, $scope.product).success(function(product) {
+        console.log(product)
+      });
+    };
+
 
 //REVIEWS
     $scope.newReview = {
@@ -71,6 +77,7 @@ angular.module('potterBarnApp')
       $scope.newReview.review_content.review_text ='';
       $scope.newReview.review_content.rating_stars =''; 
     }
+
 
 });
 
