@@ -16,6 +16,7 @@
 <!--  -->
     <div ng-controller="ModalCtrl">
         <!-- Inside Modal -->
+        <!-- Shoild be its on file -->
         <script type="text/ng-template" id="myCategoryContent.html">
             <div class="modal-header" ng-controller="ModalCtrl">
                 <h3 class="modal-title">Categories!</h3>
@@ -39,6 +40,7 @@
 
         <div ng-controller="ProductModalCtrl">
             <!-- Inside Modal -->
+            <!-- Should be its own file -->
             <script type="text/ng-template" id="myProductContent.html">
                 <div class="modal-header" ng-controller="ProductModalCtrl">
                     <h3 class="modal-title">Products!</h3>
@@ -92,6 +94,7 @@
 <!-- Orders -->
 	    <div ng-controller="OrderModalCtrl">
         <!-- Inside Modal -->
+        <!-- this should be its own file -->
         <script type="text/ng-template" id="myOrderContent.html">
             <div class="modal-header" ng-controller="OrderModalCtrl">
                 <h3 class="modal-title">Orders!</h3>
@@ -109,4 +112,5 @@
     </div>
  </div>
 <!-- FilePicker -->
+<!-- I think this makes more sense on index.html -->
     <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>

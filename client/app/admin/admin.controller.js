@@ -1,5 +1,7 @@
 'use strict';
 
+// each of these controllers should be in its own file
+
 angular.module('potterBarnApp')
     .controller('AdminCtrl', function($scope, $http, Auth, User, $modal, $log) {
 
@@ -39,6 +41,9 @@ angular.module('potterBarnApp')
             $scope.newCategory = {
                 name: newCategory
             };
+
+            // you shouldn't do http calls from controllers
+
             $http.post('api/categorys/', $scope.newCategory).success(function(newCategory) {});
         }
 
@@ -69,12 +74,15 @@ angular.module('potterBarnApp')
         $scope.newProduct = {};
         $scope.listCategories = [];
 
+        // you shouldn't do http calls in controllers
+
         $http.get('/api/categorys').success(function(categories) {
             $scope.listCategories = categories;
         });
 
         $scope.save = function(newProduct) {
             $scope.newProduct = angular.copy(newProduct);
+            // no http calls in controllers
             $http.post('/api/products', $scope.newProduct).success(function(addedProduct) {
             });
         }

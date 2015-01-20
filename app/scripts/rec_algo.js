@@ -1,3 +1,5 @@
+// what's going on here?
+
 //var products = import Products Array
 var generator = require('knear');
 var k = 2;

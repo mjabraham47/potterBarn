@@ -1,16 +1,14 @@
 'use strict';
 
 angular.module('potterBarnApp')
-.controller('CategoryCtrl', function ($scope, $state, $stateParams, $http, productFilter, sickles) {
+.controller('CategoryCtrl', function ($scope, $state, $stateParams, productFilter, sickles) {
 
-	console.log($stateParams)
   $scope.currentCategory = $stateParams.category;
   $scope.categoryInfo = $stateParams.info;
 
-  productFilter.query({categories: $stateParams.category })
-  .$promise.then(function(data){
-    $scope.currentProducts = data;
-  });
+
+  // you can rewrite like this!
+  $scope.currentProducts = productFilter.query({categories: $stateParams.category });
 
   $scope.stateChange = function(product) {
     $state.go("product", {'product': product});

@@ -24,6 +24,8 @@ angular.module('potterBarnApp')
         console.log($scope.cookieCart)
       }
       else {
+//http reqs in controller are bad
+        
         $http.get('api/cart/add/' + Auth.getCurrentUser()._id + '/' + $stateParams.product+ '/' + $scope.product.quantity_ordered)
         .success(function(product) {
         });
@@ -34,6 +36,7 @@ angular.module('potterBarnApp')
         $location.url('/cart');
     };
 
+//http reqs in controller are bad
 
     $http.get('/api/products/'+ $stateParams.product).success(function(product) {
       $scope.product = product;
@@ -53,6 +56,8 @@ angular.module('potterBarnApp')
     }
 
     $scope.submitNewReview = function(){
+//http reqs in controller are bad
+
       $http.post('api/reviews/', $scope.newReview).success(function(newSubmittedReview){
       $scope.reviewsArray.push(newSubmittedReview);
       $http.get('api/reviews/product/' + $stateParams.product ).success(function(allReviews){
@@ -63,6 +68,8 @@ angular.module('potterBarnApp')
   };
 
 //Getting the reviews
+
+//http reqs in controller are bad
     $http.get('api/reviews/product/' + $stateParams.product ).success(function(allReviews){
       $scope.reviewsArray = allReviews;
     });

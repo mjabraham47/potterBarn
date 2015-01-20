@@ -33,6 +33,8 @@ angular.module('potterBarnApp')
     //getting user cart and adding products to scope
     if (Auth.isLoggedIn()){
       $scope.users = User.get()
+      // http calls in controllers are bad
+      
       $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
         $scope.cart = cartItems;
         var length = $scope.cart[0].contents.length;
@@ -69,6 +71,8 @@ angular.module('potterBarnApp')
       if (quantity == 0 ) {
         $scope.deleteItem(item, index);
       };
+      // http calls in controllers are bad
+
       $http.get('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity).success(function(obj){
         var oldQuantity = obj[0].contents[index].quantity_ordered;
         $scope.total = $scope.total - (price * oldQuantity);
@@ -81,7 +85,7 @@ angular.module('potterBarnApp')
     $scope.checkoutSubmit = function(user) {
 
       $scope.master = angular.copy(user);
-
+      // http calls in controllers are bad
       $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.master).success(function(user){
         $scope.master = {};
       });
