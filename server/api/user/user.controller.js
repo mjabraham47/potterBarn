@@ -49,7 +49,7 @@ exports.update = function (req, res, next) {
     if(!user) { return res.send(404); }
     var updated = _.merge(user, req.body);
     updated.save(function (err) {
-      if (err) { return handleError(res, err); }
+      if (err) return next(err);
       console.log(user);
       return res.json(200, user);
     });

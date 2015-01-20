@@ -74,6 +74,7 @@ angular.module('potterBarnApp')
         $scope.total = $scope.total - (price * oldQuantity);
         $http.post('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity);
         $scope.total = $scope.total + (price * quantity);
+        console.log($scope.cart);
       });
     };
 
@@ -82,16 +83,12 @@ angular.module('potterBarnApp')
       $scope.master = angular.copy(user);
 
       $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.master).success(function(user){
-        console.log(user);
         $scope.master = {};
       });
+
+      $http.put('/api/cart/order/'+ $scope.cart[0]._id).success(function(cart) {
+          console.log(cart);
+      });
     }
-
-    // user, for the cart
-    // full name, firstName & lastName
-    // user address
-
-
-
 });
 
