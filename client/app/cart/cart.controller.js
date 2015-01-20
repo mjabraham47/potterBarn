@@ -72,7 +72,9 @@ angular.module('potterBarnApp')
       $http.get('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity).success(function(obj){
         var oldQuantity = obj[0].contents[index].quantity_ordered;
         $scope.total = $scope.total - (price * oldQuantity);
-        $http.post('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity);
+        $http.post('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity).success(function(cart) {
+          $scope.cart[0] = cart;
+        });
         $scope.total = $scope.total + (price * quantity);
         console.log($scope.cart);
       });
@@ -87,7 +89,7 @@ angular.module('potterBarnApp')
       });
 
       $http.put('/api/cart/order/'+ $scope.cart[0]._id).success(function(cart) {
-          console.log(cart);
+
       });
     }
 });
