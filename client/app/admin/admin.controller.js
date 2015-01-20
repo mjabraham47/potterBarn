@@ -51,6 +51,14 @@ angular.module('potterBarnApp')
             console.log(user)
       });
     }
+
+    $scope.showBtns = function() {
+        if(typeof $scope.selected == 'object') {
+            return true;
+        }
+        return false;
+    }
+ 
 })
 .controller('CategoryModalCtrl', function($scope, $modal, $log) {
 

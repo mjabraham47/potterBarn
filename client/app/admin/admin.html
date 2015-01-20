@@ -13,8 +13,9 @@
                     </div>
                     <div class="modal-body">
                     <h4>Choose a User to Mange!</h4>
-                        <input type="text" ng-model="selected" typeahead="user as user.name for user in users  | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="userSelected=!userSelected">
-                            <div ng-show= "userSelected" ng-hide="!userSelected">
+                        <input type="text" ng-model="selected" typeahead="user as user.name for user in users  | filter:$viewValue | limitTo:8" class="form-control">
+                            
+                            <div ng-show = "showBtns()">
                                 <div>{{selected.name}}</div>
                                 <button class="btn" ng-click="delete(selected._id)">Delete {{selected.name}}</button>
                                 <button class="btn" ng-click="promoteAdmin(selected._id)">Make Admin</button>
