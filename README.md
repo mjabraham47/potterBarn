@@ -1,3 +1,3 @@
 #PotterBarn
 
-###Where you can get all your magically needs!
+###Yuppies of the wizarding world this is the store for you!
