@@ -16,10 +16,8 @@ angular.module('potterBarnApp')
 
     //check if not logged in, if so get request for products in their cookie cart
     if (!Auth.isLoggedIn()){
-      console.log($scope.cookieCart[0]);
       var length = $scope.cookieCart.length;
       for (var i = 0; i < length; i++) {
-        console.log($scope.cookieCart[i]);
         var quantity = $scope.cookieCart[i].quantity_ordered;
         // IIFE to close over a variable in a loop
         (function(quantity){$http.get('/api/products/' + $scope.cookieCart[i].product).success(function(product) {
