@@ -13,7 +13,7 @@ angular.module('potterBarnApp')
     $scope.sickles = sickles;
     $scope.reviewsArray = [];
     $scope.completeReviews = [];
-
+    $scope.isAdmin = Auth.isAdmin;
 
 //ADDING TO CART
     $scope.addToCart = function(product, quantity) {
