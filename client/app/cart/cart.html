@@ -24,7 +24,7 @@
           </select>
         </div>
         <div class="col-sm-4">
-          <a href="#" class="itemName">{{item.name}}{{item.quantity_ordered}}</a>
+          <a href="#" class="itemName">{{item.name}}</a>
         </div>
         <div class="col-sm-4">
           <button type="button" class="close" ng-click="deleteItem(item._id, $index)">
@@ -61,10 +61,10 @@
         </div>
         <div class="col-md-2">
         <h4 class="cartText">Credit Card:</h4>
-        <input ng-model="user.billing_info.card_issue" type="text" placeholder="Street Address"><br>
-        <input ng-model="user.billing_info.card_number" type="text" placeholder="City"><br>
-        <input ng-model="user.billing_address.expiration_date.month" type="text" placeholder="State"><br>
-        <input ng-model="user.billing_address.expiration_date.year" type="text" placeholder="Zip Code">
+        <input ng-model="user.billing_info.card_issue" type="text" placeholder="Card Issuer"><br>
+        <input ng-model="user.billing_info.card_number" type="text" placeholder="Card Number"><br>
+        <input ng-model="user.billing_address.expiration_date.month" type="text" placeholder="Expiration Month"><br>
+        <input ng-model="user.billing_address.expiration_date.year" type="text" placeholder="Expiration Year">
         </div>
         <div class="col-md-2">
         <h4 class="cartText">Billing Address:</h4>
