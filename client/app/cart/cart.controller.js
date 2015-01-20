@@ -2,13 +2,14 @@
 
 angular.module('potterBarnApp')
   .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource) {
-    
+
 
     $scope.cookieCart = $cookieStore.get('cart') || [];
     $scope.total = 0;
     $scope.cart_items = [];
     $scope.cart;
     $scope.checkout = false;
+    $scope.master = {};
 
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
@@ -75,28 +76,13 @@ angular.module('potterBarnApp')
       });
     };
 
-    $scope.checkoutSubmit = function(firstName, lastName, eMail, phone, billingStreetAddress, billingCity, billingState, billingZip, shippingStreetAddress, shippingCity, shippingState, shippingZip) {
-      console.log(firstName);
-      $scope.update = {
-        firstName: firstName,
-        lastName: lastName,
-        billing_address: {
-          street: billingStreetAddress,
-          city: billingCity,
-          state: billingState,
-          zip: billingZip
-        },
-        shipping_address: {
-          street: shippingStreetAddress,
-          city: shippingCity,
-          state: shippingState,
-          zip: shippingZip
-        },
-        phone: phone,
-        email: eMail
-      };
-      $http.get('/api/users/' + Auth.getCurrentUser()._id, $scope.update).success(function(){
-        console.log("FFFFFFF")
+    $scope.checkoutSubmit = function(user) {
+
+      $scope.master = angular.copy(user);
+
+      $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.master).success(function(user){
+        console.log(user);
+        $scope.master = {};
       });
     }
 

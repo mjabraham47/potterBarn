@@ -46,26 +46,27 @@
   <div class="col-md-8 finalCheckout" ng-show="checkout">
     <div class="col-md-2">
     Name:
-    <form> <input ng-model="firstName" type="text" placeholder="First Name"> </form><br>
-    <form> <input ng-model="lastName" type="text"placeholder="Last Name">  </form><br>
-    <form> <input ng-model="eMail" type="text" placeholder="E-mail Address"> </form><br>
-    <form> <input ng-model="phone" type="text" placeholder="Phone Number">  </form>
+    <form name="payment_form" novalidate > <input ng-model="user.firstName" type="text" placeholder="First Name"><br>
+    <input ng-model="user.lastName" type="text"placeholder="Last Name"><br>
+    <input ng-model="user.email" type="text" placeholder="E-mail Address"><br>
+    <input ng-model="user.phone" type="text" placeholder="Phone Number">
     </div>
     <div class="col-md-2">
     Billing Address:
-    <form> <input ng-model="billingStreetAddress" type="text" placeholder="Street Address">  </form><br>
-    <form> <input ng-model="billingCity" type="text" placeholder="City"> </form><br>
-    <form> <input ng-model="billingState" type="text" placeholder="State">  </form><br>
-    <form> <input ng-model="billingZip" type="text" placeholder="Postal Code"> </form>
+    <input ng-model="user.billing_address.street" type="text" placeholder="Street Address"><br>
+    <input ng-model="user.billing_address.city" type="text" placeholder="City"><br>
+    <input ng-model="user.billing_address.state" type="text" placeholder="State"><br>
+    <input ng-model="user.billing_address.zip" type="text" placeholder="Postal Code">
     </div>
     <div class="col-md-2">
     Shipping Address:
-    <form> <input ng-model="shippingStreetAddress" type="text" placeholder="Street Address">  </form><br>
-    <form> <input ng-model="shippingCity" type="text" placeholder="City"> </form><br>
-    <form> <input ng-model="shippingState" type="text" placeholder="State">  </form><br>
-    <form> <input ng-model="shippingZip" type="text"placeholder="Postal Code"> </form>
+    <input ng-model="user.shipping_address.street" type="text" placeholder="Street Address"><br>
+    <input ng-model="user.shipping_address.city" type="text" placeholder="City"><br>
+    <input ng-model="user.shipping_address.state" type="text" placeholder="State"><br>
+    <input ng-model="user.shipping_address.zip" type="text"placeholder="Postal Code">
     </div>
-  <form class="col-md-2" action="" method="POST" ng-click="checkoutSubmit(firstName, lastName, eMail, phone, billingStreetAddress, billingCity, billingState, billingZip, shippingStreetAddress, shippingCity, shippingState, shippingZip)">
+  <buttonclass="col-md-2" action="" method="POST" ng-click="checkoutSubmit(user)">
+</form>
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
