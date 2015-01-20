@@ -20,12 +20,14 @@ angular.module('potterBarnApp')
       if (!Auth.isLoggedIn()){
         $scope.cookieCart.push({'product': product, 'quantity_ordered': quantity});
         $cookieStore.put('cart', $scope.cookieCart);
+        $('#addMessage').html('<b>Added to cart!</b>');
         console.log($scope.cookieCart)
       }
       else {
         $http.get('api/cart/add/' + Auth.getCurrentUser()._id + '/' + $stateParams.product+ '/' + $scope.product.quantity_ordered)
         .success(function(product) {
         });
+        $('#addMessage').html('<b>Added to cart!</b>');
       }
     };
     $scope.goCart = function() {
@@ -53,6 +55,9 @@ angular.module('potterBarnApp')
     $scope.submitNewReview = function(){
       $http.post('api/reviews/', $scope.newReview).success(function(newSubmittedReview){
       $scope.reviewsArray.push(newSubmittedReview);
+      $http.get('api/reviews/product/' + $stateParams.product ).success(function(allReviews){
+        $scope.reviewsArray = allReviews;
+      });
       $scope.reset();
     });
   };
