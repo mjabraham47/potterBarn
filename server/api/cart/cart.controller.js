@@ -43,12 +43,10 @@ exports.orders = function(req, res){
 }
 
 //gets all carts by user
-exports.ordersByUser = function(req, res){
-  console.log('this is the backend controller:', req.body);
-  Cart.cartsByUser(function (err, orders) {
-    console.log('this is what the backend returns:' orders);
+exports.cartsByUser = function(req, res){
+  Cart.cartsByUser(req.params, function (err, carts) {
     if(err) { return handleError(res, err); }
-    return res.json(200, orders);
+    return res.json(200, carts);
   });
 }
 
