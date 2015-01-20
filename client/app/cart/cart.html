@@ -18,11 +18,13 @@
       <li class='row cart_row'>
         <div class="col-sm-4">
           <select class='quantity form-control' ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
-              <option class='quantity' ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
+
+              <option selected = 'selected'>{{item.quantity_ordered}}</option>
+              <option class='quantity' ng-repeat="i in getNumber(item_quantity) track by $index" >{{$index}} </option>
           </select>
         </div>
         <div class="col-sm-4">
-          <a href="#" class="itemName">{{item.name}}</a>
+          <a href="#" class="itemName">{{item.name}}{{item.quantity_ordered}}</a>
         </div>
         <div class="col-sm-4">
           <button type="button" class="close" ng-click="deleteItem(item._id, $index)">
