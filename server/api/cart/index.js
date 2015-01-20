@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 var express = require('express');
 var controller = require('./cart.controller');
@@ -17,5 +17,6 @@ router.delete('/:id/:item', controller.destroyProduct);
 router.get('/newcart/:id', controller.create_new_user_cart);
 router.get('/add/:id/:product/:quantity', controller.add_product);
 router.get('/orders', controller.orders);
+router.get('/user/:id'), controller.cartsByUser);
 
 module.exports = router;

@@ -42,6 +42,16 @@ exports.orders = function(req, res){
   });
 }
 
+//gets all carts by user
+exports.ordersByUser = function(req, res){
+  console.log('this is the backend controller:', req.body);
+  Cart.cartsByUser(function (err, orders) {
+    console.log('this is what the backend returns:' orders);
+    if(err) { return handleError(res, err); }
+    return res.json(200, orders);
+  });
+}
+
 exports.add_product = function(req, res) {
   Cart.findOneAndUpdate(
     { user: req.params.id, status:'cart' },
