@@ -395,6 +395,3 @@ Cart.find({}).remove(function() {
     console.log('finished populating cart');
   };
 });
-=======
-
->>>>>>> master
