@@ -2,47 +2,78 @@
 <div class="cart-header">
 </div>
 <div class="container-fluid text-center">
-        <div class="col-md-4 col-sm-12">
-        <br>
-            <h1>Your Shopping Cauldron</h1>
-            <img src="../assets/images/cauldron.jpg"/>
+  <div class="col-md-4 col-sm-12">
+  <br>
+      <h1>Your Shopping Cauldron</h1>
+      <img src="../assets/images/cauldron.jpg"/>
+  </div>
+  <div class="col-md-8 col-sm-12">
+    <ul>
+      <li class="row list-inline columnCaptions">
+        <span class="col-sm-4">QTY</span>
+        <span class="col-sm-4">ITEM</span>
+        <span class="col-sm-4">Price</span>
+      </li>
+    <div ng-repeat='item in cart_items'>
+      <li class='row cart_row'>
+        <div class="col-sm-4">
+          <select class='quantity form-control' ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
+              <option class='quantity' ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
+          </select>
         </div>
-        <div class="col-md-8 col-sm-12">
-            <ul>
-                <li class="row list-inline columnCaptions">
-                    <span class="col-sm-4">QTY</span>
-                    <span class="col-sm-4">ITEM</span>
-                    <span class="col-sm-4">Price</span>
-                </li>
-                <div ng-repeat='item in cart_items'>
-                  <li class='row cart_row'>
-                    <div class="col-sm-4">
-                      <select class='quantity form-control' ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
-                          <option class='quantity' ng-repeat="i in getNumber(item_quantity) track by $index">{{$index}} </option>
-                      </select>
-                    </div>
-                    <div class="col-sm-4">
-                      <a href="#" class="itemName">{{item.name}}</a>
-                    </div>
-
-                          <!--<img ng-src='{{item.photo}}' /> -->
-
-                    <div class="col-sm-4">
-                      <button type="button" class="close" ng-click="deleteItem(item._id, $index)"><span class="glyphicon glyphicon-remove delete">
-                      </button>
-                      <span class='price'>{{sickles(item.price * item.quantity_ordered)}}</span>
-                    </div>
-                  </li>
-                </div>
-                <li class="row totals">
-                  <div class="col-sm-4"></div>
-                  <span class='col-sm-4 itemName'>Total:</span>
-                  <span class='col-sm-4 price'>{{sickles(total)}}</span>
-                  <span class='order'><a>ORDER</a></span>
-                </li>
-
-            </ul>
+        <div class="col-sm-4">
+          <a href="#" class="itemName">{{item.name}}</a>
         </div>
+        <div class="col-sm-4">
+          <button type="button" class="close" ng-click="deleteItem(item._id, $index)">
+            <span class="glyphicon glyphicon-remove delete"></span>
+          </button>
+          <span class='price'>{{sickles(item.price * item.quantity_ordered)}}</span>
+        </div>
+      </li>
+    </div>
+      <li class="row totals">
+        <div class="col-sm-4"></div>
+        <span class='col-sm-4 itemName'>Total:</span>
+        <span class='col-sm-4 price'>{{sickles(total)}}</span>
+        <span class='order' ng-click="checkout = !checkout"><a>ORDER</a></span>
+      </li>
+    </ul>
+      </div>
     </div>
 </div>
-</div>
+
+  <div class="col-md-8 finalCheckout" ng-show="checkout">
+    <div class="col-md-2">
+    Name:
+    <form name="payment_form" novalidate > <input ng-model="user.firstName" type="text" placeholder="First Name"><br>
+    <input ng-model="user.lastName" type="text"placeholder="Last Name"><br>
+    <input ng-model="user.email" type="text" placeholder="E-mail Address"><br>
+    <input ng-model="user.phone" type="text" placeholder="Phone Number">
+    </div>
+    <div class="col-md-2">
+    Billing Address:
+    <input ng-model="user.billing_address.street" type="text" placeholder="Street Address"><br>
+    <input ng-model="user.billing_address.city" type="text" placeholder="City"><br>
+    <input ng-model="user.billing_address.state" type="text" placeholder="State"><br>
+    <input ng-model="user.billing_address.zip" type="text" placeholder="Postal Code">
+    </div>
+    <div class="col-md-2">
+    Shipping Address:
+    <input ng-model="user.shipping_address.street" type="text" placeholder="Street Address"><br>
+    <input ng-model="user.shipping_address.city" type="text" placeholder="City"><br>
+    <input ng-model="user.shipping_address.state" type="text" placeholder="State"><br>
+    <input ng-model="user.shipping_address.zip" type="text"placeholder="Postal Code">
+    </div>
+  <buttonclass="col-md-2" action="" method="POST" ng-click="checkoutSubmit(user)">
+</form>
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+      data-amount="2000"
+      data-name="Demo Site"
+      data-description="2 widgets ($20.00)"
+      data-image="/128x128.png">
+    </script>
+  </form>
+  </div>

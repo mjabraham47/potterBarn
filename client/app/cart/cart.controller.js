@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore) {
+  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource) {
 
-    //$scope.cart = cart;
-    //console.log($scope.cart.shoppingCart);
+
     $scope.cookieCart = $cookieStore.get('cart') || [];
-    $scope.awesomeCart = {};
     $scope.total = 0;
     $scope.cart_items = [];
     $scope.cart;
+    $scope.checkout = false;
+    $scope.master = {};
 
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
@@ -32,6 +32,7 @@ angular.module('potterBarnApp')
 
     //getting user cart and adding products to scope
     if (Auth.isLoggedIn()){
+      $scope.users = User.get()
       $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
         $scope.cart = cartItems;
         var length = $scope.cart[0].contents.length;
@@ -75,5 +76,22 @@ angular.module('potterBarnApp')
         $scope.total = $scope.total + (price * quantity);
       });
     };
+
+    $scope.checkoutSubmit = function(user) {
+
+      $scope.master = angular.copy(user);
+
+      $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.master).success(function(user){
+        console.log(user);
+        $scope.master = {};
+      });
+    }
+
+    // user, for the cart
+    // full name, firstName & lastName
+    // user address
+
+
+
 });
 
