@@ -40,6 +40,18 @@ exports.create = function (req, res, next) {
 
 };
 
+
+exports.update = function (req, res, next) {
+  console.log(req.params, req.body, req.params.body)
+  User.update({_id: req.params.id}, { $set: { billing_address : {street: req.params.update.billing_address.street, city: req.params.update.billing_address.city, 
+    state: req.params.update.billing_address.state, zip: req.params.update.billing_address.zip}, shipping_address: {street: req.params.update.shipping_address.street, city: req.params.update.shipping_address.city, 
+    state: req.params.update.shipping_address.state, zip: req.params.update.shipping_address.zip}, firstName: req.params.update.firstName, lastName: req.params.update.lastName,
+    phone: req.params.update.phone, email: req.params.update.email}},
+  function (err, user) {
+    if(err) { return handleError(res, err); }
+      return res.send(200);
+  });
+};
 /**
  * Get a single user
  */

@@ -1,15 +1,14 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore) {
+  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource) {
+    
 
-    //$scope.cart = cart;
-    //console.log($scope.cart.shoppingCart);
     $scope.cookieCart = $cookieStore.get('cart') || [];
-    $scope.awesomeCart = {};
     $scope.total = 0;
     $scope.cart_items = [];
     $scope.cart;
+    $scope.checkout = false;
 
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
@@ -31,6 +30,7 @@ angular.module('potterBarnApp')
 
     //getting user cart and adding products to scope
     if (Auth.isLoggedIn()){
+      $scope.users = User.get()
       $http.get('/api/cart/' + Auth.getCurrentUser()._id).success(function(cartItems) {
         $scope.cart = cartItems;
         var length = $scope.cart[0].contents.length;
@@ -74,5 +74,37 @@ angular.module('potterBarnApp')
         $scope.total = $scope.total + (price * quantity);
       });
     };
+
+    $scope.checkoutSubmit = function(firstName, lastName, eMail, phone, billingStreetAddress, billingCity, billingState, billingZip, shippingStreetAddress, shippingCity, shippingState, shippingZip) {
+      console.log(firstName);
+      $scope.update = {
+        firstName: firstName,
+        lastName: lastName,
+        billing_address: {
+          street: billingStreetAddress,
+          city: billingCity,
+          state: billingState,
+          zip: billingZip
+        },
+        shipping_address: {
+          street: shippingStreetAddress,
+          city: shippingCity,
+          state: shippingState,
+          zip: shippingZip
+        },
+        phone: phone,
+        email: eMail
+      };
+      $http.get('/api/users/' + Auth.getCurrentUser()._id, $scope.update).success(function(){
+        console.log("FFFFFFF")
+      });
+    }
+
+    // user, for the cart
+    // full name, firstName & lastName
+    // user address
+
+
+
 });
 
