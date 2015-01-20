@@ -391,5 +391,5 @@ Cart.find({}).remove(function() {
   }),
   function() {
     console.log('finished populating cart');
-  });
+  };
 });
