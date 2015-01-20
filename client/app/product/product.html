@@ -53,7 +53,7 @@
 	{{sickles(product.price)}}
 	<br><br>
 	<select class="form-control" style="width: 125px;"ng-model="product.quantity_ordered">
-		<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}} of {{product.name}}</option>
+		<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}}</option>
 	</select>
 	<br>
 	<span class='addtocart' ng-click="addToCart(product._id, product.quantity_ordered)">Add Item to Cart</span>
@@ -61,8 +61,7 @@
 	<span class='checkout'  ng-click="goCart()">Checkout</span>
 	</div>
 </div>
-<<<<<<< HEAD
-=======
+
 <div class="col-md-4 product">
 <br>
 <p-1>Order Here</p-1><br>
@@ -78,5 +77,3 @@
 <br><br><br><br>
 <span class='checkout'  ng-click="goCart()">Checkout</span>
 
-
->>>>>>> master
