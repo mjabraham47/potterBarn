@@ -71,17 +71,7 @@ angular.module('potterBarnApp')
       if (quantity == 0 ) {
         $scope.deleteItem(item, index);
       };
-<<<<<<< Updated upstream
-      $http.get('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity).success(function(obj){
-        var oldQuantity = obj[0].contents[index].quantity_ordered;
-        $scope.total = $scope.total - (price * oldQuantity);
-        $http.post('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity).success(function(cart) {
-          $scope.cart[0] = cart;
-        });
-        $scope.total = $scope.total + (price * quantity);
-        console.log($scope.cart);
-      });
-=======
+
       if (Auth.isLoggedIn()){
         $http.get('/api/cart/' + $scope.cart[0]._id +'/' + item +'/' + quantity).success(function(obj){
           var oldQuantity = obj[0].contents[index].quantity_ordered;
@@ -104,7 +94,7 @@ angular.module('potterBarnApp')
         }
         console.log($scope.cookieCart);
       }
->>>>>>> Stashed changes
+
     };
 
     $scope.checkoutSubmit = function(user) {
