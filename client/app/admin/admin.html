@@ -1,9 +1,10 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
-<div class="container">
+<div class="admin-header"></div>
+<div class="col-md-3">
+</div>
+<div class="container col-md-8">
     <!-- ADMIN MODAL -->
-    <!--  -->
-    <!--  -->
+    <!--  --> <!--  -->
     <div ng-controller="AdminCtrl">
         <ul class="list-group">
                 <!-- Inside Modal -->
@@ -16,8 +17,9 @@
                         <input type="text" ng-model="selected" typeahead="user as user.name for user in users  | filter:$viewValue | limitTo:8" class="form-control">
                             
                             <div ng-show = "showBtns()">
-                                <div>{{selected.name}}</div>
-                                <button class="btn" ng-click="delete(selected._id)">Delete {{selected.name}}</button>
+                                <p><div><b>User: </b>{{selected.name}}<br><b>E-mail: </b>{{selected.email}}</div></p>
+
+                                <button class="btn" ng-click="delete(selected)">Delete User</button>
                                 <button class="btn" ng-click="promoteAdmin(selected._id)">Make Admin</button>
 
                             </div>

@@ -6,14 +6,16 @@
 		
 	<div class="category-header">
 	</div>
-	<div class="container">
-    <div class="col-md-3">
-    <br>
-      <div class="category-name">
+    <div class="col-md-2">
+    </div>
+      <div class="category-name col-md-8">
         <span> <h2>{{currentCategory}}</h2> </span>
         {{categoryInfo}}
       </div>
+    <div class="col-md-2">
     </div>
+    <br>
+	<div class="container">
   		<div ng-repeat="product in currentProducts">
   			<div class="col-md-3 item">
   				<div ng-click="stateChange(product._id)">

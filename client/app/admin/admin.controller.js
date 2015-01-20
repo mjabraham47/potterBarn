@@ -6,16 +6,6 @@ angular.module('potterBarnApp')
         // Use the User $resource to fetch all users
         $scope.users = User.query();
 
-        $scope.delete = function(user) {
-            User.remove({
-                id: user._id
-            });
-            angular.forEach($scope.users, function(u, i) {
-                if (u === user) {
-                    $scope.users.splice(i, 1);
-                }
-            });
-        };
 
         $scope.openAdmin = function() {
             var AdminModal = $modal.open({
@@ -33,7 +23,7 @@ angular.module('potterBarnApp')
             });
         };
     })
-.controller('AdminInstanceCtrl', function($scope, $modalInstance, $http, users) {
+.controller('AdminInstanceCtrl', function($scope, $modalInstance, User, $http, users) {
 
     $scope.users = users;
 
@@ -58,6 +48,18 @@ angular.module('potterBarnApp')
         }
         return false;
     }
+
+    $scope.delete = function(user) {
+            User.remove({
+                id: user._id
+            });
+            angular.forEach($scope.users, function(u, i) {
+                if (u === user) {
+                    $scope.users.splice(i, 1);
+                }
+            });
+            $scope.selected = '';
+        };
  
 })
 .controller('CategoryModalCtrl', function($scope, $modal, $log) {
