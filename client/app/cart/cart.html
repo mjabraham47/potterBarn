@@ -44,36 +44,42 @@
 </div>
 
   <div class="col-md-8 finalCheckout" ng-show="checkout">
-    <div class="col-md-2">
-    Name:
-    <form name="payment_form" novalidate > <input ng-model="user.firstName" type="text" placeholder="First Name"><br>
-    <input ng-model="user.lastName" type="text"placeholder="Last Name"><br>
-    <input ng-model="user.email" type="text" placeholder="E-mail Address"><br>
-    <input ng-model="user.phone" type="text" placeholder="Phone Number">
-    </div>
-    <div class="col-md-2">
-    Billing Address:
-    <input ng-model="user.billing_address.street" type="text" placeholder="Street Address"><br>
-    <input ng-model="user.billing_address.city" type="text" placeholder="City"><br>
-    <input ng-model="user.billing_address.state" type="text" placeholder="State"><br>
-    <input ng-model="user.billing_address.zip" type="text" placeholder="Postal Code">
-    </div>
-    <div class="col-md-2">
-    Shipping Address:
-    <input ng-model="user.shipping_address.street" type="text" placeholder="Street Address"><br>
-    <input ng-model="user.shipping_address.city" type="text" placeholder="City"><br>
-    <input ng-model="user.shipping_address.state" type="text" placeholder="State"><br>
-    <input ng-model="user.shipping_address.zip" type="text"placeholder="Postal Code">
-    </div>
-  <buttonclass="col-md-2" action="" method="POST" ng-click="checkoutSubmit(user)">
-</form>
-    <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-      data-amount="2000"
-      data-name="Demo Site"
-      data-description="2 widgets ($20.00)"
-      data-image="/128x128.png">
-    </script>
-  </form>
+    <div class="container">
+      <div class="col-md-2">
+      <h1 class="checkoutFont">Checkout</h1>
+      <h3 class="cartText">Total:</h3> <h4 class="cartText"> {{sickles(total)}}</h4>
+      </div>
+      <div class="col-md-2">
+      <h4 class="cartText">Name:</h4>
+      <form name="payment_form" novalidate >
+        <input ng-model="user.firstName" type="text" placeholder="First Name"><br>
+        <input ng-model="user.lastName" type="text"placeholder="Last Name"><br>
+        <input ng-model="user.email" type="text" placeholder="E-mail Address"><br>
+        <input ng-model="user.phone" type="text" placeholder="Phone Number">
+        </div>
+        <div class="col-md-2">
+        <h4 class="cartText">Credit Card:</h4>
+        <input ng-model="user.billing_info.card_issue" type="text" placeholder="Street Address"><br>
+        <input ng-model="user.billing_info.card_number" type="text" placeholder="City"><br>
+        <input ng-model="user.billing_address.expiration_date.month" type="text" placeholder="State"><br>
+        <input ng-model="user.billing_address.expiration_date.year" type="text" placeholder="Zip Code">
+        </div>
+        <div class="col-md-2">
+        <h4 class="cartText">Billing Address:</h4>
+        <input ng-model="user.billing_address.street" type="text" placeholder="Street Address"><br>
+        <input ng-model="user.billing_address.city" type="text" placeholder="City"><br>
+        <input ng-model="user.billing_address.state" type="text" placeholder="State"><br>
+        <input ng-model="user.billing_address.zip" type="text" placeholder="Zip Code">
+        </div>
+        <div class="col-md-2">
+        <h4 class="cartText">Shipping Address:</h4>
+        <input ng-model="user.shipping_address.street" type="text" placeholder="Street Address"><br>
+        <input ng-model="user.shipping_address.city" type="text" placeholder="City"><br>
+        <input ng-model="user.shipping_address.state" type="text" placeholder="State"><br>
+        <input ng-model="user.shipping_address.zip" type="text"placeholder="Zip Code">
+        </div>
+      <button class="checkoutButton col-md-2" action="" method="POST" ng-click="checkoutSubmit(user); complete = !complete">CHECKOUT</button>
+      <h1 class="orderComplete" ng-show="complete">ORDER COMPLETE</h1>
+    </form>
+  </div>
   </div>
