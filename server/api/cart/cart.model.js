@@ -18,6 +18,12 @@ var CartSchema = new Schema({
 
 });
 
+CartSchema.statics.orderByStatus = function(cb){
+  console.log('model status');
+  return this.find({ $where: "this.status = 'ordered' || this.status = 'shipped' || this.status = 'canceled' || this.status = 'returned'" })
+        .populate('contents.product user')
+        .exec(cb);
+}
 
 // CartSchema.methods = {
 //  check_product: function(id, callback){

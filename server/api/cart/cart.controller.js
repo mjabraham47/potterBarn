@@ -26,6 +26,22 @@ exports.show = function(req, res) {
   // });
 };
 
+exports.findOrders = function(req, res){
+  console.log('We amde it');
+  Cart.find({$where: "this.status = 'ordered' || this.status = 'shipped' || this.status = 'canceled' || this.status = 'returned'"}, function(err, order){
+    if(err) { return handleError(res, err); }
+    return res.json(200, orders);
+  });
+}
+
+exports.orders = function(req, res){
+  console.log('We made it');
+  Cart.orderByStatus(function (err, orders) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, orders);
+  });
+}
+
 exports.add_product = function(req, res) {
   Cart.findOneAndUpdate(
     { user: req.params.id, status:'cart' },
@@ -45,6 +61,7 @@ exports.create = function(req, res) {
   });
 };
 
+
 //creates a new cart for a new user
 exports.create_new_user_cart = function(req, res) {
   console.log('hitting it');
@@ -56,8 +73,6 @@ exports.create_new_user_cart = function(req, res) {
       return res.json(201, cart);
   });
 };
-
-
 
 //looks up a user's cart
 exports.lookup_user_cart = function(req, res) {
@@ -92,6 +107,40 @@ exports.merge_cart = function(req, res) {
         return res.json(200, cart);
       });
     }
+
+//updates an item's quantity
+exports.updateQuantity = function(req, res) {
+  Cart.findById(req.params.id, function(err, cart) {
+    if (err) { return handleError(res, err); }
+    if (!cart) { return res.send(404); }
+    var updated = _.merge( cart, {contents: {product: req.params.item, quantity_ordered: req.params.quantity}});
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      console.log(cart);
+      return res.json(200, cart);
+    });
+  });
+};
+
+//converts cart status from 'cart' to 'ordered'
+exports.cart_to_order = function(req, res) {
+  Cart.findById(req.params.id, function (err, cart) {
+    if (err) { return handleError(res, err); }
+    if(!cart) { return res.send(404); }
+    var updated = _.merge(cart, {status: 'ordered'});
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, cart);
+    });
+  });
+};
+
+
+exports.getQuantity = function(req, res) {
+  Cart.find({_id : req.params.id}, function (err, product) {
+    if(err) { return handleError(res, err); }
+    if(!product) { return res.send(404); }
+    return res.json(200, product);
   });
 };
 

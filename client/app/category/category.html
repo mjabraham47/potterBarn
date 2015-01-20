@@ -1,9 +1,27 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container">
-
-  <div ng-repeat="product in currentProducts">
-  	<div ng-click="stateChange(product._id)">{{product.name}}</div>
-
-  </div>
-</div>
+<br>
+<br>
+<section class="products">
+		
+	<div class="category-header">
+	</div>
+	<div class="container">
+    <div class="col-md-3">
+    <br>
+      <div class="category-name">
+        <span> <h2>{{currentCategory}}</h2> </span>
+        {{categoryInfo}}
+      </div>
+    </div>
+  		<div ng-repeat="product in currentProducts">
+  			<div class="col-md-3 item">
+  				<div ng-click="stateChange(product._id)">
+  					<p-1>{{product.name}}</p-1><br>
+  					<p-2>{{sickles(product.price)}}</p-2>
+  					<img style="width:150px; height: 150px" ng-src='{{product.photo}}'/>
+  				</div>
+  			</div>
+  		</div>
+	</div>
+</section>

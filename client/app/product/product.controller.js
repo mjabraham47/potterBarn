@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-.controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart, sickles, $cookieStore) {
+.controller('ProductCtrl', function ($scope, $http, $stateParams, $state, Auth, cart, sickles, $cookieStore, $location) {
     // first time user. dont have a cart yet
     // get the cart from cookie, if it is undefined, then make cart
     $scope.cookieCart = $cookieStore.get('cart') || [];
@@ -13,22 +13,26 @@ angular.module('potterBarnApp')
     $scope.sickles = sickles;
     $scope.reviewsArray = [];
     $scope.completeReviews = [];
-
+    $scope.isAdmin = Auth.isAdmin;
 
 //ADDING TO CART
     $scope.addToCart = function(product, quantity) {
       if (!Auth.isLoggedIn()){
         $scope.cookieCart.push({'product': product, 'quantity_ordered': quantity});
         $cookieStore.put('cart', $scope.cookieCart);
+        $('#addMessage').html('<b>Added to cart!</b>');
         console.log($scope.cookieCart)
       }
       else {
         $http.get('api/cart/add/' + Auth.getCurrentUser()._id + '/' + $stateParams.product+ '/' + $scope.product.quantity_ordered)
         .success(function(product) {
         });
+        $('#addMessage').html('<b>Added to cart!</b>');
       }
     };
-
+    $scope.goCart = function() {
+        $location.url('/cart');
+    };
 
 
     $http.get('/api/products/'+ $stateParams.product).success(function(product) {
@@ -39,6 +43,12 @@ angular.module('potterBarnApp')
     $scope.getNumber = function(num) {
       return new Array(num);
     }
+
+    $scope.edit = function() {
+      $http.put('/api/products/' + $scope.product._id, $scope.product).success(function(product) {
+        console.log(product)
+      });
+    };
 
 
 //REVIEWS
@@ -51,6 +61,9 @@ angular.module('potterBarnApp')
     $scope.submitNewReview = function(){
       $http.post('api/reviews/', $scope.newReview).success(function(newSubmittedReview){
       $scope.reviewsArray.push(newSubmittedReview);
+      $http.get('api/reviews/product/' + $stateParams.product ).success(function(allReviews){
+        $scope.reviewsArray = allReviews;
+      });
       $scope.reset();
     });
   };
@@ -64,6 +77,7 @@ angular.module('potterBarnApp')
       $scope.newReview.review_content.review_text ='';
       $scope.newReview.review_content.rating_stars =''; 
     }
+
 
 });
 

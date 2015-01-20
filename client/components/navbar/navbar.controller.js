@@ -2,10 +2,7 @@
 
 angular.module('potterBarnApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    },
+    $scope.menu = [
     {
       'title': 'Cart',
       'link': '/cart'

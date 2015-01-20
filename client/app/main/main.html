@@ -1,34 +1,45 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="banner">
-<center>
-<h1> Potter Barn </h1>
-<br>
-<h2> A veritable Diagon Alley of magical objects </h2>
-</center>
-</div>
+<section id="intro" class="intro">
 
-<div ng-app="ui.bootstrap.demo">
-  <script type="text/ng-template" id="customTemplate.html">
-    <a>
-        <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
-        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
-    </a>
-  </script>
+    <br>
+    <br>
+    <div class="col-md-12">
+        <div class="page-scroll" ng-click="visibleCategory={'visibility':'visible'}">
+            <div class="btn btn-circle">
+                <i class="fa fa-flash animated"></i>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="categories">
+                <ul>
+                    <div class="col-md-6" ng-repeat="category in categories">
+                        <li class="catItem" ng-style="visibleCategory"><i class="fa animated"><div ng-click="stateChange(category.name, category.info)"> <h3> {{category.name}} </h3></div></i>
+                        </li>
+                    </div>
+                </ul>
+            </div>
 
-<form class="searchBar">
-  <div class='container-fluid'>
-      <input type="text" ng-model="asyncSelected" placeholder="Search for your desires" typeahead="product as product.name for product in products | filter:$viewValue" typeahead-min-length='1' typeahead-wait-ms="100" class="form-control">
-      <input type="submit" ng-click="getProduct(asyncSelected._id)">
-  </div>
-</form>
-</div>
 
-<div class="categories">
-<ul>
-  <div class="col-md-6" ng-repeat="category in categories">
-    <li><div ng-click="stateChange(category.name)"> <h3> {{category.name}} </h3></div></li>
-  </div>
-</ul>
-</div>
+        </div>
 
+    </div>
+    <div ng-app="ui.bootstrap.demo"> <script type="text/ng-template" id="customTemplate.html">
+        </script>
+        <div class='container'>
+            <form class="searchBar" ng-style="visibleCategory">
+                <input type="text" ng-model="asyncSelected" placeholder="Search for what your heart desires" typeahead="product as product.name for product in products | filter:$viewValue" typeahead-min-length='1' typeahead-wait-ms="100" class="form-control">
+                <input type="submit" ng-click="getProduct(asyncSelected._id)" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+            </form>
+        </div>
+
+    </div>
+  </section>
+
+
+<section id="categories">
+
+</section>

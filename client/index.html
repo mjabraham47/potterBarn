@@ -20,6 +20,12 @@
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
+    <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
   </head>
   <body ng-app="potterBarnApp">
     <!--[if lt IE 7]>
@@ -55,9 +61,12 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/checklist-model/checklist-model.js"></script>
+      <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
+
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
@@ -87,5 +96,9 @@
           <script src="components/socket/socket.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
+          <script src="scripts/jquery.easing.min.js"></script>
+          <script src="scripts/jquery.scrollTo.js"></script>
+          <script src="scripts/wow.min.js"></script>
+          <script src="scripts/custom.js"></script>
 </body>
 </html>

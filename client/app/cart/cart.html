@@ -1,31 +1,87 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
+<div class="cart-header">
+</div>
+<div class="container-fluid text-center">
+  <div class="col-md-4 col-sm-12">
+  <br>
+      <h1>Your Shopping Cauldron</h1>
+      <img src="../assets/images/cauldron.jpg"/>
+  </div>
+  <div class="col-md-8 col-sm-12">
+    <ul>
+      <li class="row list-inline columnCaptions">
+        <span class="col-sm-4">QTY</span>
+        <span class="col-sm-4">ITEM</span>
+        <span class="col-sm-4">Price</span>
+      </li>
+    <div ng-repeat='item in cart_items'>
+      <li class='row cart_row'>
+        <div class="col-sm-4">
+          <select class='quantity form-control' ng-model="item.quantity_ordered" ng-change="changeQuantity(item.quantity_ordered, item._id, item.price, $index)">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Shopping Cart</h1>
-              <div ng-repeat='item in cart_items'>
-                          <a href="#">{{item.name}}</a>
-                          <img ng-src='{{item.photo}}'/>
-                          <p>Quantity: {{item.quantity_ordered}}</p>
-                          <br>{{sickles(item.price)}}
-                          <select ng-model="item.quantity_ordered" ng-click="changeQuantity(item.quantity_ordered)">
-                            <option ng-repeat="i in getNumber(item.quantity_ordered) track by $index">{{$index+1}} </option>
-                          </select>
-                          <button type="button" class="close" ng-click="deleteItem(item._id, $index)">&times;</button>
-                      </div>
-
-                <li>
-                    <div class="col-md-3">
-
-                    </div>
-                    There are {{number_items}} things in your cauldron
-                    <div class="col-md-3"></div>
-                </li>
-            </ul>
-            <div>
-                Total: {{sickles(total)}}
-            </div>
+              <option selected = 'selected'>{{item.quantity_ordered}}</option>
+              <option class='quantity' ng-repeat="i in getNumber(item_quantity) track by $index" >{{$index}} </option>
+          </select>
         </div>
+        <div class="col-sm-4">
+          <a href="#" class="itemName">{{item.name}}</a>
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="close" ng-click="deleteItem(item._id, $index)">
+            <span class="glyphicon glyphicon-remove delete"></span>
+          </button>
+          <span class='price'>{{sickles(item.price * item.quantity_ordered)}}</span>
+        </div>
+      </li>
+    </div>
+      <li class="row totals">
+        <div class="col-sm-4"></div>
+        <span class='col-sm-4 itemName'>Total:</span>
+        <span class='col-sm-4 price'>{{sickles(total)}}</span>
+        <span class='order' ng-click="checkout = !checkout"><a>ORDER</a></span>
+      </li>
+    </ul>
+      </div>
     </div>
 </div>
+
+  <div class="col-md-8 finalCheckout" ng-show="checkout">
+    <div class="container">
+      <div class="col-md-2">
+      <h1 class="checkoutFont">Checkout</h1>
+      <h3 class="cartText">Total:</h3> <h4 class="cartText"> {{sickles(total)}}</h4>
+      </div>
+      <div class="col-md-2">
+      <h4 class="cartText">Name:</h4>
+      <form name="payment_form" novalidate >
+        <input ng-model="user.firstName" type="text" placeholder="First Name"><br>
+        <input ng-model="user.lastName" type="text"placeholder="Last Name"><br>
+        <input ng-model="user.email" type="text" placeholder="E-mail Address"><br>
+        <input ng-model="user.phone" type="text" placeholder="Phone Number">
+        </div>
+        <div class="col-md-2">
+        <h4 class="cartText">Credit Card:</h4>
+        <input ng-model="user.billing_info.card_issue" type="text" placeholder="Card Issuer"><br>
+        <input ng-model="user.billing_info.card_number" type="text" placeholder="Card Number"><br>
+        <input ng-model="user.billing_address.expiration_date.month" type="text" placeholder="Expiration Month"><br>
+        <input ng-model="user.billing_address.expiration_date.year" type="text" placeholder="Expiration Year">
+        </div>
+        <div class="col-md-2">
+        <h4 class="cartText">Billing Address:</h4>
+        <input ng-model="user.billing_address.street" type="text" placeholder="Street Address"><br>
+        <input ng-model="user.billing_address.city" type="text" placeholder="City"><br>
+        <input ng-model="user.billing_address.state" type="text" placeholder="State"><br>
+        <input ng-model="user.billing_address.zip" type="text" placeholder="Zip Code">
+        </div>
+        <div class="col-md-2">
+        <h4 class="cartText">Shipping Address:</h4>
+        <input ng-model="user.shipping_address.street" type="text" placeholder="Street Address"><br>
+        <input ng-model="user.shipping_address.city" type="text" placeholder="City"><br>
+        <input ng-model="user.shipping_address.state" type="text" placeholder="State"><br>
+        <input ng-model="user.shipping_address.zip" type="text"placeholder="Zip Code">
+        </div>
+      <button class="checkoutButton col-md-2" action="" method="POST" ng-click="checkoutSubmit(user); complete = !complete">CHECKOUT</button>
+      <h1 class="orderComplete" ng-show="complete">ORDER COMPLETE</h1>
+    </form>
+  </div>
+  </div>
