@@ -102,11 +102,12 @@ angular.module('potterBarnApp')
       $scope.master = angular.copy(user);
 
       $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.master).success(function(user){
-        $scope.master = {};
+        $scope.master = {}; 
+        console.log(user);
       });
 
       $http.put('/api/cart/order/'+ $scope.cart[0]._id).success(function(cart) {
-
+        console.log(cart);
       });
     }
 });
