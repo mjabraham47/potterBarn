@@ -6,6 +6,12 @@ angular.module('potterBarnApp')
     $scope.user = {};
     $scope.errors = {};
 
+$scope.check = function(){
+      if($scope.wizard !== "dumbledore"){
+        window.alert('WARNING \n MUGGLES PROCEED AT YOUR OWN RISK');
+        window.location.replace("http://potterybarn.com");
+      }
+        else{
     $scope.register = function(form) {
       $scope.submitted = true;
       var user;
@@ -45,6 +51,15 @@ angular.module('potterBarnApp')
         })
       }
     };
+
+      }
+    }
+
+    var myFunction = function() {
+      $location.path('/warning');
+      setTimeout(function(){ $location.path('/warning'); }, 3000);
+      debugger;
+    }
 
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;

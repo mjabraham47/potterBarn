@@ -300,23 +300,30 @@ hr {
 ============================ */
 
 .intro {
+<<<<<<< HEAD
+  width:100%;
+  position:relative;
+
+  background: url(../img/bg1.jpg) no-repeat top center;
+=======
 	width:100%;
 	position:relative;
-
+master
 	background: url(../img/bg1.jpg) no-repeat top center;
+>>>>>>>
 }
 
 #intro.intro {
-	padding:0 0 0 0;
+  padding:0 0 0 0;
 }
 
 .intro .slogan {
-	text-align: center;
+  text-align: center;
 
 }
 
 .intro .page-scroll {
-	text-align: center;
+  text-align: center;
 }
 
 .brand-heading {
@@ -328,23 +335,23 @@ hr {
 }
 
 .intro .slogan h2 {
-	color: black;
-	text-shadow: none;
-	font-size: 60px;
-	line-height: 60px;
-	font-weight: 700;
-	background-color: rgba(0, 0, 0, 0);
-	text-decoration: none;
-	text-transform: uppercase;
-	border-width: 0px;
-	border-color: #000;
-	border-style: none;
-	text-shadow: -1px 0 1px #000;
+  color: black;
+  text-shadow: none;
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-width: 0px;
+  border-color: #000;
+  border-style: none;
+  text-shadow: -1px 0 1px #000;
 }
 
 .intro .slogan h4 {
-	color: #fff;
-	text-shadow: -1px 1px 1px #000;
+  color: #fff;
+  text-shadow: -1px 1px 1px #000;
 }
 
 

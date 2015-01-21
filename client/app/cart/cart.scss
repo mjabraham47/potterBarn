@@ -132,3 +132,6 @@ padding: 20px 30px;
   color:#fff;
   margin-top: 60px;
 }
+:required:focus {
+  box-shadow: 0  0 3px rgba(255,0,0,0.5); 
+}
