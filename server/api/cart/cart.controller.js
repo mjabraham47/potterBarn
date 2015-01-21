@@ -103,14 +103,17 @@ exports.merge_cart = function(req, res) {
     if (err) { return handleError(res, err); }
     if (!cart || cart.length == 0) {
       Cart.create({user: req.params.id}, function(err, cart) {
+        console.log('created cart' + cart);
         if(err) { return handleError(res, err); }
         var updated = _.merge(cart, {contents: req.body});
+        console.log('marged:' + updated);
         updated.save(function (err) {
           if (err) { return handleError(res, err); }
           return res.json(200, cart);
         });
       });
     } else {
+      console.log('existing cart:' + cart)
       var updated = _.merge(cart, {contents: req.body});
       updated.save(function (err) {
         if (err) { return handleError(res, err); }
