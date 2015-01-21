@@ -42,6 +42,16 @@ exports.orders = function(req, res){
   });
 }
 
+//gets all carts by user
+exports.cartsByUser = function(req, res){
+  console.log('this is going into backend:', req.params)
+  Cart.cartsByUser(req.params, function (err, carts) {
+    console.log('this is returned from the backend:', carts)
+    if(err) { return handleError(res, err); }
+    return res.json(200, carts);
+  });
+}
+
 exports.add_product = function(req, res) {
   Cart.findOneAndUpdate(
     { user: req.params.id, status:'cart' },
@@ -61,17 +71,54 @@ exports.create = function(req, res) {
   });
 };
 
-//creates a new user cart
+
+//creates a new cart for a new user
 exports.create_new_user_cart = function(req, res) {
+  console.log('hitting it');
   var new_cart = {
-    products: [],
-    user: req.params.id
+    user: req.body.user
   };
-  Cart.create(new_cart, function(err, cart) {
+  Cart.create(req.body, function(err, cart) {
     if(err) { return handleError(res, err) };
       return res.json(201, cart);
   });
 };
+
+//looks up a user's cart
+exports.lookup_user_cart = function(req, res) {
+  Cart.find( {
+    user: req.params.id,
+    status: 'cart'
+  }, function (err, cart) {
+    if(err) { return handleError(res, err); }
+    if(!cart) { res.send([]) };
+    return res.json(cart);
+  });
+};
+
+//merge cookie cart with user cart
+exports.merge_cart = function(req, res) {
+  console.log(req.body);
+  Cart.find({user: req.params.id, status:'cart'}, function(err, cart) {
+    if (err) { return handleError(res, err); }
+    if (!cart || cart.length == 0) {
+      Cart.create({user: req.params.id}, function(err, cart) {
+        if(err) { return handleError(res, err); }
+        var updated = _.merge(cart, {contents: req.body});
+        updated.save(function (err) {
+          if (err) { return handleError(res, err); }
+          return res.json(200, cart);
+        });
+      });
+    } else {
+      var updated = _.merge(cart, {contents: req.body});
+      updated.save(function (err) {
+        if (err) { return handleError(res, err); }
+        return res.json(200, cart);
+      });
+    }
+  });
+}
 
 //updates an item's quantity
 exports.updateQuantity = function(req, res) {

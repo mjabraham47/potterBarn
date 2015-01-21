@@ -27,16 +27,26 @@ angular.module('potterBarnApp')
 
     $scope.users = users;
 
-    $scope.ok = function() {
-        $modalInstance.close();
-    };
+
+        $scope.save = function(newCategory) {
+            $scope.newCategory = {
+                name: newCategory
+            };
+            $http.post('api/categorys/', $scope.newCategory).success(function(newCategory) {
+                console.log(newCategory)
+            });
+        }
+
+        $scope.ok = function() {
+            $modalInstance.close();
+        };
 
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
 
     $scope.promoteAdmin = function(userId) {
-        var promotion = {role: 'admin'} 
+        var promotion = {role: 'admin'}
         $http.put('/api/users/' + userId, promotion).success(function(user){
             console.log(user)
       });
@@ -48,7 +58,6 @@ angular.module('potterBarnApp')
         }
         return false;
     }
-
     $scope.delete = function(user) {
             User.remove({
                 id: user._id
@@ -60,7 +69,7 @@ angular.module('potterBarnApp')
             });
             $scope.selected = '';
         };
- 
+
 })
 .controller('CategoryModalCtrl', function($scope, $modal, $log) {
 

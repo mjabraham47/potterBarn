@@ -25,6 +25,13 @@ CartSchema.statics.orderByStatus = function(cb){
         .exec(cb);
 }
 
+//gets carts by user
+CartSchema.statics.cartsByUser = function(user, cb){
+  return this.find({ user: user.id })
+        .populate('contents.product')
+        .exec(cb);
+}
+
 // CartSchema.methods = {
 //  check_product: function(id, callback){
 //    if (this.contents.indexOf(id) === -1){
