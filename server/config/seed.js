@@ -10,6 +10,7 @@
  var Product = require('../api/product/product.model');
  var Category = require('../api/category/category.model');
  var Cart = require('../api/cart/cart.model');
+ var _ = require('underscore');
 
  Category.find({}).remove(function() {
   Category.create(
@@ -39,6 +40,51 @@ Cart.find({}).remove(function() {
     console.log('finished populating cart');
   });
 });
+
+//get array of product ids
+var product_array = [];
+Product.find(function (err, products) {
+  _.each(products, function(product) {
+    product_array.push(product._id);
+  });
+  console.log(product_array);
+});
+
+//return random product
+var random_product = function() {
+  var length = product_array.length;
+  console.log(product_array[2]);
+  return product_array[Math.floor(Math.random() * length)]
+};
+
+//return random quantity
+var random_quantity = function() {
+  return Math.floor(Math.random() * 5) + 1;
+}
+
+//generate 100 random carts
+var i = 0;
+var j = 0;
+while (i<=100) {
+  var cart_contents = [];
+  var random_num = random_quantity();
+  while (j < random_num) {
+    cart_contents.push({
+      product: random_product(),
+      quantity_ordered: random_quantity()
+    });
+    //console.log(cart_contents);
+    j++;
+  };
+  Cart.find({}).remove(function() {
+    Cart.create({
+      contents: cart_contents,
+      user: '54b6aaa312e01d5b35339ac0'
+    });
+  });
+  //console.log('new cart created');
+  i++;
+};
 
 User.find({}).remove(function() {
   User.create({
