@@ -40,3 +40,15 @@ cursor: url(../assets/images/wand.png) 2 2, auto;
         font-weight: bold;
         font-size: 24px;
 }
+
+.panel-danger > .panel-heading {
+color: #fff;
+background-color: #000E2B;
+}
+.panel-title {
+	background-color: #000E2B;
+	color: #fff;
+}
+.panel-danger > .panel-heading {
+	border-color: #000E2B;
+}

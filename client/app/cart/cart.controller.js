@@ -43,7 +43,7 @@ angular.module('potterBarnApp')
           var quantity = $scope.cart[0].contents[i].quantity_ordered;
           // IIFE to close over a variable in a loop
           (function(quantity){$http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
-            product.quantity_ordered = quantity * 1;
+            product.quantity_ordered = quantity;
             $scope.cart_items.push(product);
             $scope.total += product.price * product.quantity_ordered;
             $scope.item_quantity = product.quantity
@@ -53,9 +53,11 @@ angular.module('potterBarnApp')
     };
 
 
-    $scope.deleteItem = function(item, index) {
-      $http.delete('/api/cart/' + $scope.cart[0]._id +'/' + item);
+    $scope.deleteItem = function(itemId, index, item) {
+      console.log(item);
+      $http.delete('/api/cart/' + $scope.cart[0]._id +'/' + itemId);
       $scope.cart_items.splice(index, 1);
+      $scope.total = $scope.total - (item.price*item.quantity_ordered);
     };
 
 
@@ -70,6 +72,7 @@ angular.module('potterBarnApp')
       var price = price;
       if (quantity == 0 ) {
         $scope.deleteItem(item, index);
+        $scope.total = 0;
       };
 
       if (Auth.isLoggedIn()){
@@ -108,6 +111,10 @@ angular.module('potterBarnApp')
 
       $http.put('/api/cart/order/'+ $scope.cart[0]._id).success(function(cart) {
         console.log(cart);
+        $scope.cart[0] = {};
+        $scope.cart_items = [];
+        console.log($scope.cart);
+        $scope.total = 0;
       });
     }
 });
