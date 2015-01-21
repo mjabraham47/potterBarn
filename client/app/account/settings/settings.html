@@ -1,85 +1,102 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="settings-header"></div>
-<tabset vertical="true" type="pills">
-<tab heading="Change Password">
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+<br>
+<tabset vertical="false" type="pills">
+  <tab heading="Change Password">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
 
-        <div class="form-group">
-          <label>Current Password</label>
+            <div class="form-group">
+              <br>
+              <label>Current Password</label>
 
-          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-                 mongoose-error/>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
-              {{ errors.other }}
-          </p>
-        </div>
+              <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+              mongoose-error/>
+              <p class="help-block" ng-show="form.password.$error.mongoose">
+                {{ errors.other }}
+              </p>
+            </div>
 
-        <div class="form-group">
-          <label>New Password</label>
+            <div class="form-group">
+              <label>New Password</label>
 
-          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
-                 ng-minlength="3"
-                 required/>
-          <p class="help-block"
-             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
-            Password must be at least 3 characters.
-          </p>
-        </div>
+              <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+              ng-minlength="3"
+              required/>
+              <p class="help-block"
+              ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+              Password must be at least 3 characters.
+            </p>
+          </div>
 
-        <p class="help-block"> {{ message }} </p>
+          <p class="help-block"> {{ message }} </p>
 
-        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
-      </form>
+          <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </tab>
 <tab heading="View Order History">
-      <div class="container-fluid text-center">
-        <div class="col-md-4 col-sm-12">
-          {{allCarts}}
-          <ul>
-            <li ng-repeat="cart in allCarts" class="container-fluid text-center">
-              <button class="btn btn-default btn-sm"  ng-click="cart.id.active = true" class="col-md-12">{{cart.date}} {{cart.id}}</button>
-            </li>
-          </div>
-          <div class="col-md-8 col-sm-12">
-            <ul>
-              <li class="row list-inline columnCaptions">
-                <span class="col-sm-4">QTY</span>
-                <span class="col-sm-4">ITEM</span>
-                <span class="col-sm-4">Price</span>
-              </li>
-              <li ng-repeat='item in cart.items' active='cart.active' class='row cart_row'>
-                <div class="col-sm-4">
-                  <span class='quantity form-control'>{{item.quantity}}</span>
-                </div>
-                <div class="col-sm-4">
-                  <a href="#" class="itemName">{{item.name}}</a>
-                </div>
+  <br><br>
+  <div class="container-fluid text-center">
+    <!-- -->
+    <!-- {{allCarts}} -->
 
-                <!--<img ng-src='{{item.photo}}' /> -->
 
-                <div class="col-sm-4">
-                  <span class='price'>{{sickles(item.total_price)}}</span>
-                </div>
-              </li>
-            </div>
-            <li class="row totals">
-              <div class="col-sm-4"></div>
-              <span class='col-sm-4 itemName'>Total:</span>
-              <span class='col-sm-4 price' active='cart.active'>{{sickles(cart.total)}}</span>
-            </li>
+    <tabset vertical="false" type="pills">
+      <tab ng-repeat="cart in allCarts" heading="{{cart.date}} {{cart.id}}">
 
-          </ul>
+        <div class="col-md-4 col-sm-12"> 
         </div>
 
-      </ul>
+        <span class="col-md-8 col-sm-12">
+          <ul>
+            <li class="row list-inline columnCaptions">
+              <span class="col-sm-4">QTY</span>
+              <span class="col-sm-4">ITEM</span>
+              <span class="col-sm-4">Price</span>
+            </li>
+
+            <li ng-repeat='item in cart.items' active='cart.active' class='row cart_row'>
+
+              <div class="col-sm-4">
+                <span >{{item.quantity}}</span>
+              </div>
+              <div class="col-sm-4">
+                <a href="#" class="itemName">{{item.name}}</a>
+              </div>
+              <div class="col-sm-4">
+                <span class='price'>{{sickles(item.total_price)}}</span>
+              </div>
+            </li>
+          </span>
+
+
+          <li class="row totals">
+            <div class="col-sm-4"></div>
+            <span class='col-sm-4 itemName'>Total:</span>
+            <span class='col-sm-4 price' active='cart.active'>{{sickles(cart.total)}}</span>
+          </li>
+        </ul>   
+      </div>
+
+
+    </tab>
+  </tabset>
+
+<!--       <ul>
+        <li ng-repeat="cart in allCarts" class="container-fluid text-center">
+          <button class="btn btn-default btn-sm"  ng-click="cart.id.active = true" class="col-md-12">{{cart.date}} {{cart.id}}</button>
+          {{cart.items}}
+        </li> -->
+
+
+        <!-- </ul> -->
+      </div>
     </div>
   </div>
-</div>
 </tab>
 </tabset>

@@ -17,7 +17,7 @@ angular.module('potterBarnApp')
         $scope.message = '';
       });
     }
-  };
+  }; 
   $scope.allCarts;
   $scope.sickles = sickles;
 
