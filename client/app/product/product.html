@@ -9,11 +9,10 @@
 	<br>
 	<img style="width:250px; height:250px;" src="{{product.photo}}"/>
 	<br>
-	<h2 editable-text="product.name" e-form="textBtnForm" onaftersave="edit()">{{product.name}}</h2>
 	</div>
 	<div class="col-md-6 product">
 	<br>
-	<p-1>{{product.name}}</p-1><br><br>
+	<h2 editable-text="product.name" e-form="textBtnForm" onaftersave="edit()">{{product.name}}</h2>
 	<div editable-textarea="product.info" e-form="textBtnForm" onaftersave="edit()">{{product.info|| 'empty'}}</div>
 	<button class="btn btn-lg-default" ng-show="isAdmin()" ng-click="textBtnForm.$show()">Edit</button>
 	</div>
@@ -41,9 +40,14 @@
 		<br>
 		<p class='reviewText'>Reviews</p>
 		<div ng-repeat="review in reviewsArray">
-		  <p>{{review._user.name}}</p>
-		  <p><strong>{{ review.review_content.rating_stars }} Stars</strong></p>
-		  <p>{{ review.review_content.review_text }}</p>
+			<div class="panel panel-danger">
+	   			<div class="panel-heading">
+	      		<p class="panel-title"><strong>{{review._user.name}}<rating ng-model="review.review_content.rating_stars" max="5" readonly="isReadonly"  on-leave="overStar = null"></rating></strong></p>
+	   			</div>
+	   			<div class="panel-body">
+	      		{{ review.review_content.review_text }}
+	   			</div>
+			</div>
 		</div>
 		<form name="reviewForm">
 		<!--  Review Form -->

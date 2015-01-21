@@ -13,11 +13,6 @@ angular.module('potterBarnApp')
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupCtrl'
       })
-      .state('order_history', {
-        url: '/order_history',
-        templateUrl: 'app/account/order_history/order_history.html',
-        controller: 'OrderHistoryCtrl'
-      })
       .state('settings', {
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',

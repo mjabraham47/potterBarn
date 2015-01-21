@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource) {
+  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource, promotions) {
 
 
     $scope.cookieCart = $cookieStore.get('cart') || [];
@@ -10,9 +10,22 @@ angular.module('potterBarnApp')
     $scope.cart;
     $scope.checkout = false;
     $scope.master = {};
+    $scope.promocount = 0;
+
+    //$scope.loggedin = true;
+    //$scope.notloggedin = false;
 
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
+
+    //change loggedin variable to true if logged int
+
+      if (!Auth.isLoggedIn()) {
+        $scope.cat = "../assets/images/bossycat.jpg"
+      } else {
+        $scope.cat = "../assets/images/cauldron.jpg"
+      }
+
 
     //check if not logged in, if so get request for products in their cookie cart
     if (!Auth.isLoggedIn()){
@@ -43,7 +56,7 @@ angular.module('potterBarnApp')
           var quantity = $scope.cart[0].contents[i].quantity_ordered;
           // IIFE to close over a variable in a loop
           (function(quantity){$http.get('/api/products/' + $scope.cart[0].contents[i].product).success(function(product) {
-            product.quantity_ordered = quantity * 1;
+            product.quantity_ordered = quantity;
             $scope.cart_items.push(product);
             $scope.total += product.price * product.quantity_ordered;
             $scope.item_quantity = product.quantity
@@ -53,9 +66,11 @@ angular.module('potterBarnApp')
     };
 
 
-    $scope.deleteItem = function(item, index) {
-      $http.delete('/api/cart/' + $scope.cart[0]._id +'/' + item);
+    $scope.deleteItem = function(itemId, index, item) {
+      console.log(item);
+      $http.delete('/api/cart/' + $scope.cart[0]._id +'/' + itemId);
       $scope.cart_items.splice(index, 1);
+      $scope.total = $scope.total - (item.price*item.quantity_ordered);
     };
 
 
@@ -70,6 +85,7 @@ angular.module('potterBarnApp')
       var price = price;
       if (quantity == 0 ) {
         $scope.deleteItem(item, index);
+        $scope.total = 0;
       };
 
       if (Auth.isLoggedIn()){
@@ -102,13 +118,32 @@ angular.module('potterBarnApp')
       $scope.master = angular.copy(user);
 
       $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.master).success(function(user){
-        $scope.master = {}; 
+        $scope.master = {};
         console.log(user);
       });
 
       $http.put('/api/cart/order/'+ $scope.cart[0]._id).success(function(cart) {
         console.log(cart);
+        $scope.cart[0] = {};
+        $scope.cart_items = [];
+        console.log($scope.cart);
+        $scope.total = 0;
       });
+    }
+
+    $scope.apply = function(promocode) {
+      var old_price = $scope.total;
+      if ($scope.promocount === 1) {
+        $scope.promocode.message = 'Limit of one promocode';
+      } else {
+        $scope.total = promotions.checker(promocode.promo, $scope.total);
+        if (old_price !== $scope.total) {
+          $scope.promocode.message = 'Promo code applied!';
+          $scope.promocount = 1;
+        } else {
+          $scope.promocode.message = 'Invalid code. Try again';
+        }
+      }
     }
 });
 
