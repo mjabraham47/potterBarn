@@ -24,7 +24,7 @@
           </select>
         </div>
         <div class="col-sm-4">
-          <a href="#" class="itemName">{{item.name}}</a>
+          <a href="/product/{{item._id}}" class="itemName">{{item.name}}</a>
         </div>
         <div class="col-sm-4">
           <button type="button" class="close" ng-click="deleteItem(item._id, $index)">
@@ -54,33 +54,33 @@
       <div class="col-md-2">
       <h4 class="cartText">Name:</h4>
       <form name="payment_form" novalidate >
-        <input ng-model="user.firstName" type="text" placeholder="First Name"><br>
-        <input ng-model="user.lastName" type="text"placeholder="Last Name"><br>
-        <input ng-model="user.email" type="text" placeholder="E-mail Address"><br>
-        <input ng-model="user.phone" type="text" placeholder="Phone Number">
+        <input ng-model="user.firstName" type="text" placeholder="First Name" required><br>
+        <input ng-model="user.lastName" type="text"placeholder="Last Name" required><br>
+        <input ng-model="user.email" type="text" placeholder="E-mail Address" required><br>
+        <input ng-model="user.phone" type="text" placeholder="Phone Number" required>
         </div>
         <div class="col-md-2">
         <h4 class="cartText">Credit Card:</h4>
-        <input ng-model="user.billing_info.card_issue" type="text" placeholder="Card Issuer"><br>
-        <input ng-model="user.billing_info.card_number" type="text" placeholder="Card Number"><br>
-        <input ng-model="user.billing_address.expiration_date.month" type="text" placeholder="Expiration Month"><br>
-        <input ng-model="user.billing_address.expiration_date.year" type="text" placeholder="Expiration Year">
+        <input ng-model="user.billing_info.card_issue" type="text" placeholder="Card Issuer" required><br>
+        <input ng-model="user.billing_info.card_number" type="text" placeholder="Card Number" required><br>
+        <input ng-model="user.billing_address.expiration_date.month" type="text" placeholder="Expiration Month" required><br>
+        <input ng-model="user.billing_address.expiration_date.year" type="text" placeholder="Expiration Year" required>
         </div>
         <div class="col-md-2">
         <h4 class="cartText">Billing Address:</h4>
-        <input ng-model="user.billing_address.street" type="text" placeholder="Street Address"><br>
-        <input ng-model="user.billing_address.city" type="text" placeholder="City"><br>
-        <input ng-model="user.billing_address.state" type="text" placeholder="State"><br>
-        <input ng-model="user.billing_address.zip" type="text" placeholder="Zip Code">
+        <input ng-model="user.billing_address.street" type="text" placeholder="Street Address" required><br>
+        <input ng-model="user.billing_address.city" type="text" placeholder="City" required><br>
+        <input ng-model="user.billing_address.state" type="text" placeholder="State" required><br>
+        <input ng-model="user.billing_address.zip" type="text" placeholder="Zip Code" required>
         </div>
         <div class="col-md-2">
         <h4 class="cartText">Shipping Address:</h4>
-        <input ng-model="user.shipping_address.street" type="text" placeholder="Street Address"><br>
-        <input ng-model="user.shipping_address.city" type="text" placeholder="City"><br>
-        <input ng-model="user.shipping_address.state" type="text" placeholder="State"><br>
-        <input ng-model="user.shipping_address.zip" type="text"placeholder="Zip Code">
+        <input ng-model="user.shipping_address.street" type="text" placeholder="Street Address" required><br>
+        <input ng-model="user.shipping_address.city" type="text" placeholder="City" required><br>
+        <input ng-model="user.shipping_address.state" type="text" placeholder="State" required><br>
+        <input ng-model="user.shipping_address.zip" type="text"placeholder="Zip Code" required>
         </div>
-      <button class="checkoutButton col-md-2" action="" method="POST" ng-click="checkoutSubmit(user); complete = !complete">CHECKOUT</button>
+      <button class="checkoutButton col-md-2" action="" method="POST" ng-click="checkoutSubmit(user); complete = !complete" ng-disabled = "!required">CHECKOUT</button>
       <h1 class="orderComplete" ng-show="complete">ORDER COMPLETE</h1>
     </form>
   </div>

@@ -54,9 +54,11 @@
             {{ errors.password }}
           </p>
         </div>
+        <label> Wizard Token</label>
+        <input ng-model = "wizard">
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+          <button class="btn btn-inverse btn-lg btn-login" type="submit" ng-click= "check()">
             Sign up
           </button>
           <a class="btn btn-default btn-lg btn-register" href="/login">

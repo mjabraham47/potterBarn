@@ -23,5 +23,9 @@ angular.module('potterBarnApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .state('warning,', {
+        url: '/warning',
+        templateUrl: 'app/account/signup/warning.html'
       });
   });
