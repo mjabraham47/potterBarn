@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource) {
+  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource, promotions) {
 
 
     $scope.cookieCart = $cookieStore.get('cart') || [];
@@ -10,6 +10,7 @@ angular.module('potterBarnApp')
     $scope.cart;
     $scope.checkout = false;
     $scope.master = {};
+    $scope.promocount = 0;
 
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
@@ -105,7 +106,7 @@ angular.module('potterBarnApp')
       $scope.master = angular.copy(user);
 
       $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.master).success(function(user){
-        $scope.master = {}; 
+        $scope.master = {};
         console.log(user);
       });
 
@@ -116,6 +117,21 @@ angular.module('potterBarnApp')
         console.log($scope.cart);
         $scope.total = 0;
       });
+    }
+
+    $scope.apply = function(promocode) {
+      var old_price = $scope.total;
+      if ($scope.promocount === 1) {
+        $scope.promocode.message = 'Limit of one promocode';
+      } else {
+        $scope.total = promotions.checker(promocode.promo, $scope.total);
+        if (old_price !== $scope.total) {
+          $scope.promocode.message = 'Promo code applied!';
+          $scope.promocount = 1;
+        } else {
+          $scope.promocode.message = 'Invalid code. Try again';
+        }
+      }
     }
 });
 

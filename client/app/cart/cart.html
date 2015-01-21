@@ -38,6 +38,14 @@
         <div class="col-sm-4"></div>
         <span class='col-sm-4 itemName'>Total:</span>
         <span class='col-sm-4 price'>{{sickles(total)}}</span>
+        <br>
+        <form novalidate class='simple-form col-sm-4'>
+          Promo Code: <input type='text' ng-model='promocode.promo' /></br>
+          <input type='submit' ng-click='apply(promocode)' ng-hide='promocode.message' value='Apply' />
+          <span ng-show='promocode.message'><strong>{{promocode.message}}</strong></span>
+        </form>
+
+
         <span class='order' ng-click="checkout = !checkout"><a>ORDER</a></span>
       </li>
     </ul>
