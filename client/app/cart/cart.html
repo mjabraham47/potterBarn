@@ -27,7 +27,7 @@
           <a href="#" class="itemName">{{item.name}}</a>
         </div>
         <div class="col-sm-4">
-          <button type="button" class="close" ng-click="deleteItem(item._id, $index)">
+          <button type="button" class="close" ng-click="deleteItem(item._id, $index, item)">
             <span class="glyphicon glyphicon-remove delete"></span>
           </button>
           <span class='price'>{{sickles(item.price * item.quantity_ordered)}}</span>
