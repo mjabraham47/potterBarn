@@ -26,7 +26,9 @@ $http.get('api/cart/user/' + Auth.getCurrentUser()._id ).success(function(allCar
 			item.total_price = total_product;
 			item.name = cart.contents[i].product.name;
 			order.items.push(item);
-			total_order += total_product;
+			total_order =+ total_product;
+			console.log('total_order:', total_order);
+			console.log('total_product:', total_product);
 		};
 		order.total = total_order;
 		order.date = cart.date;
@@ -34,7 +36,6 @@ $http.get('api/cart/user/' + Auth.getCurrentUser()._id ).success(function(allCar
 		order.id = cart._id;
 		return order;
 	});
-	console.log(allCarts)
 });
 });
 
