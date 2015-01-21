@@ -5,21 +5,41 @@
 		</div>
 	</div>
 <div class="container">
-	<div class="col-md-3 product">
+	<div class="col-md-4 product">
 	<br>
 	<img style="width:250px; height:250px;" src="{{product.photo}}"/>
 	<br>
 	<h2 editable-text="product.name" e-form="textBtnForm" onaftersave="edit()">{{product.name}}</h2>
 	</div>
-	<div class="col-md-2 product">
+	<div class="col-md-6 product">
 	<br>
 	<p-1>{{product.name}}</p-1><br><br>
 	<div editable-textarea="product.info" e-form="textBtnForm" onaftersave="edit()">{{product.info|| 'empty'}}</div>
 	<button class="btn btn-lg-default" ng-show="isAdmin()" ng-click="textBtnForm.$show()">Edit</button>
 	</div>
-	<div class="col-md-3 product" >
+	
+	<div class="col-md-2 product">
+	<br>
+	<p-1>Order Here</p-1><br>
+	<div editable-textarea="product.price" e-form="textBtnForm" onaftersave="edit()">{{sickles(product.price)}}</div>
+	<br><br>
+	<div class="product-order" ng-hide="hideOrder">
+	<select class="form-control" style="width: 125px;"ng-model="product.quantity_ordered">
+		<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}}</option>
+	</select>
+	<br>
+	<span class='addtocart' ng-click="addToCart(product._id, product.quantity_ordered);  hideOrder=true">Add Item to Cart</span>
+	</div>
+	<br><br>
+	<div id="addMessage"></div>
+	<br><br><br><br>
+	<span class='checkout'  ng-click="goCart()">Checkout</span>
+	</div>
+</div>
+
+<div class="container">
 		<br>
-		<p-1>Reviews</p-1>
+		<p class='reviewText'>Reviews</p>
 		<div ng-repeat="review in reviewsArray">
 		  <p>{{review._user.name}}</p>
 		  <p><strong>{{ review.review_content.rating_stars }} Stars</strong></p>
@@ -47,22 +67,4 @@
 				</fieldset>
 			</div>
 		</form>
-	</div>
-	<div class="col-md-4 product">
-	<br>
-	<p-1>Order Here</p-1><br>
-	{{sickles(product.price)}}
-	<br><br>
-	<div class="product-order" ng-hide="hideOrder">
-	<select class="form-control" style="width: 125px;"ng-model="product.quantity_ordered">
-		<option ng-repeat="i in getNumber(number) track by $index">{{$index+1}}</option>
-	</select>
-	<br>
-	<span class='addtocart' ng-click="addToCart(product._id, product.quantity_ordered);  hideOrder=true">Add Item to Cart</span>
-	</div>
-	<br><br>
-	<div id="addMessage"></div>
-	<br><br><br><br>
-	<span class='checkout'  ng-click="goCart()">Checkout</span>
-	</div>
 </div>

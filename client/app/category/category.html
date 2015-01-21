@@ -6,22 +6,22 @@
 		
 	<div class="category-header">
 	</div>
-	<div class="container">
-    <div class="col-md-3">
-    <br>
+  <br>
       <div class="category-name">
-        <span> <h2>{{currentCategory}}</h2> </span>
-        {{categoryInfo}}
+
+        <h1>{{currentCategory}}</h1>
+        <p-2>{{categoryInfo}}</p-2>
       </div>
-    </div>
+    <br>
+	<div class="categoriesCentered">
   		<div ng-repeat="product in currentProducts">
   			<div class="col-md-3 item">
   				<div ng-click="stateChange(product._id)">
   					<p-1>{{product.name}}</p-1><br>
   					<p-2>{{sickles(product.price)}}</p-2>
-  					<img style="width:150px; height: 150px" ng-src='{{product.photo}}'/>
+  					<img style="width:200px; height: 200px" ng-src='{{product.photo}}'/>
   				</div>
   			</div>
   		</div>
-	</div>
+      </div>
 </section>
