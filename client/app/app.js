@@ -7,7 +7,8 @@ angular.module('potterBarnApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'checklist-model'
+  'checklist-model',
+  'xeditable'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

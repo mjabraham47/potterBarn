@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-    .controller('AdminCtrl', function($scope, $http, Auth, User, $modal, $log) {
+.controller('AdminCtrl', function($scope, $http, Auth, User, $modal, $log) {
 
         // Use the User $resource to fetch all users
         $scope.users = User.query();
@@ -16,24 +16,27 @@ angular.module('potterBarnApp')
                 }
             });
         };
-    })
-    .controller('ModalCtrl', function($scope, $modal, $log) {
 
-        $scope.openCategory = function(size) {
-            var categoryModal = $modal.open({
-                templateUrl: 'myCategoryContent.html',
-                controller: 'CategoryInstanceCtrl',
-                size: size
+        $scope.openAdmin = function() {
+            var AdminModal = $modal.open({
+                templateUrl: 'myAdminContent.html',
+                controller: 'AdminInstanceCtrl',
+                resolve:{
+                    users: function(){
+                        return $scope.users;
+                    }
+                }
             });
 
-            categoryModal.result.then(function() {}, function() {
+            AdminModal.result.then(function() {}, function() {
                 $log.info('Modal dismissed at: ' + new Date());
             });
         };
     })
-    .controller('CategoryInstanceCtrl', function($scope, $modalInstance, $http) {
+.controller('AdminInstanceCtrl', function($scope, $modalInstance, $http, users) {
 
-        $scope.newCategory = "";
+    $scope.users = users;
+
 
         $scope.save = function(newCategory) {
             $scope.newCategory = {
@@ -48,81 +51,129 @@ angular.module('potterBarnApp')
             $modalInstance.close();
         };
 
-        $scope.cancel = function() {
-            $modalInstance.dismiss('cancel');
-        };
-    })
-    .controller('ProductModalCtrl', function($scope, $modal, $log) {
+    $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+    };
 
-        $scope.openProduct = function(size) {
-            var ProductModal = $modal.open({
-                templateUrl: 'myProductContent.html',
-                controller: 'ProductInstanceCtrl',
-                size: size
-            });
+    $scope.promoteAdmin = function(userId) {
+        var promotion = {role: 'admin'}
+        $http.put('/api/users/' + userId, promotion).success(function(user){
+            console.log(user)
+      });
+    }
 
-            ProductModal.result.then(function() {}, function() {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
-    })
-    .controller('ProductInstanceCtrl', function($scope, $modalInstance, $http) {
+    $scope.showBtns = function() {
+        if(typeof $scope.selected == 'object') {
+            return true;
+        }
+        return false;
+    }
 
-        $scope.newProduct = {};
-        $scope.listCategories = [];
+})
+.controller('CategoryModalCtrl', function($scope, $modal, $log) {
 
-        $http.get('/api/categorys').success(function(categories) {
-            $scope.listCategories = categories;
+    $scope.openCategory = function(size) {
+        var categoryModal = $modal.open({
+            templateUrl: 'myCategoryContent.html',
+            controller: 'CategoryInstanceCtrl',
+            size: size
         });
 
-        $scope.save = function(newProduct) {
-            $scope.newProduct = angular.copy(newProduct);
-            $http.post('/api/products', $scope.newProduct).success(function(addedProduct) {
-            });
-        }
+        categoryModal.result.then(function() {}, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+})
+.controller('CategoryInstanceCtrl', function($scope, $modalInstance, $http) {
 
-        $scope.upload = function() {
-            filepicker.setKey("A9CGVY9DSRweXsyrr67AEz");
+    $scope.newCategory = "";
 
-            filepicker.pick(function(Photo) {
-                $scope.newProduct.photo = Photo.url;
-            });
-            $('#uploadMessage').html('<b>Successfully uploaded!</b>');
-        }
-
-        $scope.ok = function() {
-            $modalInstance.close();
+    $scope.save = function(newCategory) {
+        $scope.newCategory = {
+            name: newCategory
         };
+        $http.post('api/categorys/', $scope.newCategory).success(function(newCategory) {});
+    }
 
-        $scope.cancel = function() {
-            $modalInstance.dismiss('cancel');
-        };
-    })
-    .controller('OrderModalCtrl', function($scope, $modal, $log) {
+    $scope.ok = function() {
+        $modalInstance.close();
+    };
 
-        $scope.openOrder = function(size) {
-            var orderModal = $modal.open({
-                templateUrl: 'myOrderContent.html',
-                controller: 'OrderInstanceCtrl',
-                size: size
-            });
+    $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+    };
+})
+.controller('ProductModalCtrl', function($scope, $modal, $log) {
 
-            orderModal.result.then(function() {}, function() {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
-    })
-    .controller('OrderInstanceCtrl', function($scope, $modalInstance, $http) {
+    $scope.openProduct = function(size) {
+        var ProductModal = $modal.open({
+            templateUrl: 'myProductContent.html',
+            controller: 'ProductInstanceCtrl',
+            size: size
+        });
 
-        $http.get('/api/cart/').success(function(orders) {
-          console.log(orders);
-            });
-        
-        $scope.ok = function() {
-            $modalInstance.close();
-        };
+        ProductModal.result.then(function() {}, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+})
+.controller('ProductInstanceCtrl', function($scope, $modalInstance, $http) {
 
-        $scope.cancel = function() {
-            $modalInstance.dismiss('cancel');
-        };
+    $scope.newProduct = {};
+    $scope.listCategories = [];
+
+    $http.get('/api/categorys').success(function(categories) {
+        $scope.listCategories = categories;
     });
+
+    $scope.save = function(newProduct) {
+        $scope.newProduct = angular.copy(newProduct);
+        $http.post('/api/products', $scope.newProduct).success(function(addedProduct) {
+        });
+    }
+
+    $scope.upload = function() {
+        filepicker.setKey("A9CGVY9DSRweXsyrr67AEz");
+
+        filepicker.pick(function(Photo) {
+            $scope.newProduct.photo = Photo.url;
+        });
+        $('#uploadMessage').html('<b>Successfully uploaded!</b>');
+    }
+
+    $scope.ok = function() {
+        $modalInstance.close();
+    };
+
+    $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+    };
+})
+.controller('OrderModalCtrl', function($scope, $modal, $log) {
+
+    $scope.openOrder = function(size) {
+        var orderModal = $modal.open({
+            templateUrl: 'myOrderContent.html',
+            controller: 'OrderInstanceCtrl',
+            size: size
+        });
+
+        orderModal.result.then(function() {}, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+})
+.controller('OrderInstanceCtrl', function($scope, $modalInstance, $http) {
+
+    $http.get('/api/cart/').success(function(orders) {
+      console.log(orders);
+  });
+
+    $scope.ok = function() {
+        $modalInstance.close();
+    };
+
+    $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+    };
+});
