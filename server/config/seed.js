@@ -359,7 +359,7 @@ Product.find({}).remove(function() {
     info: 'Angel\'s Trumpet is a genus of flowering plants. All parts of the plant contain dangerous levels of poison and may be fatal if ingested by humans or animals.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/angels_trumpet.jpg',
-    price: 750,
+    price: 100,
     quantity: 9
   },
   {
@@ -367,7 +367,7 @@ Product.find({}).remove(function() {
     info: 'Armadillo bile is an ingredient used in the Wit-Sharpening Potion. The bile comes from an armadillo.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/armadillo_bile.jpg',
-    price: 750,
+    price: 200,
     quantity: 9
   },
   {
@@ -375,7 +375,7 @@ Product.find({}).remove(function() {
     info: 'Ashwinder eggs are the eggs of the Ashwinder, a magical serpent which is born from the embers of an unattended magical fire.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/ashwinder_eggs.jpg',
-    price: 750,
+    price: 300,
     quantity: 9
   },
   {
@@ -383,7 +383,7 @@ Product.find({}).remove(function() {
     info: 'Its powdered root is a potion ingredient. From the lily family, this plant has long, slender leaves. Its name comes from the Greek asphodelos.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/asphodel.png',
-    price: 750,
+    price: 130,
     quantity: 9
   },
   {
@@ -391,7 +391,7 @@ Product.find({}).remove(function() {
     info: 'Baneberry (Actaea spp.) is a genus of flowering plants. The berries are the most poisonous part of the plant, and they are presumably used in the making of the Baneberry Potion.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/baneberry.jpg',
-    price: 750,
+    price: 400,
     quantity: 9
   },
   {
@@ -399,7 +399,7 @@ Product.find({}).remove(function() {
     info: 'A bezoar as every first year Potions student learns is a stonelike mass taken from the stomach of a goat that acts as an antidote to most poisons, but does not work on everything (such as Basilisk venom). This is the reason why bezoars are used in the preparation of the Antidote to Common Poisons. This object is usually made of hair, plant fibre, or similar indigestible matter that stays in the gut of an animal and forms a hard ball or "stone".',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/bezoar.jpg',
-    price: 750,
+    price: 300,
     quantity: 9
   },
   {
@@ -407,7 +407,7 @@ Product.find({}).remove(function() {
     info: 'Blood is a liquified substance in some organisms, like humans, that carries oxygen throughout the body. In some creatures blood is known to possess magical qualities.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/blood.jpg',
-    price: 750,
+    price: 100,
     quantity: 9
   },
   {
@@ -415,7 +415,7 @@ Product.find({}).remove(function() {
     info: 'Bubotuber pus is the liquid found in the swellings of the magical Bubotuber plant. It is very valuable for its acne-ridding qualities. It is a thick, yellowish-green liquid and smells strongly of petrol.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/bubotuber_pus.jpg',
-    price: 750,
+    price: 200,
     quantity: 9
   },
   {
@@ -423,7 +423,7 @@ Product.find({}).remove(function() {
     info: 'Bicorns possess two large horns. These horns are shed annually and are gathered when the Bicorn is not looking. One powdered horn is a required ingredient for Polyjuice Potion.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/bicorn_horn.png',
-    price: 750,
+    price: 100,
     quantity: 9
   },
   {
@@ -431,7 +431,7 @@ Product.find({}).remove(function() {
     info: 'Dandelion roots (Taraxacum officinale) may be used in some potions. It was kept with other potion ingredients in the Potions Classroom at Hogwarts School of Witchcraft and Wizardry.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/dandelion_root.jpg',
-    price: 750,
+    price: 50,
     quantity: 9
   },
   {
@@ -439,7 +439,7 @@ Product.find({}).remove(function() {
     info: 'Death-Cap is a poisonous mushroom, widely distributed across Europe. It is presumably used in the making of the Death-Cap Draught.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/death_cap.jpg',
-    price: 750,
+    price: 700,
     quantity: 9
   },
   {
@@ -447,15 +447,7 @@ Product.find({}).remove(function() {
     info: 'The egg of the Doxy is a type of egg that is used as an ingredient in the Girding Potion which is black in colour. Cormac McLaggen once ate a pound of doxy eggs on a bet, which caused him to miss the tryouts for the Gryffindor Quidditch team during his sixth year.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/doxy_egg.png',
-    price: 750,
-    quantity: 9
-  },
-  {
-    name: 'Dragon Dung',
-    info: 'Dragon dung is used as a fertiliser in Herbology at Hogwarts School of Witchcraft and Wizardry. In 1994, Fred and George Weasley sent dragon dung to their brother Percy at his job at the Ministry of Magic, under the pretence of it being a fertiliser sample from Norway.',
-    categories: ['Potions and Ingredients'],
-    photo: '/assets/images/potions_and_ingredients/dragon_dung.png',
-    price: 750,
+    price: 260,
     quantity: 9
   },
   {
@@ -463,7 +455,7 @@ Product.find({}).remove(function() {
     info: 'Eel eyes are eels optical organs. They are used in potion-making. They might be an ingredient for the Bulgeye Potion. The Apothecary in Diagon Alley sells jars of eels eyes for one Galleon each.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/eels_eyes.png',
-    price: 750,
+    price: 180,
     quantity: 9
   },
   {
@@ -471,7 +463,7 @@ Product.find({}).remove(function() {
     info: 'An Erumpent horn is a powerful magical object that comes from the Erumpent. The horn contains a deadly fluid that causes whatever it is injected into to explode. They are highly prized as potion ingredients, but are listed as a Class-B Tradeable Material.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/erumpent_horn.jpg',
-    price: 750,
+    price: 190,
     quantity: 9
   },
   {
@@ -479,7 +471,7 @@ Product.find({}).remove(function() {
     info: 'Flobberworm mucus, also known as Flobberworm mucous and Flobber Mucus, is a sticky and green substance that is extracted from the Flobberworm.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/flobberworm_mucus.png',
-    price: 750,
+    price: 60,
     quantity: 9
   },
   {
@@ -487,7 +479,7 @@ Product.find({}).remove(function() {
     info: 'Flitterbloom is a magical plant that apparently has long, swaying tentacles. It bears a superficial resemblance to the deadly plant Devil\'s Snare, but it is harmless, so much so that wizards and witches keep it as an indoor plant or grow it in their gardens.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/flitterbloom.jpg',
-    price: 750,
+    price: 300,
     quantity: 9
   },
   {
@@ -495,7 +487,7 @@ Product.find({}).remove(function() {
     info: 'The wings of the fairy are used as an ingredient in the Girding Potion and the Beautification Potion. Removing a fairy\'s wings is non-fatal, but will cause extreme annoyance to the fairy in question due to the creatures\' natural vanity. Because the fairies are very hard to approach and to capture, their wings are considered as precious ingredients.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/fairy_wings.jpg',
-    price: 750,
+    price: 800,
     quantity: 9
   },
   {
@@ -503,7 +495,7 @@ Product.find({}).remove(function() {
     info: 'A frog brain is much like that of a human, but the cerebrum is relatively smaller. In 1992, some third years accidentally plastered frog brains all over the ceiling of Dungeon Five, a Potions dungeon. The use of frog brains in Potions remains unknown.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/frog_brain.jpg',
-    price: 750,
+    price: 80,
     quantity: 9
   },
   {
@@ -511,7 +503,7 @@ Product.find({}).remove(function() {
     info: 'Goosegrass (Galium aparine) is a species of plant in the madder family. It\'s used in potion-making; it can be bought in one apothecary, at Diagon Alley. It\'s yellow in colour.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/goosegrass.jpg',
-    price: 750,
+    price: 80,
     quantity: 9
   },
   {
@@ -519,7 +511,7 @@ Product.find({}).remove(function() {
     info: 'Gillyweed is a magical plant native to the Mediterranean Sea. When it is eaten by a witch or wizard, one grows gills and webbing between the fingers and toes, allowing them to process oxygen from water and navigate underwater more easily. There is some debate among Herbologists as to the duration of the effects of Gillyweed in fresh water versus salt water, [1] but the effects of Gillyweed in fresh water seem to last about an hour.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/gillyweed.jpg',
-    price: 750,
+    price: 100,
     quantity: 9
   },
   {
@@ -527,7 +519,7 @@ Product.find({}).remove(function() {
     info: 'Horklump juice is a substance extracted from Horklumps. It can be used in a range of healing potions, including the Wiggenweld Potion. One can purchase Horklump juice at one of the apothecaries in Diagon Alley.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/horklump_juice.png',
-    price: 750,
+    price: 400,
     quantity: 9
   },
   {
@@ -535,7 +527,7 @@ Product.find({}).remove(function() {
     info: 'The feather of the Jobberknoll is used as an ingredient in Truth serums and Memory Potions. Jobberknoll feathers are apparently not used for quills.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/jobberknoll_feather.png',
-    price: 750,
+    price: 110,
     quantity: 9
   },
   {
@@ -543,7 +535,7 @@ Product.find({}).remove(function() {
     info: 'Knotgrass is a plant with magical proprieties. It is used in potion-making, being an essential ingredient of the Polyjuice Potion and in the brewing of alcoholic beverages such as Knotgrass Mead.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/knotgrass.jpg',
-    price: 750,
+    price: 30,
     quantity: 9
   },
   {
@@ -551,7 +543,7 @@ Product.find({}).remove(function() {
     info: 'Lionfish have extremely long and separated spines. Crushed into a powder, these spines can be used in healing potions, such as the Wiggenweld Potion. It is also an ingredient of the Herbicide Potion as well as some more complicated ones. The ingredient can be bought from some shops, notably The Apothecary in Diagon Alley.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/lionfish_spine.jpg',
-    price: 750,
+    price: 230,
     quantity: 9
   },
   {
@@ -559,7 +551,7 @@ Product.find({}).remove(function() {
     info: 'A Mandrake, also known as Mandragora, is  a plant which has a root that looks like a human (like a baby when the plant is young, but maturing as the plant grows). When mature, its cry can be fatal to any person who hears it.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/mandrake.jpg',
-    price: 750,
+    price: 900,
     quantity: 9
   },
   {
@@ -567,7 +559,7 @@ Product.find({}).remove(function() {
     info: 'Moonstone (also known as the wishing stone) is a gemstone of medium value. Moonstones are a milky colour and shine very brightly, almost as though they are a source of their own light. They are a useful potion ingredient; powdered moonstones are used as an ingredient for the Draught of Peace and in several Love Potions. Powdered Moonstone is also an ingredient in in Potion No. 86 which is likely an experimental potion. In 1995, Severus Snape forced Harry Potter to write twelve inches of parchment on the properties of Moonstone and its usage in potion-making. Moonstones were also known to be among the gems set into Muriel\'s tiara.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/moonstone.jpg',
-    price: 750,
+    price: 1100,
     quantity: 9
   },
   {
@@ -575,7 +567,7 @@ Product.find({}).remove(function() {
     info: 'Nux Myristica is a plant with magical proprieties that is used in potion-making.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/nux_myristica.jpg',
-    price: 750,
+    price: 290,
     quantity: 9
   },
   {
@@ -583,7 +575,7 @@ Product.find({}).remove(function() {
     info: 'Octopus Powder is a potion ingredient. It is made from the dried flesh of an octopus. It reportedly increases the strength of potions.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/octopus_powder.jpg',
-    price: 750,
+    price: 10,
     quantity: 9
   },
   {
@@ -591,7 +583,7 @@ Product.find({}).remove(function() {
     info: 'Porcupine quills are the sharp spines revesting porcupines, defending them from predators. Porcupine quills are plentiful since the animals continually replenish them. Quills that have caused no harm are considered the best by potion-makers.  Porcupine quills are an ingredient to several potions, like the Cure for Boils.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/porcupine_quills.jpg',
-    price: 750,
+    price: 20,
     quantity: 9
   },
   {
@@ -599,7 +591,7 @@ Product.find({}).remove(function() {
     info: 'Rat spleen is a common ingredient used in the preparation of various potions. It a required ingredient in the Shrinking Solution and in Dragon dung Fertiliser.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/rat_spleen.png',
-    price: 750,
+    price: 5,
     quantity: 9
   },
   {
@@ -607,7 +599,7 @@ Product.find({}).remove(function() {
     info: 'The Shrivelfig is a magical plant, the best specimens of which are found in Abyssinia. The flowers of the Shrivelfig grow inside the fruit, both of which are purple in colour. It\'s a deciduous plant, meaning that its leaves start to shed in autumn, and the plant is leafless during winter. However, due to its aggressive roots, the plant can still survive even in snowy conditions. The leaves have medicinal properties. When skinned the fruit, which is actually the plant\'s flower and contains blossoms inside, produces a purple liquid with potion-making properties. The ingredient can be purchased at the Apothecary in Diagon Alley for three Galleons',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/shrivelfig.png',
-    price: 750,
+    price: 90,
     quantity: 9
   },
   {
@@ -615,7 +607,7 @@ Product.find({}).remove(function() {
     info: 'Sneezewort is a type of plant that is poisonous to livestock. It is used as an ingredient in the Befuddlement Draught. It was kept with other potion ingredients in the Potions Classroom at Hogwarts School of Witchcraft and Wizardry.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/sneezewort.jpg',
-    price: 750,
+    price: 50,
     quantity: 9
   },
   {
@@ -623,7 +615,7 @@ Product.find({}).remove(function() {
     info: 'Unicorn blood is a thick, silvery substance that runs within a unicorn\'s veins. The blood of a unicorn can be drunk in order to keep a person alive. However, the act of slaying a unicorn will cause the drinker to suffer a cursed life though the specifics of what this actually entails are not known well. It is probably a Non-Tradeable Item, since the sale of this substance is controlled by the Ministry of Magic, making it strictly forbidden.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/unicorn_blood.png',
-    price: 750,
+    price: 2000,
     quantity: 9
   },
   {
@@ -631,7 +623,7 @@ Product.find({}).remove(function() {
     info: 'Wormwood (Artemisa absinthium) is a very bitter herb, used in potion-making since ancient times. An Infusion of Wormwood is used in the concoction of the Draught of Living Death, Elixir to Induce Euphoria, and the Shrinking Solution. Harry Potter learned about this ingredient in his first Potion class, where Professor Snape "pointed it out for him".  Muggles use wormwood leaves for many things, including medicine and as a way to discourage fleas. Wormwood\'s scientific name is derived from that of Artemis, the goddess of the hunt in Greek mythology. Wormwood Oil can be poisonous in large amounts.',
     categories: ['Potions and Ingredients'],
     photo: '/assets/images/potions_and_ingredients/wormwood.jpg',
-    price: 750,
+    price: 30,
     quantity: 9
   });
 });
