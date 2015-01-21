@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('potterBarnApp')
-  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource, promotions) {
+  .controller('CartCtrl', function ($scope, $http, socket, Auth, cart, sickles, $cookieStore, User, $resource, promotions, $rootScope) {
 
 
     $scope.cookieCart = $cookieStore.get('cart') || [];
@@ -11,6 +11,12 @@ angular.module('potterBarnApp')
     $scope.checkout = false;
     $scope.master = {};
     $scope.promocount = 0;
+
+    $rootScope.$on('cartChange', function(user_cart) {
+      $scope.cart = user_cart;
+      console.log($scope.cart)
+      $cookieStore.remove('cart');
+    });
 
     //$scope.loggedin = true;
     //$scope.notloggedin = false;
