@@ -12,8 +12,20 @@ angular.module('potterBarnApp')
     $scope.master = {};
     $scope.promocount = 0;
 
+    //$scope.loggedin = true;
+    //$scope.notloggedin = false;
+
     //'sickles' converts price to galleons and sickles
     $scope.sickles = sickles;
+
+    //change loggedin variable to true if logged int
+
+      if (!Auth.isLoggedIn()) {
+        $scope.cat = "../assets/images/bossycat.jpg"
+      } else {
+        $scope.cat = "../assets/images/cauldron.jpg"
+      }
+
 
     //check if not logged in, if so get request for products in their cookie cart
     if (!Auth.isLoggedIn()){
