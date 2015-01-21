@@ -42,19 +42,83 @@ Cart.find({}).remove(function() {
 });
 
 //get array of product ids
-var product_array = [];
-Product.find(function (err, products) {
-  _.each(products, function(product) {
-    product_array.push(product._id);
-  });
-  console.log(product_array);
-});
+var product_array = [ '54befa297f384588264736a9',
+  '54befa297f384588264736ba',
+  '54befa297f384588264736bc',
+  '54befa297f384588264736bd',
+  '54befa297f384588264736bf',
+  '54befa297f384588264736c0',
+  '54befa297f384588264736c1',
+  '54befa297f384588264736c3',
+  '54befa297f384588264736c5',
+  '54befa297f384588264736c6',
+  '54befa297f384588264736c8',
+  '54befa297f384588264736ca',
+  '54befa297f384588264736cb',
+  '54befa297f384588264736cc',
+  '54befa297f3845882647368e',
+  '54befa297f3845882647368f',
+  '54befa297f38458826473690',
+  '54befa297f38458826473691',
+  '54befa297f38458826473692',
+  '54befa297f38458826473693',
+  '54befa297f38458826473695',
+  '54befa297f38458826473696',
+  '54befa297f38458826473697',
+  '54befa297f38458826473698',
+  '54befa297f38458826473699',
+  '54befa297f3845882647369a',
+  '54befa297f3845882647369b',
+  '54befa297f3845882647369d',
+  '54befa297f3845882647369e',
+  '54befa297f3845882647369f',
+  '54befa297f384588264736a2',
+  '54befa297f384588264736a3',
+  '54befa297f384588264736a4',
+  '54befa297f384588264736a5',
+  '54befa297f384588264736a6',
+  '54befa297f384588264736a7',
+  '54befa297f384588264736a8',
+  '54befa297f384588264736aa',
+  '54befa297f384588264736ab',
+  '54befa297f384588264736ac',
+  '54befa297f384588264736ad',
+  '54befa297f384588264736ae',
+  '54befa297f384588264736b0',
+  '54befa297f384588264736b1',
+  '54befa297f384588264736b2',
+  '54befa297f384588264736b3',
+  '54befa297f384588264736b4',
+  '54befa297f384588264736b5',
+  '54befa297f384588264736b6',
+  '54befa297f384588264736b7',
+  '54befa297f384588264736b8',
+  '54befa297f384588264736b9',
+  '54befa297f384588264736c2',
+  '54befa297f384588264736c4',
+  '54befa297f384588264736c7',
+  '54befa297f384588264736c9',
+  '54befa297f38458826473685',
+  '54befa297f38458826473686',
+  '54befa297f38458826473687',
+  '54befa297f38458826473688',
+  '54befa297f38458826473689',
+  '54befa297f3845882647368a',
+  '54befa297f3845882647368b',
+  '54befa297f3845882647368c',
+  '54befa297f3845882647368d',
+  '54befa297f38458826473694',
+  '54befa297f3845882647369c',
+  '54befa297f384588264736a0',
+  '54befa297f384588264736a1',
+  '54befa297f384588264736af',
+  '54befa297f384588264736bb',
+  '54befa297f384588264736be' ];
 
 //return random product
 var random_product = function() {
   var length = product_array.length;
-  console.log(product_array[2]);
-  return product_array[Math.floor(Math.random() * length)]
+  return product_array[Math.floor(Math.random() * length)];
 };
 
 //return random quantity
@@ -66,23 +130,16 @@ var random_quantity = function() {
 var i = 0;
 var j = 0;
 while (i<=100) {
-  var cart_contents = [];
-  var random_num = random_quantity();
-  while (j < random_num) {
-    cart_contents.push({
-      product: random_product(),
-      quantity_ordered: random_quantity()
-    });
-    //console.log(cart_contents);
-    j++;
-  };
   Cart.find({}).remove(function() {
     Cart.create({
-      contents: cart_contents,
+      contents: [
+      { product: random_product(), quantity_ordered: 1 },
+      { product: random_product(), quantity_ordered: 1 },
+      { product: random_product(), quantity_ordered: 1 }
+      ],
       user: '54b6aaa312e01d5b35339ac0'
     });
   });
-  //console.log('new cart created');
   i++;
 };
 
